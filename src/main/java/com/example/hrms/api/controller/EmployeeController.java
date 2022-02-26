@@ -2,6 +2,7 @@ package com.example.hrms.api.controller;
 
 import java.util.List;
 
+import com.example.hrms.business.concretes.EmployeeManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +22,14 @@ public class EmployeeController {
 
 	private EmployeeService employeeService;
 	private JobAdvertisementService jobAdvertisementService;
+	private EmployeeManager employeeManager;
+	private boolean isLoginSuccess;
 
 	@Autowired
-	public EmployeeController(EmployeeService employeeService, JobAdvertisementService jobAdvertisementService) {
+	public EmployeeController(EmployeeService employeeService, JobAdvertisementService jobAdvertisementService, EmployeeManager employeeManager) {
 		this.employeeService = employeeService;
 		this.jobAdvertisementService = jobAdvertisementService;
+		this.employeeManager = employeeManager;
 	}
 
 	// Working 16/11/21
@@ -54,5 +58,20 @@ public class EmployeeController {
 	@GetMapping("getadvertisement/{id}")
 	public JobAdvertisement getAdvertisement(@PathVariable("id") int id) {
 		return jobAdvertisementService.getAdvertisementByEmployeeId(id);
+	}
+
+	@PostMapping("login")
+	public void login(@PathVariable("mail") String mail, @PathVariable("password") String password){
+		isLoginSuccess = employeeManager.login(mail, password);
+	}
+
+	@PostMapping("register")
+	public void register(@RequestBody Employee employee){
+		employeeService.add(employee);
+	}
+
+	@GetMapping("loginresult")
+	public boolean loginResult(){
+		return isLoginSuccess;
 	}
 }

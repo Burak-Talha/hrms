@@ -30,6 +30,12 @@ public class JobSeeker {
 	
 	@Column(name="surname")
 	private String surname;
+
+	@Column(name="mail")
+	private String mail;
+
+	@Column(name="password")
+	private String password;
 	
 	@Column(name="tc_no")
 	private String tcNo;

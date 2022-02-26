@@ -3,7 +3,7 @@ package com.example.hrms.business.concretes;
 import java.util.List;
 
 
-
+import com.example.hrms.entities.concretes.DTOs.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +15,32 @@ import com.example.hrms.entities.concretes.Employee;
 @Service
 public class EmployeeManager implements EmployeeService{
 
+	private List<String> mails;
+	private List<String> passwords;
 	private EmployeeDao employeeDao;
 	
 	@Autowired
 	public EmployeeManager(EmployeeDao employeeDao) {
 		this.employeeDao = employeeDao;
+	}
+
+	@Override
+	public boolean login(String mail, String password) {
+
+		passwords = employeeDao.getPassword();
+		mails = employeeDao.getPassword();
+		int i = 0;
+
+		if(passwords.size() == mails.size()) {
+
+			while (i < passwords.size()) {
+				if(mails.get(i) == mail && passwords.get(i) == password){
+					return true;
+				}
+			}
+
+		}
+		return false;
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
@@ -31,9 +52,11 @@ public class EmployeeManager implements EmployeeService{
 
 	@Override
 	public List<Employee> getAll() {
-		for(Employee employee : employeeDao.findAll()) {
-			System.out.println(employee.getCorporationName());
-		}
 		return employeeDao.findAll();
+	}
+
+	@Override
+	public List<EmployeeDTO> getMailAndPassword() {
+		return employeeDao.getMailAndPassword();
 	}
 }
