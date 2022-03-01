@@ -30,6 +30,7 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
               child: Column(children: [
                 SizedBox(height: 50),
                 Center(child: Text("HRMS - Kayıt", style: GoogleFonts.pacifico(fontWeight: FontWeight.bold, fontSize: 40,color: Colors.white),)),
+                Text("Şirket", style: GoogleFonts.pacifico(fontWeight: FontWeight.bold, fontSize: 40,color: Colors.white),),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20,top: 50),
                   child: TextFormField(
