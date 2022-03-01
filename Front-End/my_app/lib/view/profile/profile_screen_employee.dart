@@ -37,7 +37,7 @@ class _ProfileScreenEmployeeState extends State<ProfileScreenEmployee> {
                 ),                
                 Padding(
                   padding: const EdgeInsets.only(top: 25.0),
-                  child: Center(child: Text("Sotyisim: $surname", style: GoogleFonts.varelaRound(fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),)),
+                  child: Center(child: Text("Soyisim: $surname", style: GoogleFonts.varelaRound(fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),)),
                 ),                
                 Padding(
                   padding: const EdgeInsets.only(top: 25.0),
