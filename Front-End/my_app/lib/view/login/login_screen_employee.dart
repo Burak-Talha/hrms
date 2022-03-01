@@ -1,16 +1,18 @@
 // ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/view/login/login_screen_boss.dart';
+import 'package:my_project/view/profile/profile_screen_employee.dart';
 import 'package:my_project/view/register/register_screen_employee.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+class LoginScreenEmployee extends StatefulWidget {
+  const LoginScreenEmployee({ Key? key }) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginScreenEmployeeState createState() => _LoginScreenEmployeeState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenEmployeeState extends State<LoginScreenEmployee> {
   var mail;
   var password;
   @override
@@ -69,16 +71,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreenEmployee()),);
                       },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 30),
                       child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenEmployee()),);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenEmployee()),);
                       },),
                     ),
                   ],
-                )
+                ),
+                TextButton(onPressed: (() => 
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenBoss()),)),
+                child: Text("Şirket Hesabı İle Giriş Yapmak Mı İstiyorsun?"))
               ],),
             ),
           ),
