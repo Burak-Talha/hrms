@@ -27,19 +27,17 @@ public class EmployeeManager implements EmployeeService{
 	@Override
 	public boolean login(String mail, String password) {
 
-		passwords = employeeDao.getPassword();
-		mails = employeeDao.getPassword();
+		passwords = employeeDao.getByPasswordNotNull();
+		mails = employeeDao.getByEmailNotNull();
+
 		int i = 0;
 
-		if(passwords.size() == mails.size()) {
-
 			while (i < passwords.size()) {
-				if(mails.get(i) == mail && passwords.get(i) == password){
+				if(mails.get(i).equals(mail) && passwords.get(i) == password){
 					return true;
 				}
 			}
 
-		}
 		return false;
 	}
 
@@ -56,7 +54,8 @@ public class EmployeeManager implements EmployeeService{
 	}
 
 	@Override
-	public List<EmployeeDTO> getMailAndPassword() {
-		return employeeDao.getMailAndPassword();
+	public List<Employee> findByPasswordIsNotNullAndEmailIsNotNull() {
+		return employeeDao.findByPasswordIsNotNullAndEmailIsNotNull();
 	}
+
 }

@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HrmsApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/HrmsApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/api/controller/EmployeeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/api/controller/JobAdvertisementController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/api/controller/JobPositionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/api/controller/JobSeekerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/CurriculumVitaeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/EmployeeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/JobAdvertisementService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/JobPositionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/JobSeekerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/abstracts/LanguagesService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/CurriculumVitaeManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/EmployeeManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/JobAdvertisementManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/JobPositionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/JobSeekerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/business/concretes/LanguagesManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/CurriculumVitaeDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/EmployeeDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/JobAdvertisementDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/JobPositionDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/JobSeekerDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/dataaccess/abstracts/LanguagesDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/CurriculumVitae.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/DTOs/EmployeeDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/Employee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/JobAdvertisement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/JobExperiences.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/JobPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/JobSeeker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/Languages.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/School.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/entities/concretes/TechName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hrms/services/mail/MailVeritification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/hrms/HrmsApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

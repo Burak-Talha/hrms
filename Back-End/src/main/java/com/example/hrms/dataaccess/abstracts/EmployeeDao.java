@@ -10,8 +10,7 @@ import java.util.List;
 
 public interface EmployeeDao extends JpaRepository<Employee, Integer>{
 
-    List<String> getMail();
-    List<String> getPassword();
-    void login();
-    List<EmployeeDTO> getMailAndPassword();
+    List<String> getByEmailNotNull();
+    List<String> getByPasswordNotNull();
+    List<Employee> findByPasswordIsNotNullAndEmailIsNotNull();
 }

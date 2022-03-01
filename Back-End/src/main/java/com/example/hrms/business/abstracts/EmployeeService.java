@@ -12,7 +12,7 @@ public interface EmployeeService {
 public boolean login(String mail, String password);
 public void add(Employee employee);
 public List<Employee> getAll();
-@Query("select emp.mail, emp.password from employee as emp")
-public List<EmployeeDTO> getMailAndPassword();
+public List<Employee>findByPasswordIsNotNullAndEmailIsNotNull();
+
 
 }
