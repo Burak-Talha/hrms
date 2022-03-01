@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_project/view/profile/profile_screen_employee.dart';
+import 'package:my_project/view/profile/profile_screen_boss.dart';
 import 'package:my_project/view/register/register_screen_boss.dart';
 
 class LoginScreenBoss extends StatefulWidget {
@@ -71,7 +71,7 @@ class _LoginScreenBossState extends State<LoginScreenBoss> {
                       child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileEmployee()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreenBoss()),);
                       },),
                     ),
                     Padding(

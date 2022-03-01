@@ -71,7 +71,7 @@ class _LoginScreenEmployeeState extends State<LoginScreenEmployee> {
                       child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileEmployee()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreenEmployee()),);
                       },),
                     ),
                     Padding(
