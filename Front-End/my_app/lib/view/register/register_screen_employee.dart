@@ -3,15 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../login_screen.dart';
+import 'register_screen_boss.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({ Key? key }) : super(key: key);
+class RegisterScreenEmployee extends StatefulWidget {
+  const RegisterScreenEmployee({ Key? key }) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _RegisterScreenEmployeeState createState() => _RegisterScreenEmployeeState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
+  var name;
+  var surname;
+  var mail;
+  var tc;
+  var password;
+  var birthy;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +48,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
                     maxLines: 1,
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      name = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -56,7 +65,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      surname = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -71,7 +82,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      mail = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -86,7 +99,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      password = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -101,23 +116,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      birthy = value;
+                    },
                   ),
                 ),
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 50, left: 100),
-                      child: RaisedButton(child: Text("Kayıt Ol"),onPressed: (){},),
+                      padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
+                        print("İsim: $name Soyisim: $surname Mail: $mail Şifre: $password Doğum Yılı: $birthy");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                      },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 40),
-                      child: RaisedButton(child: Text("Geri"),onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                      child: ElevatedButton(child: Text("Geri"),onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
                   },),
                 ),
                   ],
                 ),
+                TextButton(onPressed: (() => 
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenBoss()),)),
+                child: Text("Şirket Hesabı Açmak Mı İstiyorsun?"))
                   ],
               ),
             ),

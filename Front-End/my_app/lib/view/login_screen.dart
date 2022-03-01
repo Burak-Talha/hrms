@@ -32,7 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     cursorColor: Colors.white,
                     style: GoogleFonts.varelaRound(color: Colors.white),
                     decoration: InputDecoration(
-
                       prefixIcon: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: Icon(Icons.mail, color: Colors.white,),
@@ -66,16 +65,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 50,left: 100),
-                      child: RaisedButton(child: Text("Giriş Yap"),onPressed: (){
+                      padding: const EdgeInsets.only(top: 30, bottom: 50,left: 110),
+                      child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
                       },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 30),
-                      child: RaisedButton(child: Text("Kayıt Ol"),onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()),);
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenEmployee()),);
                       },),
                     ),
                   ],
