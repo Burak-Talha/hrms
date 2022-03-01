@@ -127,6 +127,7 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
                       child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
                         print("İsim: $name Soyisim: $surname Mail: $mail Şifre: $password Doğum Yılı: $birthy");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
                       },),
                     ),
                     Padding(

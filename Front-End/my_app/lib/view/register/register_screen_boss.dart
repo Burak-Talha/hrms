@@ -12,6 +12,10 @@ class RegisterScreenBoss extends StatefulWidget {
 }
 
 class _RegisterScreenBossState extends State<RegisterScreenBoss> {
+  var name;
+  var web;
+  var mail;
+  var password;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,7 +45,9 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
                     maxLines: 1,
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      name = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -56,7 +62,9 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      web = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -71,7 +79,9 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      mail = value;
+                    },
                   ),
                 ),
                 Padding(
@@ -86,14 +96,19 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){},
+                    onFieldSubmitted: (value){
+                      password = value;
+                    },
                   ),
                 ),
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
-                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){},),
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
+                        print("İsim: $name Web Sitesi: $web Mail: $mail Şifre: $password ");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                      },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 40),
