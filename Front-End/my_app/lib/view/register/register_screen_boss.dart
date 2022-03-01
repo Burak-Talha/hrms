@@ -3,22 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../login_screen.dart';
-import 'register_screen_boss.dart';
 
-class RegisterScreenEmployee extends StatefulWidget {
-  const RegisterScreenEmployee({ Key? key }) : super(key: key);
+class RegisterScreenBoss extends StatefulWidget {
+  const RegisterScreenBoss({ Key? key }) : super(key: key);
 
   @override
-  _RegisterScreenEmployeeState createState() => _RegisterScreenEmployeeState();
+  _RegisterScreenBossState createState() => _RegisterScreenBossState();
 }
 
-class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
-  var name;
-  var surname;
-  var mail;
-  var tc;
-  var password;
-  var birthy;
+class _RegisterScreenBossState extends State<RegisterScreenBoss> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,9 +41,7 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
                     maxLines: 1,
-                    onFieldSubmitted: (value){
-                      name = value;
-                    },
+                    onFieldSubmitted: (value){},
                   ),
                 ),
                 Padding(
@@ -60,14 +51,12 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                     decoration: InputDecoration(
                       prefixIcon: Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Icon(Icons.account_circle_rounded, color: Colors.white,),
+                        child: Icon(Icons.web, color: Colors.white,),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){
-                      surname = value;
-                    },
+                    onFieldSubmitted: (value){},
                   ),
                 ),
                 Padding(
@@ -82,9 +71,7 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){
-                      mail = value;
-                    },
+                    onFieldSubmitted: (value){},
                   ),
                 ),
                 Padding(
@@ -99,35 +86,14 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(60))
                     )),
-                    onFieldSubmitted: (value){
-                      password = value;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20,top: 50),
-                  child: TextFormField(
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Icon(Icons.assignment_ind_rounded, color: Colors.white,),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(60))
-                    )),
-                    onFieldSubmitted: (value){
-                      birthy = value;
-                    },
+                    onFieldSubmitted: (value){},
                   ),
                 ),
                 Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
-                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
-                        print("İsim: $name Soyisim: $surname Mail: $mail Şifre: $password Doğum Yılı: $birthy");
-                      },),
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){},),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 40),
@@ -135,11 +101,8 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
                   },),
                 ),
-                  ],
+                ],
                 ),
-                TextButton(onPressed: (() => 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenBoss()),)),
-                child: Text("Şirket Hesabı Açmak Mı İstiyorsun?"))
                   ],
               ),
             ),
