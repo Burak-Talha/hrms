@@ -1,16 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_project/view/register/register_screen_employee.dart';
+import 'package:my_project/view/profile/profile_screen_employee.dart';
+import 'package:my_project/view/register/register_screen_boss.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+class LoginScreenBoss extends StatefulWidget {
+  const LoginScreenBoss({ Key? key }) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _LoginScreenBossState createState() => _LoginScreenBossState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenBossState extends State<LoginScreenBoss> {
   var mail;
   var password;
   @override
@@ -26,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(children: [
                 SizedBox(height: 50),
                 Center(child: Text("HRMS - Giriş", style: GoogleFonts.pacifico(fontWeight: FontWeight.bold, fontSize: 40,color: Colors.white),)),
+                Center(child: Text("Şirket", style: GoogleFonts.pacifico(fontWeight: FontWeight.bold, fontSize: 40,color: Colors.white),)),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20,top: 50),
                   child: TextFormField(
@@ -69,16 +71,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileEmployee()),);
                       },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 30),
                       child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenEmployee()),);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreenBoss()),);
                       },),
                     ),
                   ],
-                )
+                ),
               ],),
             ),
           ),

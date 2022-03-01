@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../login_screen.dart';
+import 'package:my_project/view/login/login_screen_boss.dart';
+import '../login/login_screen_employee.dart';
 
 class RegisterScreenBoss extends StatefulWidget {
   const RegisterScreenBoss({ Key? key }) : super(key: key);
@@ -108,13 +109,13 @@ class _RegisterScreenBossState extends State<RegisterScreenBoss> {
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
                       child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
                         print("İsim: $name Web Sitesi: $web Mail: $mail Şifre: $password ");
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenEmployee()),);
                       },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 40),
                       child: ElevatedButton(child: Text("Geri"),onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreenBoss()),);
                   },),
                 ),
                 ],
