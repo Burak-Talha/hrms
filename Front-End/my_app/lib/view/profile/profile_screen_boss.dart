@@ -11,10 +11,10 @@ class ProfileScreenBoss extends StatefulWidget {
 }
 
 class _ProfileScreenBossState extends State<ProfileScreenBoss> {
-  var name="* (name) wait for db*";
-  var web="* (web) wait for db*";
-  var mail="* (mail) wait for db*";
-  var password=" (password) *wait for db*";
+  var name="(name) wait for db";
+  var web="(web) wait for db";
+  var mail="(mail) wait for db";
+  var password="(password) wait for db";
 
   @override
   Widget build(BuildContext context) {
