@@ -66,15 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 50,left: 100),
-                      child: RaisedButton(child: Text("Giriş Yap"),onPressed: (){
+                      padding: const EdgeInsets.only(top: 30, bottom: 50,left: 110),
+                      child: ElevatedButton(child: Text("Giriş Yap"),onPressed: (){
                         print("Mail: $mail");
                         print("Şifre: $password");
                       },),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 30),
-                      child: RaisedButton(child: Text("Kayıt Ol"),onPressed: (){
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()),);
                       },),
                     ),

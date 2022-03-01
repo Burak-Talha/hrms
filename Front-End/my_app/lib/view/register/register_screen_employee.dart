@@ -107,12 +107,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 50, left: 100),
-                      child: RaisedButton(child: Text("Kayıt Ol"),onPressed: (){},),
+                      padding: const EdgeInsets.only(top: 30, bottom: 50, left: 110),
+                      child: ElevatedButton(child: Text("Kayıt Ol"),onPressed: (){},),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 30, bottom: 50, left: 40),
-                      child: RaisedButton(child: Text("Geri"),onPressed: (){
+                      child: ElevatedButton(child: Text("Geri"),onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
                   },),
                 ),
