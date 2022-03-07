@@ -25,7 +25,13 @@ public class CurriculumVitae {
 	
 	@Column(name="job_seeker_id")
 	private int jobSeekerId;
-	
+
+	@Column(name="linkedin_link")
+	private String linkedinLink;
+
+	@Column(name="github_link")
+	private String githubLink;
+
 	@Column(name="about")
 	private String about;
 }
