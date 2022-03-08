@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../login/login_screen_employee.dart';
@@ -13,25 +15,14 @@ class RegisterScreenEmployee extends StatefulWidget {
   _RegisterScreenEmployeeState createState() => _RegisterScreenEmployeeState();
 }
 
-String url = "http://localhost:8080/register";
-
-Future save() async {
-  var res = await http.post(url,
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': user.email, 'password': user.password}));
-  print(res.body);
-  if (res.body != null) {
-    Navigator.pop(context);
-  }
-}
+var name;
+var surname;
+var mail;
+var tc;
+var password;
+var birthy;
 
 class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
-  var name;
-  var surname;
-  var mail;
-  var tc;
-  var password;
-  var birthy;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -208,5 +199,17 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
         ),
       ),
     );
+  }
+}
+
+String url = "http://localhost:8080/register";
+
+Future save() async {
+  var res = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'mail': mail, 'password': password}));
+  print(res.body);
+  if (res.body != null) {
+    print("No problem!");
   }
 }
