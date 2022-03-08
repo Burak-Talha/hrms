@@ -3,6 +3,7 @@ package com.example.hrms.api.controller;
 import java.util.List;
 
 import com.example.hrms.business.concretes.EmployeeManager;
+import com.example.hrms.entities.concretes.dtos.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -73,5 +74,10 @@ public class EmployeeController {
 	@GetMapping("loginresult")
 	public boolean loginResult(){
 		return isLoginSuccess;
+	}
+
+	@GetMapping("getshortdata")
+	public List<EmployeeDto> getIdMailAndPassword(){
+		return employeeService.getIdMailAndPassword();
 	}
 }
