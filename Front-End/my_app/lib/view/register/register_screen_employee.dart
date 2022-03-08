@@ -4,12 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../login/login_screen_employee.dart';
 import 'register_screen_boss.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterScreenEmployee extends StatefulWidget {
   const RegisterScreenEmployee({Key? key}) : super(key: key);
 
   @override
   _RegisterScreenEmployeeState createState() => _RegisterScreenEmployeeState();
+}
+
+String url = "http://localhost:8080/register";
+
+Future save() async {
+  var res = await http.post(url,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'email': user.email, 'password': user.password}));
+  print(res.body);
+  if (res.body != null) {
+    Navigator.pop(context);
+  }
 }
 
 class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
