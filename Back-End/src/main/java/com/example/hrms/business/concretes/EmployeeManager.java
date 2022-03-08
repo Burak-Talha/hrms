@@ -3,7 +3,7 @@ package com.example.hrms.business.concretes;
 import java.util.List;
 
 
-import com.example.hrms.entities.concretes.DTOs.EmployeeDTO;
+import com.example.hrms.entities.concretes.dtos.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +56,11 @@ public class EmployeeManager implements EmployeeService{
 	@Override
 	public List<Employee> findByPasswordIsNotNullAndEmailIsNotNull() {
 		return employeeDao.findByPasswordIsNotNullAndEmailIsNotNull();
+	}
+
+	@Override
+	public List<EmployeeDto> getIdMailAndPassword() {
+		return employeeDao.getIdAndMailAndPassword();
 	}
 
 }

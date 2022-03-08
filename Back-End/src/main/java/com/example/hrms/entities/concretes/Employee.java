@@ -11,11 +11,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 @Entity
 @Table(name="employee")
 public class Employee {
