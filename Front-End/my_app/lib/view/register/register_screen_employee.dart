@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../login/login_screen_employee.dart';
 import 'register_screen_boss.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 class RegisterScreenEmployee extends StatefulWidget {
   const RegisterScreenEmployee({Key? key}) : super(key: key);
@@ -202,7 +200,7 @@ class _RegisterScreenEmployeeState extends State<RegisterScreenEmployee> {
   }
 }
 
-String url = "http://localhost:8080/register";
+/*String url = "http://localhost:8080/register";
 
 Future save() async {
   var res = await http.post(url,
@@ -213,3 +211,4 @@ Future save() async {
     print("No problem!");
   }
 }
+*/
