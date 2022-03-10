@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.hrms.business.concretes.EmployeeManager;
 import com.example.hrms.entities.concretes.dtos.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,8 @@ import com.example.hrms.business.abstracts.EmployeeService;
 import com.example.hrms.business.abstracts.JobAdvertisementService;
 import com.example.hrms.entities.concretes.Employee;
 import com.example.hrms.entities.concretes.JobAdvertisement;
+
+import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("api/employee/")
@@ -62,7 +65,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("login")
-	public void login(@PathVariable("mail") String mail, @PathVariable("password") String password){
+	public void login(@PathParam("mail") String mail, @PathParam("password") String password){
 		isLoginSuccess = employeeManager.login(mail, password);
 	}
 
