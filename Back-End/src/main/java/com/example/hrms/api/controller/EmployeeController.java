@@ -3,9 +3,8 @@ package com.example.hrms.api.controller;
 import java.util.List;
 
 import com.example.hrms.business.concretes.EmployeeManager;
-import com.example.hrms.entities.concretes.dtos.EmployeeDto;
+import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
