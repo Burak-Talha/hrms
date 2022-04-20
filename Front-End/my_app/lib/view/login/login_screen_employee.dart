@@ -15,9 +15,11 @@ class LoginScreenEmployee extends StatefulWidget {
 class _LoginScreenEmployeeState extends State<LoginScreenEmployee> {
   var mail;
   var password;
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _formKey,
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(
@@ -57,7 +59,7 @@ class _LoginScreenEmployeeState extends State<LoginScreenEmployee> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(60)))),
                   maxLines: 1,
-                  onFieldSubmitted: (value) {
+                  onSaved: (value) {
                     mail = value;
                   },
                 ),
