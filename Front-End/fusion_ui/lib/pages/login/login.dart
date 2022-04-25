@@ -4,24 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
-class ToDo extends StatefulWidget {
-  const ToDo({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
-  State<ToDo> createState() => _ToDoState();
+  State<Login> createState() => _LoginState();
 }
 
-class _ToDoState extends State<ToDo> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: true,
-        theme: ThemeData.dark(),
-        home: Scaffold(
-          appBar: AppBar(title: Text(homeConstants().title)),
-          bottomNavigationBar: bottomNavigateBarWidget(),
-          body: myBody(),
-        ));
+    return Scaffold(
+      drawer: Drawer(),
+      appBar: AppBar(
+        toolbarHeight: 70,
+        title: Text(homeConstants().titleEmployee),
+      ),
+      bottomNavigationBar: bottomNavigateBarWidget(),
+      body: myBody(),
+    );
   }
 }
 
@@ -34,13 +35,52 @@ class myBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(flex: 3),
-        mailInput(),
-        passwordInput(),
-        loginButton(),
         Spacer(flex: 7),
+        mailInput(),
+        Spacer(flex: 1),
+        passwordInput(),
+        Spacer(flex: 1),
+        buttons(),
+        Spacer(flex: 9),
       ],
     );
+  }
+}
+
+class buttons extends StatelessWidget {
+  const buttons({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Spacer(
+          flex: 3,
+        ),
+        loginButton(),
+        Spacer(
+          flex: 1,
+        ),
+        registerButton(),
+        Spacer(
+          flex: 3,
+        ),
+      ],
+    );
+  }
+}
+
+class registerButton extends StatelessWidget {
+  const registerButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {}, child: Text(homeConstants().signupT));
   }
 }
 
@@ -52,7 +92,7 @@ class loginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {}, child: Text(homeConstants().loginButtonT));
+        onPressed: () {}, child: Text(homeConstants().loginT));
   }
 }
 
@@ -75,7 +115,7 @@ class mailInput extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               labelText: homeConstants().mailT,
-              icon: Icon(Icons.mail_outline_sharp),
+              icon: Icon(Icons.mail_outline_rounded),
             )),
           ),
           Spacer()
@@ -104,7 +144,7 @@ class passwordInput extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
                     labelText: homeConstants().passwordT,
-                    icon: Icon(Icons.password_sharp)),
+                    icon: Icon(Icons.password_rounded)),
               )),
           Spacer(flex: 1),
         ],
@@ -122,10 +162,12 @@ class bottomNavigateBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(items: [
       BottomNavigationBarItem(
-          icon: Icon(Icons.login_sharp), label: homeConstants().loginT),
+          icon: IconButton(onPressed: () {}, icon: Icon(Icons.person_rounded)),
+          label: homeConstants().employeeT),
       BottomNavigationBarItem(
-          icon: Icon(Icons.app_registration_sharp),
-          label: homeConstants().registerT),
+          icon: IconButton(
+              onPressed: () {}, icon: Icon(Icons.corporate_fare_rounded)),
+          label: homeConstants().bossT),
     ]);
   }
 }
@@ -137,6 +179,6 @@ class titleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(homeConstants().title);
+    return Text(homeConstants().titleEmployee);
   }
 }
