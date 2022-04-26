@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/pages/register/register.dart';
-import 'package:fusion_ui/pages/register/register_b.dart';
+import 'package:fusion_ui/pages/register/register_j.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
 class Login extends StatefulWidget {

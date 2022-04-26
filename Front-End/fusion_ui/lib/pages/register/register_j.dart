@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
-class RegisterB extends StatefulWidget {
-  const RegisterB({Key? key}) : super(key: key);
+class RegisterJ extends StatefulWidget {
+  const RegisterJ({Key? key}) : super(key: key);
 
   @override
-  State<RegisterB> createState() => _RegisterBState();
+  State<RegisterJ> createState() => _RegisterJState();
 }
 
-class _RegisterBState extends State<RegisterB> {
+class _RegisterJState extends State<RegisterJ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

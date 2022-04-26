@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fusion_ui/pages/login/login.dart';
-import 'package:fusion_ui/pages/login/login_b.dart';
+import 'package:fusion_ui/pages/login/login_j.dart';
 import 'package:fusion_ui/pages/register/register.dart';
-import 'package:fusion_ui/pages/register/register_b.dart';
+import 'package:fusion_ui/pages/register/register_j.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +25,6 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0),
         ),
-        home: LoginB());
+        home: LoginJ());
   }
 }
