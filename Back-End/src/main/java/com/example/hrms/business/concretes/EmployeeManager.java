@@ -15,8 +15,8 @@ import com.example.hrms.entities.concretes.Employee;
 @Service
 public class EmployeeManager implements EmployeeService{
 
-	private List<String> mails;
-	private List<String> passwords;
+	Employee employee;
+
 	private EmployeeDao employeeDao;
 	
 	@Autowired
@@ -25,20 +25,12 @@ public class EmployeeManager implements EmployeeService{
 	}
 
 	@Override
-	public boolean login(String mail, String password) {
-
-		passwords = employeeDao.getByPasswordNotNull();
-		mails = employeeDao.getByEmailNotNull();
-
-		int i = 0;
-
-			while (i < passwords.size()) {
-				if(mails.get(i).equals(mail) && passwords.get(i) == password){
-					return true;
-				}
-			}
-
-		return false;
+	public Employee login(String email, String password) {
+		employee = employeeDao.findByEmailAndPassword(email, password);
+		if(employee!=null){
+			return employee;
+		}
+		return null;
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak

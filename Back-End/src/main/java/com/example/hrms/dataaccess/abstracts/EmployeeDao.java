@@ -11,12 +11,10 @@ import java.util.List;
 
 public interface EmployeeDao extends JpaRepository<Employee, Integer>{
 
-    List<String> getByEmailNotNull();
-
-    List<String> getByPasswordNotNull();
-
     List<Employee> findByPasswordIsNotNullAndEmailIsNotNull();
 
     @Query("SELECT e.id, e.email, e.password FROM Employee e")
     List<EmployeeDto> getIdAndMailAndPassword();
+
+    Employee findByEmailAndPassword(String email,String password);
 }
