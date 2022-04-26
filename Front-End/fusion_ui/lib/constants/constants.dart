@@ -3,13 +3,18 @@
 import 'package:flutter/material.dart';
 
 class homeConstants {
-  String titleEmployee = 'HRMS - Employee Login';
-  String titleBoss = 'HRMS - Boss Login';
+  //
+  String titleEmployeeLoginT = 'HRMS - Employee Login';
+  String titleJobSeekerLoginT = 'HRMS - Job Seeker Login';
+  String titleEmployeeRegisterT = 'HRMS - Employee Register';
+  String titleJobSeekerRegisterT = 'HRMS - Job Seeker Register';
+  //
+  String tcT = 'T.C.';
   String loginT = 'Login';
   String registerT = 'Register';
   String signupT = 'Sign Up';
   String mailT = 'Mail';
   String passwordT = 'Password';
   String employeeT = 'Employee';
-  String bossT = 'Boss';
+  String jobSeekerT = 'JobSeeker';
 }

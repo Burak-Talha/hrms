@@ -2,22 +2,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
-import 'package:fusion_ui/pages/register/register.dart';
 import 'package:fusion_ui/pages/register/register_b.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginB extends StatefulWidget {
+  const LoginB({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginB> createState() => _LoginBState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginBState extends State<LoginB> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(homeConstants().titleEmployeeLoginT)),
+        appBar: AppBar(title: Text(homeConstants().titleJobSeekerLoginT)),
         bottomNavigationBar: bottomNavigateBarWidget(),
         body: myBody());
   }
@@ -52,7 +51,7 @@ class iconHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Icon(Icons.person_rounded);
+    return Icon(Icons.corporate_fare_rounded);
   }
 }
 
@@ -92,7 +91,7 @@ class signUpButton extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (BuildContext context) => Register(),
+              builder: (BuildContext context) => RegisterB(),
             ),
           );
         },
@@ -116,7 +115,6 @@ class mailInput extends StatelessWidget {
   const mailInput({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
