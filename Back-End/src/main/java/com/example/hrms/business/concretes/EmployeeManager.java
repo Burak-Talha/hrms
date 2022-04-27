@@ -28,8 +28,10 @@ public class EmployeeManager implements EmployeeService{
 	public Employee login(String email, String password) {
 		employee = employeeDao.findByEmailAndPassword(email, password);
 		if(employee!=null){
+			System.out.println("Kullanıcı eşleşti!");
 			return employee;
 		}
+		System.out.println("Kullanıcı eşleşmedi");
 		return null;
 	}
 
