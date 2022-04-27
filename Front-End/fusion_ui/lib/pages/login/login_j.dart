@@ -1,15 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, unused_import
-
-import 'dart:convert';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
+import 'package:fusion_ui/constants/data/user.dart';
 import 'package:fusion_ui/pages/register/register_j.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
 import 'package:http/http.dart' as http;
-
-import '../../other/user.dart';
 
 class LoginJ extends StatefulWidget {
   const LoginJ({Key? key}) : super(key: key);
@@ -40,13 +37,13 @@ class myBody extends StatelessWidget {
     var mail = TextEditingController();
     var password = TextEditingController();
     User user = User("", "");
-    String url = "http://localhost:8080/login";
+    /*String url = "http://localhost:8080/login";
     Future save() async {
-      var res = await http.post(url,
+      await http.post(url,
           headers: {'Content-Type': 'application/json'},
           body: json.encode({'email': user.mail, 'password': user.password}));
       print(res.body);
-    }
+    }*/
 
     return Form(
       key: _key,
@@ -58,7 +55,7 @@ class myBody extends StatelessWidget {
           Spacer(flex: 1),
           passwordInput(password: password, user: user),
           Spacer(flex: 1),
-          buttons(mail: mail, password: password),
+          buttons(user: user),
           Spacer(flex: 9),
         ],
       ),
@@ -67,11 +64,9 @@ class myBody extends StatelessWidget {
 }
 
 class buttons extends StatelessWidget {
-  const buttons({Key? key, required this.mail, required this.password})
-      : super(key: key);
+  buttons({Key? key, required this.user}) : super(key: key);
 
-  final TextEditingController mail;
-  final TextEditingController password;
+  User user = User("", "");
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +76,7 @@ class buttons extends StatelessWidget {
           flex: 3,
         ),
         loginButton(
-          mail: mail,
-          password: password,
+          user: user,
         ),
         Spacer(
           flex: 1,
@@ -97,18 +91,15 @@ class buttons extends StatelessWidget {
 }
 
 class loginButton extends StatelessWidget {
-  const loginButton({Key? key, required this.mail, required this.password})
-      : super(key: key);
-
-  final TextEditingController mail;
-  final TextEditingController password;
+  loginButton({Key? key, required user}) : super(key: key);
+  User user = User("", "");
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          print(mail.text);
-          print(password.text);
+          print(user.mail);
+          print(user.password);
         },
         child: Text(homeConstants().loginT));
   }
@@ -134,7 +125,9 @@ class mailInput extends StatelessWidget {
           Expanded(
             flex: 10,
             child: TextFormField(
-                controller: TextEditingController(text: user.mail),
+                onChanged: (value) {
+                  user.mail = value;
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20)),
@@ -199,7 +192,9 @@ class passwordInput extends StatelessWidget {
           Expanded(
               flex: 10,
               child: TextFormField(
-                controller: TextEditingController(text: user.password),
+                onChanged: (value) {
+                  user.password = value;
+                },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
