@@ -33,9 +33,6 @@ class myBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _key = GlobalKey<FormState>();
-
-    var mail = TextEditingController();
-    var password = TextEditingController();
     User user = User("", "");
     /*String url = "http://localhost:8080/login";
     Future save() async {
@@ -51,9 +48,9 @@ class myBody extends StatelessWidget {
         children: [
           iconHome(),
           Spacer(flex: 7),
-          mailInput(mail: mail, user: user),
+          mailInput(user: user),
           Spacer(flex: 1),
-          passwordInput(password: password, user: user),
+          passwordInput(user: user),
           Spacer(flex: 1),
           buttons(user: user),
           Spacer(flex: 9),
@@ -108,11 +105,9 @@ class loginButton extends StatelessWidget {
 class mailInput extends StatelessWidget {
   mailInput({
     Key? key,
-    required this.mail,
     required this.user,
   }) : super(key: key);
 
-  final TextEditingController mail;
   User user = User("", "");
 
   @override
@@ -175,11 +170,9 @@ class signUpButton extends StatelessWidget {
 class passwordInput extends StatelessWidget {
   passwordInput({
     Key? key,
-    required this.password,
     required this.user,
   }) : super(key: key);
 
-  final TextEditingController password;
   User user = User("", "");
 
   @override
