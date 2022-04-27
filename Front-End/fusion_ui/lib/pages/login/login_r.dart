@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
-import 'package:fusion_ui/pages/register/register.dart';
+import 'package:fusion_ui/constants/data/user.dart';
 import 'package:fusion_ui/pages/register/register_r.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+import 'package:http/http.dart' as http;
+
+class LoginR extends StatefulWidget {
+  const LoginR({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginR> createState() => _LoginRState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginRState extends State<LoginR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,41 +35,38 @@ class myBody extends StatefulWidget {
 class _myBodyState extends State<myBody> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const iconHome(),
-        const Spacer(flex: 7),
-        const mailInput(),
-        const Spacer(flex: 1),
-        const passwordInput(),
-        const Spacer(flex: 1),
-        const buttons(),
-        const Spacer(flex: 9),
-      ],
+    final _key = GlobalKey<FormState>();
+    User user = User("", "");
+    /*String url = "http://localhost:8080/login";
+    Future save() async {
+      await http.post(url,
+          headers: {'Content-Type': 'application/json'},
+          body: json.encode({'email': user.mail, 'password': user.password}));
+      print(res.body);
+    }*/
+
+    return Form(
+      key: _key,
+      child: Column(
+        children: [
+          const homeIcon(),
+          const Spacer(flex: 7),
+          mailInput(user: user),
+          const Spacer(flex: 1),
+          passwordInput(user: user),
+          const Spacer(flex: 1),
+          buttons(user: user),
+          const Spacer(flex: 9),
+        ],
+      ),
     );
   }
 }
 
-class iconHome extends StatefulWidget {
-  const iconHome({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<iconHome> createState() => _iconHomeState();
-}
-
-class _iconHomeState extends State<iconHome> {
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(Icons.person_rounded);
-  }
-}
-
 class buttons extends StatefulWidget {
-  const buttons({
-    Key? key,
-  }) : super(key: key);
+  buttons({Key? key, required this.user}) : super(key: key);
+
+  User user = User("", "");
 
   @override
   State<buttons> createState() => _buttonsState();
@@ -81,7 +80,9 @@ class _buttonsState extends State<buttons> {
         const Spacer(
           flex: 3,
         ),
-        const loginButton(),
+        loginButton(
+          user: widget.user,
+        ),
         const Spacer(
           flex: 1,
         ),
@@ -91,6 +92,84 @@ class _buttonsState extends State<buttons> {
         ),
       ],
     );
+  }
+}
+
+class loginButton extends StatefulWidget {
+  loginButton({Key? key, required user}) : super(key: key);
+
+  @override
+  State<loginButton> createState() => _loginButtonState();
+}
+
+class _loginButtonState extends State<loginButton> {
+  User user = User("", "");
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {
+          print('Mail: $user.mail Şifre: $user.password');
+        },
+        child: Text(homeConstants().loginT));
+  }
+}
+
+class mailInput extends StatefulWidget {
+  mailInput({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  User user = User("", "");
+
+  @override
+  State<mailInput> createState() => _mailInputState();
+}
+
+class _mailInputState extends State<mailInput> {
+  User user = User("", "");
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 12,
+      child: Row(
+        children: [
+          const Spacer(flex: 1),
+          Expanded(
+            flex: 10,
+            child: TextFormField(
+                onChanged: (value) {
+                  user.mail = value;
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  labelText: homeConstants().mailT,
+                  icon: const Icon(Icons.mail_outline_rounded),
+                )),
+          ),
+          const Spacer()
+        ],
+      ),
+    );
+  }
+}
+
+class homeIcon extends StatefulWidget {
+  const homeIcon({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<homeIcon> createState() => _homeIconState();
+}
+
+class _homeIconState extends State<homeIcon> {
+  @override
+  Widget build(BuildContext context) {
+    return const Icon(Icons.corporate_fare_rounded);
   }
 }
 
@@ -110,7 +189,7 @@ class _signUpButtonState extends State<signUpButton> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (BuildContext context) => const Register(),
+              builder: (BuildContext context) => const RegisterR(),
             ),
           );
         },
@@ -118,67 +197,21 @@ class _signUpButtonState extends State<signUpButton> {
   }
 }
 
-class loginButton extends StatefulWidget {
-  const loginButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<loginButton> createState() => _loginButtonState();
-}
-
-class _loginButtonState extends State<loginButton> {
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: () {}, child: Text(homeConstants().loginT));
-  }
-}
-
-class mailInput extends StatefulWidget {
-  const mailInput({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<mailInput> createState() => _mailInputState();
-}
-
-class _mailInputState extends State<mailInput> {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 12,
-      child: Row(
-        children: [
-          const Spacer(flex: 1),
-          Expanded(
-            flex: 10,
-            child: TextFormField(
-                decoration: InputDecoration(
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-              labelText: homeConstants().mailT,
-              icon: const Icon(Icons.mail_outline_rounded),
-            )),
-          ),
-          const Spacer()
-        ],
-      ),
-    );
-  }
-}
-
 class passwordInput extends StatefulWidget {
-  const passwordInput({
+  passwordInput({
     Key? key,
+    required this.user,
   }) : super(key: key);
+
+  User user = User("", "");
 
   @override
   State<passwordInput> createState() => _passwordInputState();
 }
 
 class _passwordInputState extends State<passwordInput> {
+  User user = User("", "");
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -189,6 +222,9 @@ class _passwordInputState extends State<passwordInput> {
           Expanded(
               flex: 10,
               child: TextFormField(
+                onChanged: (value) {
+                  user.password = value;
+                },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
