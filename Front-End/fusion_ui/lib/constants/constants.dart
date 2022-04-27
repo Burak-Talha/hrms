@@ -1,14 +1,10 @@
-// ignore_for_file: camel_case_types, unused_import
-
-import 'package:flutter/material.dart';
-
 class homeConstants {
-  //
+  // Title
+  String titleEmployeerLoginT = 'HRMS - Employeer Login';
   String titleEmployeeLoginT = 'HRMS - Employee Login';
-  String titleJobSeekerLoginT = 'HRMS - Job Seeker Login';
   String titleEmployeeRegisterT = 'HRMS - Employee Register';
-  String titleJobSeekerRegisterT = 'HRMS - Job Seeker Register';
-  //
+  String titleEmployeerRegisterT = 'HRMS - Employeer Register';
+  // Words
   String tcT = 'T.C.';
   String loginT = 'Login';
   String registerT = 'Register';
@@ -16,5 +12,6 @@ class homeConstants {
   String mailT = 'Mail';
   String passwordT = 'Password';
   String employeeT = 'Employee';
-  String jobSeekerT = 'JobSeeker';
+  String employeerT = 'Employeer';
+  //
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, unused_import
-
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
@@ -16,59 +14,74 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(homeConstants().titleEmployeeRegisterT)),
-      bottomNavigationBar: bottomNavigateBarWidget(),
-      body: myBody(),
+      bottomNavigationBar: const bottomNavigateBarWidget(),
+      body: const myBody(),
     );
   }
 }
 
-class myBody extends StatelessWidget {
+class myBody extends StatefulWidget {
   const myBody({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<myBody> createState() => _myBodyState();
+}
+
+class _myBodyState extends State<myBody> {
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        iconHome(),
-        Spacer(flex: 7),
-        mailInput(),
-        Spacer(flex: 1),
-        tcInput(),
-        Spacer(flex: 1),
-        passwordInput(),
-        Spacer(flex: 1),
-        buttons(),
-        Spacer(flex: 9),
+        const iconHome(),
+        const Spacer(flex: 7),
+        const mailInput(),
+        const Spacer(flex: 1),
+        const tcInput(),
+        const Spacer(flex: 1),
+        const passwordInput(),
+        const Spacer(flex: 1),
+        const buttons(),
+        const Spacer(flex: 9),
       ],
     );
   }
 }
 
-class iconHome extends StatelessWidget {
+class iconHome extends StatefulWidget {
   const iconHome({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<iconHome> createState() => _iconHomeState();
+}
+
+class _iconHomeState extends State<iconHome> {
+  @override
   Widget build(BuildContext context) {
-    return Icon(Icons.person_add_rounded);
+    return const Icon(Icons.person_add_rounded);
   }
 }
 
-class tcInput extends StatelessWidget {
+class tcInput extends StatefulWidget {
   const tcInput({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<tcInput> createState() => _tcInputState();
+}
+
+class _tcInputState extends State<tcInput> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 12,
       child: Row(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Expanded(
               flex: 10,
               child: TextFormField(
@@ -76,33 +89,43 @@ class tcInput extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
                     labelText: homeConstants().tcT,
-                    icon: Icon(Icons.numbers_rounded)),
+                    icon: const Icon(Icons.numbers_rounded)),
               )),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
         ],
       ),
     );
   }
 }
 
-class buttons extends StatelessWidget {
+class buttons extends StatefulWidget {
   const buttons({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<buttons> createState() => _buttonsState();
+}
+
+class _buttonsState extends State<buttons> {
+  @override
   Widget build(BuildContext context) {
     return Row(
-      children: [Spacer(), registerButton(), Spacer()],
+      children: [const Spacer(), const registerButton(), const Spacer()],
     );
   }
 }
 
-class registerButton extends StatelessWidget {
+class registerButton extends StatefulWidget {
   const registerButton({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<registerButton> createState() => _registerButtonState();
+}
+
+class _registerButtonState extends State<registerButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -110,11 +133,16 @@ class registerButton extends StatelessWidget {
   }
 }
 
-class loginButton extends StatelessWidget {
+class loginButton extends StatefulWidget {
   const loginButton({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<loginButton> createState() => _loginButtonState();
+}
+
+class _loginButtonState extends State<loginButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -122,18 +150,23 @@ class loginButton extends StatelessWidget {
   }
 }
 
-class mailInput extends StatelessWidget {
+class mailInput extends StatefulWidget {
   const mailInput({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<mailInput> createState() => _mailInputState();
+}
+
+class _mailInputState extends State<mailInput> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 12,
       child: Row(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Expanded(
             flex: 10,
             child: TextFormField(
@@ -141,28 +174,33 @@ class mailInput extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
               labelText: homeConstants().mailT,
-              icon: Icon(Icons.mail_outline_rounded),
+              icon: const Icon(Icons.mail_outline_rounded),
             )),
           ),
-          Spacer()
+          const Spacer()
         ],
       ),
     );
   }
 }
 
-class passwordInput extends StatelessWidget {
+class passwordInput extends StatefulWidget {
   const passwordInput({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<passwordInput> createState() => _passwordInputState();
+}
+
+class _passwordInputState extends State<passwordInput> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 12,
       child: Row(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Expanded(
               flex: 10,
               child: TextFormField(
@@ -170,41 +208,53 @@ class passwordInput extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
                     labelText: homeConstants().passwordT,
-                    icon: Icon(Icons.password_rounded)),
+                    icon: const Icon(Icons.password_rounded)),
               )),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
         ],
       ),
     );
   }
 }
 
-class bottomNavigateBarWidget extends StatelessWidget {
+class bottomNavigateBarWidget extends StatefulWidget {
   const bottomNavigateBarWidget({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<bottomNavigateBarWidget> createState() =>
+      _bottomNavigateBarWidgetState();
+}
+
+class _bottomNavigateBarWidgetState extends State<bottomNavigateBarWidget> {
+  @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(items: [
       BottomNavigationBarItem(
-          icon: IconButton(onPressed: () {}, icon: Icon(Icons.person_rounded)),
+          icon: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.person_rounded)),
           label: homeConstants().employeeT),
       BottomNavigationBarItem(
           icon: IconButton(
-              onPressed: () {}, icon: Icon(Icons.corporate_fare_rounded)),
-          label: homeConstants().jobSeekerT),
+              onPressed: () {}, icon: const Icon(Icons.corporate_fare_rounded)),
+          label: homeConstants().employeerT),
     ]);
   }
 }
 
-class titleText extends StatelessWidget {
+class titleText extends StatefulWidget {
   const titleText({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<titleText> createState() => _titleTextState();
+}
+
+class _titleTextState extends State<titleText> {
+  @override
   Widget build(BuildContext context) {
-    return Text(homeConstants().titleEmployeeLoginT);
+    return Text(homeConstants().titleEmployeerLoginT);
   }
 }

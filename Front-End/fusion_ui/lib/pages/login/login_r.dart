@@ -1,35 +1,38 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/constants/data/user.dart';
-import 'package:fusion_ui/pages/register/register_j.dart';
+import 'package:fusion_ui/pages/register/register_r.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
 import 'package:http/http.dart' as http;
 
-class LoginJ extends StatefulWidget {
-  const LoginJ({Key? key}) : super(key: key);
+class LoginR extends StatefulWidget {
+  const LoginR({Key? key}) : super(key: key);
 
   @override
-  State<LoginJ> createState() => _LoginJState();
+  State<LoginR> createState() => _LoginRState();
 }
 
-class _LoginJState extends State<LoginJ> {
+class _LoginRState extends State<LoginR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(homeConstants().titleJobSeekerLoginT)),
-        bottomNavigationBar: bottomNavigateBarWidget(),
-        body: myBody());
+        appBar: AppBar(title: Text(homeConstants().titleEmployeerLoginT)),
+        bottomNavigationBar: const bottomNavigateBarWidget(),
+        body: const myBody());
   }
 }
 
-class myBody extends StatelessWidget {
+class myBody extends StatefulWidget {
   const myBody({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<myBody> createState() => _myBodyState();
+}
+
+class _myBodyState extends State<myBody> {
   @override
   Widget build(BuildContext context) {
     final _key = GlobalKey<FormState>();
@@ -46,40 +49,45 @@ class myBody extends StatelessWidget {
       key: _key,
       child: Column(
         children: [
-          iconHome(),
-          Spacer(flex: 7),
+          const homeIcon(),
+          const Spacer(flex: 7),
           mailInput(user: user),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           passwordInput(user: user),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           buttons(user: user),
-          Spacer(flex: 9),
+          const Spacer(flex: 9),
         ],
       ),
     );
   }
 }
 
-class buttons extends StatelessWidget {
+class buttons extends StatefulWidget {
   buttons({Key? key, required this.user}) : super(key: key);
 
   User user = User("", "");
 
   @override
+  State<buttons> createState() => _buttonsState();
+}
+
+class _buttonsState extends State<buttons> {
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Spacer(
+        const Spacer(
           flex: 3,
         ),
         loginButton(
-          user: user,
+          user: widget.user,
         ),
-        Spacer(
+        const Spacer(
           flex: 1,
         ),
-        signUpButton(),
-        Spacer(
+        const signUpButton(),
+        const Spacer(
           flex: 3,
         ),
       ],
@@ -87,22 +95,27 @@ class buttons extends StatelessWidget {
   }
 }
 
-class loginButton extends StatelessWidget {
+class loginButton extends StatefulWidget {
   loginButton({Key? key, required user}) : super(key: key);
+
+  @override
+  State<loginButton> createState() => _loginButtonState();
+}
+
+class _loginButtonState extends State<loginButton> {
   User user = User("", "");
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
-          print(user.mail);
-          print(user.password);
+          print('Mail: $user.mail Şifre: $user.password');
         },
         child: Text(homeConstants().loginT));
   }
 }
 
-class mailInput extends StatelessWidget {
+class mailInput extends StatefulWidget {
   mailInput({
     Key? key,
     required this.user,
@@ -111,12 +124,19 @@ class mailInput extends StatelessWidget {
   User user = User("", "");
 
   @override
+  State<mailInput> createState() => _mailInputState();
+}
+
+class _mailInputState extends State<mailInput> {
+  User user = User("", "");
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 12,
       child: Row(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Expanded(
             flex: 10,
             child: TextFormField(
@@ -127,39 +147,49 @@ class mailInput extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20)),
                   labelText: homeConstants().mailT,
-                  icon: Icon(Icons.mail_outline_rounded),
+                  icon: const Icon(Icons.mail_outline_rounded),
                 )),
           ),
-          Spacer()
+          const Spacer()
         ],
       ),
     );
   }
 }
 
-class iconHome extends StatelessWidget {
-  const iconHome({
+class homeIcon extends StatefulWidget {
+  const homeIcon({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<homeIcon> createState() => _homeIconState();
+}
+
+class _homeIconState extends State<homeIcon> {
+  @override
   Widget build(BuildContext context) {
-    return Icon(Icons.corporate_fare_rounded);
+    return const Icon(Icons.corporate_fare_rounded);
   }
 }
 
-class signUpButton extends StatelessWidget {
+class signUpButton extends StatefulWidget {
   const signUpButton({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<signUpButton> createState() => _signUpButtonState();
+}
+
+class _signUpButtonState extends State<signUpButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (BuildContext context) => RegisterJ(),
+              builder: (BuildContext context) => const RegisterR(),
             ),
           );
         },
@@ -167,7 +197,7 @@ class signUpButton extends StatelessWidget {
   }
 }
 
-class passwordInput extends StatelessWidget {
+class passwordInput extends StatefulWidget {
   passwordInput({
     Key? key,
     required this.user,
@@ -176,12 +206,19 @@ class passwordInput extends StatelessWidget {
   User user = User("", "");
 
   @override
+  State<passwordInput> createState() => _passwordInputState();
+}
+
+class _passwordInputState extends State<passwordInput> {
+  User user = User("", "");
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 12,
       child: Row(
         children: [
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
           Expanded(
               flex: 10,
               child: TextFormField(
@@ -192,41 +229,53 @@ class passwordInput extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20)),
                     labelText: homeConstants().passwordT,
-                    icon: Icon(Icons.password_rounded)),
+                    icon: const Icon(Icons.password_rounded)),
               )),
-          Spacer(flex: 1),
+          const Spacer(flex: 1),
         ],
       ),
     );
   }
 }
 
-class bottomNavigateBarWidget extends StatelessWidget {
+class bottomNavigateBarWidget extends StatefulWidget {
   const bottomNavigateBarWidget({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<bottomNavigateBarWidget> createState() =>
+      _bottomNavigateBarWidgetState();
+}
+
+class _bottomNavigateBarWidgetState extends State<bottomNavigateBarWidget> {
+  @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(items: [
       BottomNavigationBarItem(
-          icon: IconButton(onPressed: () {}, icon: Icon(Icons.person_rounded)),
+          icon: IconButton(
+              onPressed: () {}, icon: const Icon(Icons.person_rounded)),
           label: homeConstants().employeeT),
       BottomNavigationBarItem(
           icon: IconButton(
-              onPressed: () {}, icon: Icon(Icons.corporate_fare_rounded)),
-          label: homeConstants().jobSeekerT),
+              onPressed: () {}, icon: const Icon(Icons.corporate_fare_rounded)),
+          label: homeConstants().employeerT),
     ]);
   }
 }
 
-class titleText extends StatelessWidget {
+class titleText extends StatefulWidget {
   const titleText({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<titleText> createState() => _titleTextState();
+}
+
+class _titleTextState extends State<titleText> {
+  @override
   Widget build(BuildContext context) {
-    return Text(homeConstants().titleEmployeeLoginT);
+    return Text(homeConstants().titleEmployeerLoginT);
   }
 }

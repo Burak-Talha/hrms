@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
-import 'package:fusion_ui/pages/register/register.dart';
-import 'package:fusion_ui/pages/register/register_r.dart';
 import 'package:fusion_ui/theme-style/colors.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class RegisterR extends StatefulWidget {
+  const RegisterR({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<RegisterR> createState() => _RegisterRState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterRState extends State<RegisterR> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(homeConstants().titleEmployeerLoginT)),
-        bottomNavigationBar: const bottomNavigateBarWidget(),
-        body: const myBody());
+      appBar: AppBar(title: Text(homeConstants().titleEmployeerRegisterT)),
+      bottomNavigationBar: const bottomNavigateBarWidget(),
+      body: const myBody(),
+    );
   }
 }
 
@@ -38,6 +37,8 @@ class _myBodyState extends State<myBody> {
         const iconHome(),
         const Spacer(flex: 7),
         const mailInput(),
+        const Spacer(flex: 1),
+        const tcInput(),
         const Spacer(flex: 1),
         const passwordInput(),
         const Spacer(flex: 1),
@@ -60,7 +61,40 @@ class iconHome extends StatefulWidget {
 class _iconHomeState extends State<iconHome> {
   @override
   Widget build(BuildContext context) {
-    return const Icon(Icons.person_rounded);
+    return const Icon(Icons.corporate_fare_rounded);
+  }
+}
+
+class tcInput extends StatefulWidget {
+  const tcInput({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<tcInput> createState() => _tcInputState();
+}
+
+class _tcInputState extends State<tcInput> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 12,
+      child: Row(
+        children: [
+          const Spacer(flex: 1),
+          Expanded(
+              flex: 10,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    labelText: homeConstants().tcT,
+                    icon: const Icon(Icons.numbers_rounded)),
+              )),
+          const Spacer(flex: 1),
+        ],
+      ),
+    );
   }
 }
 
@@ -77,44 +111,25 @@ class _buttonsState extends State<buttons> {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        const Spacer(
-          flex: 3,
-        ),
-        const loginButton(),
-        const Spacer(
-          flex: 1,
-        ),
-        const signUpButton(),
-        const Spacer(
-          flex: 3,
-        ),
-      ],
+      children: [const Spacer(), const registerButton(), const Spacer()],
     );
   }
 }
 
-class signUpButton extends StatefulWidget {
-  const signUpButton({
+class registerButton extends StatefulWidget {
+  const registerButton({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<signUpButton> createState() => _signUpButtonState();
+  State<registerButton> createState() => _registerButtonState();
 }
 
-class _signUpButtonState extends State<signUpButton> {
+class _registerButtonState extends State<registerButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (BuildContext context) => const Register(),
-            ),
-          );
-        },
-        child: Text(homeConstants().signupT));
+        onPressed: () {}, child: Text(homeConstants().signupT));
   }
 }
 
