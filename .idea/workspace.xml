@@ -68,8 +68,9 @@
   </component>
   <component name="RunManager">
     <configuration name="HrmsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.hrms.HrmsApplication" />
-      <module name="hrms" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.hrms.*" />

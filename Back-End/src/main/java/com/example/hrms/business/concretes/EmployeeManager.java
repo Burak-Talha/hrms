@@ -3,7 +3,7 @@ package com.example.hrms.business.concretes;
 import java.util.List;
 
 
-import com.example.hrms.entities.concretes.DTOs.EmployeeDTO;
+import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,8 @@ import com.example.hrms.entities.concretes.Employee;
 @Service
 public class EmployeeManager implements EmployeeService{
 
-	private List<String> mails;
-	private List<String> passwords;
+	Employee employee;
+
 	private EmployeeDao employeeDao;
 	
 	@Autowired
@@ -25,20 +25,14 @@ public class EmployeeManager implements EmployeeService{
 	}
 
 	@Override
-	public boolean login(String mail, String password) {
-
-		passwords = employeeDao.getByPasswordNotNull();
-		mails = employeeDao.getByEmailNotNull();
-
-		int i = 0;
-
-			while (i < passwords.size()) {
-				if(mails.get(i).equals(mail) && passwords.get(i) == password){
-					return true;
-				}
-			}
-
-		return false;
+	public Employee login(String email, String password) {
+		employee = employeeDao.findByEmailAndPassword(email, password);
+		if(employee!=null){
+			System.out.println("Kullanıcı eşleşti!");
+			return employee;
+		}
+		System.out.println("Kullanıcı eşleşmedi");
+		return null;
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
@@ -56,6 +50,14 @@ public class EmployeeManager implements EmployeeService{
 	@Override
 	public List<Employee> findByPasswordIsNotNullAndEmailIsNotNull() {
 		return employeeDao.findByPasswordIsNotNullAndEmailIsNotNull();
+	}
+
+	@Override
+	public List<EmployeeDto> getIdMailAndPassword() {
+
+
+
+		return employeeDao.getIdAndMailAndPassword();
 	}
 
 }
