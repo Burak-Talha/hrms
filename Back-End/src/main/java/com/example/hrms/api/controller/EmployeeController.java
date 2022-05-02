@@ -3,6 +3,8 @@ package com.example.hrms.api.controller;
 import java.util.List;
 
 import com.example.hrms.business.concretes.EmployeeManager;
+import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,8 +43,8 @@ public class EmployeeController {
 	
 	// Working 16/11/21
 	@GetMapping("getall")
-	public List<Employee> getAll(){
-		return employeeService.getAll();
+	public SuccessDataResult<Employee> getAll(){
+		return new SuccessDataResult<Employee>(employeeService.getAll(), true);
 	}
 	
 	// Working without wrong boolean value 16/11/21

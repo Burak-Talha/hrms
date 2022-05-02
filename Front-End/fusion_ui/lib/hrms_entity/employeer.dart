@@ -9,10 +9,6 @@ class JobSeeker {
 
   String password = '';
 
-  String tcNo = '';
-
-  int birthYear = 0;
-
   int getId() {
     return id;
   }
@@ -51,21 +47,5 @@ class JobSeeker {
 
   void setPassword(String password) {
     this.password = password;
-  }
-
-  String getTcNo() {
-    return tcNo;
-  }
-
-  void setTcNo(String tcNo) {
-    this.tcNo = tcNo;
-  }
-
-  int getBirthYear() {
-    return birthYear;
-  }
-
-  void setBirthYear(int birthYear) {
-    this.birthYear = birthYear;
   }
 }
