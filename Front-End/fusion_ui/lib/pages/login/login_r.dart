@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
+import 'package:fusion_ui/constants/data/user.dart';
 import 'package:fusion_ui/pages/register/register_r.dart';
 
 class LoginR extends StatefulWidget {
@@ -12,12 +13,9 @@ class LoginR extends StatefulWidget {
 }
 
 class _LoginRState extends State<LoginR> {
-  var mail;
-  var password;
-
   final _key = GlobalKey<FormState>();
-  /*User user = User("", "");
-  String url = "http://localhost:8080/login";
+  User user = User();
+  /*String url = "http://localhost:8080/login";
   Future save() async {
     await http.post(url,
         headers: {'Content-Type': 'application/json'},
@@ -61,8 +59,8 @@ class _LoginRState extends State<LoginR> {
                     Expanded(
                       flex: 10,
                       child: TextFormField(
-                        onChanged: (value) {
-                          mail = value;
+                        onChanged: (mail) {
+                          user.mail = mail;
                         },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -86,8 +84,8 @@ class _LoginRState extends State<LoginR> {
                   Expanded(
                       flex: 10,
                       child: TextFormField(
-                        onChanged: (value) {
-                          password = value;
+                        onChanged: (password) {
+                          user.password = password;
                         },
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -105,7 +103,7 @@ class _LoginRState extends State<LoginR> {
                 const Spacer(flex: 3),
                 ElevatedButton(
                   onPressed: () {
-                    print('Mail: $mail Şifre: $password');
+                    print('Mail: $user.mail Şifre: $user.password');
                   },
                   child: Text(homeConstants().loginT),
                 ),
