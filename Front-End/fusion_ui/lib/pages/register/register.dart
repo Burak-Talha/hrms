@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
-import 'package:fusion_ui/theme-style/colors.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
