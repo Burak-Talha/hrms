@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fusion_ui/pages/login/login.dart';
-import 'package:fusion_ui/pages/login/login_r.dart' show LoginR;
-import 'package:fusion_ui/pages/register/register.dart';
-import 'package:fusion_ui/pages/register/register_r.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +20,6 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0),
         ),
-        home: const LoginR());
+        home: const Login());
   }
 }
