@@ -1,9 +1,15 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
+import 'dart:convert';
+import 'dart:html';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fusion_ui/constants/constants.dart';
 import 'package:fusion_ui/constants/data/user.dart';
+import 'package:fusion_ui/hrms_entity/employee.dart';
 import 'package:fusion_ui/pages/register/register_r.dart';
+import 'package:http/http.dart' as http;
 
 class LoginR extends StatefulWidget {
   const LoginR({Key? key}) : super(key: key);
@@ -12,16 +18,21 @@ class LoginR extends StatefulWidget {
   State<LoginR> createState() => _LoginRState();
 }
 
+Employee employee = Employee();
+final _key = GlobalKey<FormState>();
+
 class _LoginRState extends State<LoginR> {
-  final _key = GlobalKey<FormState>();
-  User user = User();
-  /*String url = "http://localhost:8080/login";
+  Uri uri = "http://localhost:8080/login" as Uri;
+
   Future save() async {
-    await http.post(url,
+    var res = await http.post(uri,
         headers: {'Content-Type': 'application/json'},
-        body: json.encode({'email': user.mail, 'password': user.password}));
-    print(res.body);
-  }*/
+        body: json.encode({
+          'email': employee.getEmail(),
+          'password': employee.getPassword()
+        }));
+    print("miyav");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +71,7 @@ class _LoginRState extends State<LoginR> {
                       flex: 10,
                       child: TextFormField(
                         onChanged: (mail) {
-                          user.mail = mail;
+                          employee.setEmail(mail);
                         },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -85,7 +96,7 @@ class _LoginRState extends State<LoginR> {
                       flex: 10,
                       child: TextFormField(
                         onChanged: (password) {
-                          user.password = password;
+                          employee.setPassword(password);
                         },
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -103,7 +114,8 @@ class _LoginRState extends State<LoginR> {
                 const Spacer(flex: 3),
                 ElevatedButton(
                   onPressed: () {
-                    print('Mail: $user.mail Şifre: $user.password');
+                    print('Mail: $employee.mail Şifre: $employee.password');
+                    save();
                   },
                   child: Text(homeConstants().loginT),
                 ),

@@ -1,4 +1,4 @@
-package kodlamaio.northwind.core.utilities.results;
+package com.example.hrms.core.utilities.results;
 
 import com.example.hrms.core.utilities.results.DataResult;
 
@@ -16,9 +16,7 @@ public class ErrorDataResult<T> extends DataResult<T> {
 		super(null, false ,message);
 	}
 	
-	public ErrorDataResult() {
-		super(null, false);
-	}
+
 
 }
 

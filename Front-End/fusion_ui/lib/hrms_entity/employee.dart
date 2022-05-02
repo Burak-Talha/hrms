@@ -1,5 +1,5 @@
 class Employee {
-  int id = 00;
+  int id = 0;
 
   String corporationName = '';
 
