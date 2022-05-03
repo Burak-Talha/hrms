@@ -155,7 +155,9 @@ class _LoginState extends State<Login> {
                               flex: 1,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  print('$employeer.mail');
+                                  print(employeer.getMail());
+                                  print(employeer.getPassword());
+
                                   // save();
                                 },
                                 child: Text(
