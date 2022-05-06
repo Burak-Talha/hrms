@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                               flex: 2,
                             ),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: ElevatedButton(
                                 onPressed: () {
                                   print(employeer.getMail());
@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             Spacer(
-                              flex: 3,
+                              flex: 1,
                             ),
                           ],
                         ),
