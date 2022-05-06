@@ -213,7 +213,7 @@ class appBar extends StatelessWidget {
               ProjectConstants.appBarTitle,
               style:
                   GoogleFonts.secularOne(textStyle: ProjectStyles.titleStyle),
-              maxLines: 2,
+              maxLines: 4,
             ),
           ),
           const Spacer(
@@ -227,7 +227,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 2,
               ),
             ),
           ),
@@ -246,7 +245,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.signUp,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 2,
               ),
             ),
           ),
