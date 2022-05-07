@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
           'email': employeer.getMail(),
           'password': employeer.getPassword()
         }));
-    print("miyav");
+    print("miyavv");
   }
 
   @override
@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                               flex: 2,
                             ),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: ElevatedButton(
                                 onPressed: () {
                                   print(employeer.getMail());
@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             Spacer(
-                              flex: 3,
+                              flex: 1,
                             ),
                           ],
                         ),
@@ -213,7 +213,7 @@ class appBar extends StatelessWidget {
               ProjectConstants.appBarTitle,
               style:
                   GoogleFonts.secularOne(textStyle: ProjectStyles.titleStyle),
-              maxLines: 2,
+              maxLines: 4,
             ),
           ),
           const Spacer(
@@ -227,7 +227,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 2,
               ),
             ),
           ),
@@ -246,7 +245,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.signUp,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 2,
               ),
             ),
           ),

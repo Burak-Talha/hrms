@@ -219,7 +219,7 @@ class _SignUpState extends State<SignUp> {
                               flex: 2,
                             ),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: ElevatedButton(
                                 onPressed: () {},
                                 child: Text(
@@ -275,7 +275,7 @@ class appBar extends StatelessWidget {
               ProjectConstants.appBarTitle,
               style:
                   GoogleFonts.secularOne(textStyle: ProjectStyles.titleStyle),
-              maxLines: 1,
+              maxLines: 4,
             ),
           ),
           const Spacer(
@@ -296,7 +296,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 1,
               ),
             ),
           ),
@@ -308,7 +307,6 @@ class appBar extends StatelessWidget {
                 ProjectConstants.signUp,
                 style: GoogleFonts.poppins(
                     textStyle: ProjectStyles.appBarTextStyle),
-                maxLines: 1,
               ),
             ),
           ),
