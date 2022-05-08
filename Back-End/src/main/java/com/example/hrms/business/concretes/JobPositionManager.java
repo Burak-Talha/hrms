@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.hrms.entities.concretes.*;
-import com.example.hrms.business.abstracts.JobPositionService;
-import com.example.hrms.dataaccess.abstracts.JobPositionDao;
+import com.example.hrms.business.abstracts.*;
+import com.example.hrms.dataaccess.abstracts.*;
 
 @Service
 public class JobPositionManager implements JobPositionService{

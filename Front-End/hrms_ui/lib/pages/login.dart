@@ -23,13 +23,13 @@ Uri uri = "http://localhost:8080/login" as Uri;
 
 class _LoginState extends State<Login> {
   Future save() async {
+    print("miyavv");
     var res = await http.post(uri,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({
           'email': employeer.getMail(),
           'password': employeer.getPassword()
         }));
-    print("miyavv");
   }
 
   @override
@@ -158,7 +158,7 @@ class _LoginState extends State<Login> {
                                   print(employeer.getMail());
                                   print(employeer.getPassword());
 
-                                  // save();
+                                  save();
                                 },
                                 child: Text(
                                   ProjectConstants.login,

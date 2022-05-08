@@ -1,10 +1,10 @@
 package com.example.hrms.dataaccess.abstracts;
 
-import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
+import com.example.hrms.entities.concretes.dtos.concretes.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-import com.example.hrms.entities.concretes.Employee;
+import com.example.hrms.entities.concretes.*;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
