@@ -22,7 +22,6 @@ Employeer employeer = Employeer();
 Uri uri = "http://localhost:8080/login" as Uri;
 final url = "http://localhost:8080/login";
 
-//
 void postData() async {
   final response = await http.post(
     Uri.parse(url),
