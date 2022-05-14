@@ -20,18 +20,41 @@ class Login extends StatefulWidget {
 
 Employeer employeer = Employeer();
 Uri uri = "http://localhost:8080/login" as Uri;
+final url = "http://localhost:8080/login";
+
+//
+void postData() async {
+  final response = await http.post(
+    Uri.parse(url),
+    body: {
+      "email": employeer.getMail(),
+      "password": employeer.getPassword(),
+    },
+  );
+  print(response.body);
+}
+//
+
+Future save() async {
+  print("miyavv");
+  var res = await http.post(
+    uri,
+    headers: {'Content-Type': 'application/json'},
+    body: json.encode(
+      {
+        'email': employeer.getMail(),
+        'password': employeer.getPassword(),
+      },
+    ),
+    //encoding:
+  );
+  /* flutter http.post documantion:
+  post(Uri url,
+    {Map<String, String>? headers, Object? body, Encoding? encoding})
+  */
+}
 
 class _LoginState extends State<Login> {
-  Future save() async {
-    print("miyavv");
-    var res = await http.post(uri,
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode({
-          'email': employeer.getMail(),
-          'password': employeer.getPassword()
-        }));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,17 +172,12 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             const Spacer(
-                              flex: 2,
+                              flex: 1,
                             ),
                             Expanded(
-                              flex: 2,
+                              flex: 1,
                               child: ElevatedButton(
-                                onPressed: () {
-                                  print(employeer.getMail());
-                                  print(employeer.getPassword());
-
-                                  save();
-                                },
+                                onPressed: postData,
                                 child: Text(
                                   ProjectConstants.login,
                                   style: GoogleFonts.poppins(
