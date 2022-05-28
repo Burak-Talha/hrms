@@ -26,30 +26,11 @@ void postData() async {
   final response = await http.post(
     Uri.parse(url),
     body: {
-      "email": employeer.getMail(),
-      "password": employeer.getPassword(),
+      "email": Employeer().getMail(),
+      "password": Employeer().getPassword(),
     },
   );
   print(response.body);
-}
-
-Future save() async {
-  print("miyavv");
-  var res = await http.post(
-    uri,
-    headers: {'Content-Type': 'application/json'},
-    body: json.encode(
-      {
-        'email': employeer.getMail(),
-        'password': employeer.getPassword(),
-      },
-    ),
-    //encoding:
-  );
-  /* flutter http.post documantion:
-  post(Uri url,
-    {Map<String, String>? headers, Object? body, Encoding? encoding})
-  */
 }
 
 class _LoginState extends State<Login> {
