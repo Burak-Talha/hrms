@@ -26,30 +26,11 @@ void postData() async {
   final response = await http.post(
     Uri.parse(url),
     body: {
-      "email": employeer.getMail(),
-      "password": employeer.getPassword(),
+      "email": employeer.email,
+      "password": employeer.password,
     },
   );
   print(response.body);
-}
-
-Future save() async {
-  print("miyavv");
-  var res = await http.post(
-    uri,
-    headers: {'Content-Type': 'application/json'},
-    body: json.encode(
-      {
-        'email': employeer.getMail(),
-        'password': employeer.getPassword(),
-      },
-    ),
-    //encoding:
-  );
-  /* flutter http.post documantion:
-  post(Uri url,
-    {Map<String, String>? headers, Object? body, Encoding? encoding})
-  */
 }
 
 class _LoginState extends State<Login> {
@@ -109,7 +90,7 @@ class _LoginState extends State<Login> {
                                     flex: 4,
                                     child: TextFormField(
                                       onChanged: (email) {
-                                        employeer.setEmail(email);
+                                        employeer.email = email;
                                       },
                                       decoration: InputDecoration(
                                           filled: true,
@@ -144,7 +125,7 @@ class _LoginState extends State<Login> {
                                     flex: 4,
                                     child: TextFormField(
                                       onChanged: (password) {
-                                        employeer.setPassword(password);
+                                        employeer.password = password;
                                       },
                                       obscureText: true,
                                       enableSuggestions: false,
@@ -238,7 +219,7 @@ class appBar extends StatelessWidget {
           Expanded(
             flex: 1,
             child: TextButton(
-              onPressed: null,
+              onPressed: postData,
               child: Text(
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
