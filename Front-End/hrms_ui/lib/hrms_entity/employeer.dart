@@ -5,9 +5,9 @@ class Employeer {
 
   String webSiteName = '';
 
-  String email = 's';
+  String email = '';
 
-  String password = 's';
+  String password = '';
 
   int getId() {
     return id;

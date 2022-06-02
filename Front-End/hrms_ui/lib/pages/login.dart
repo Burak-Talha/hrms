@@ -26,8 +26,8 @@ void postData() async {
   final response = await http.post(
     Uri.parse(url),
     body: {
-      "email": Employeer().getMail(),
-      "password": Employeer().getPassword(),
+      "email": employeer.email,
+      "password": employeer.password,
     },
   );
   print(response.body);
@@ -90,7 +90,7 @@ class _LoginState extends State<Login> {
                                     flex: 4,
                                     child: TextFormField(
                                       onChanged: (email) {
-                                        employeer.setEmail(email);
+                                        employeer.email = email;
                                       },
                                       decoration: InputDecoration(
                                           filled: true,
@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
                                     flex: 4,
                                     child: TextFormField(
                                       onChanged: (password) {
-                                        employeer.setPassword(password);
+                                        employeer.password = password;
                                       },
                                       obscureText: true,
                                       enableSuggestions: false,
@@ -219,7 +219,7 @@ class appBar extends StatelessWidget {
           Expanded(
             flex: 1,
             child: TextButton(
-              onPressed: null,
+              onPressed: postData,
               child: Text(
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
