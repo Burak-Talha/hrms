@@ -1,13 +1,11 @@
-CREATE DATABASE `hrms` /!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /!80016 DEFAULT ENCRYPTION='N' */;
-CREATE TABLE `curriculum_vitae` (
-                                    `id` int NOT NULL AUTO_INCREMENT,
-                                    `job_seeker_id` int NOT NULL,
-                                    `about` varchar(250) NOT NULL,
-                                    `linkedin_link` varchar(100) DEFAULT NULL,
-                                    `github_link` varchar(100) DEFAULT NULL,
-                                    PRIMARY KEY (`id`),
-                                    UNIQUE KEY `job_seeker_id` (`job_seeker_id`),
-                                    CONSTRAINT `curriculum_vitae_ibfk_01` FOREIGN KEY (`job_seeker_id`) REFERENCES `job_seeker` (`id`)
+CREATE DATABASE `hrms` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+use hrms;
+-- drop database hrms;
+CREATE TABLE `job_position` (
+                                `id` int NOT NULL AUTO_INCREMENT,
+                                `job_name` varchar(100) DEFAULT NULL,
+                                `job_explanation` text,
+                                PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `employee` (
@@ -43,27 +41,6 @@ CREATE TABLE `job_advertisement` (
                                      CONSTRAINT `job_advertisement_chk_3` CHECK ((`position_amount` > 0))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `job_experiences` (
-                                   `id` int NOT NULL AUTO_INCREMENT,
-                                   `curriculum_vitae_id` int NOT NULL,
-                                   `corporation_name` varchar(300) DEFAULT NULL,
-                                   `position_id` int DEFAULT NULL,
-                                   `beginning` varchar(8) DEFAULT NULL,
-                                   `finish` varchar(8) DEFAULT NULL,
-                                   PRIMARY KEY (`id`),
-                                   UNIQUE KEY `curriculum_vitae_id` (`curriculum_vitae_id`),
-                                   KEY `job_experiences_ibfk_02` (`position_id`),
-                                   CONSTRAINT `job_experiences_ibfk_01` FOREIGN KEY (`curriculum_vitae_id`) REFERENCES `curriculum_vitae` (`id`),
-                                   CONSTRAINT `job_experiences_ibfk_02` FOREIGN KEY (`position_id`) REFERENCES `job_position` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `job_position` (
-                                `id` int NOT NULL AUTO_INCREMENT,
-                                `job_name` varchar(100) DEFAULT NULL,
-                                `job_explanation` text,
-                                PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE `job_seeker` (
                               `id` int NOT NULL AUTO_INCREMENT,
                               `job_position_id` int DEFAULT NULL,
@@ -81,6 +58,31 @@ CREATE TABLE `job_seeker` (
                               UNIQUE KEY `email` (`email`),
                               UNIQUE KEY `password` (`password`),
                               CONSTRAINT `job_seeker_ibfk_01` FOREIGN KEY (`job_position_id`) REFERENCES `job_position` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `curriculum_vitae` (
+                                    `id` int NOT NULL AUTO_INCREMENT,
+                                    `job_seeker_id` int NOT NULL,
+                                    `about` varchar(250) NOT NULL,
+                                    `linkedin_link` varchar(100) DEFAULT NULL,
+                                    `github_link` varchar(100) DEFAULT NULL,
+                                    PRIMARY KEY (`id`),
+                                    UNIQUE KEY `job_seeker_id` (`job_seeker_id`),
+                                    CONSTRAINT `curriculum_vitae_ibfk_01` FOREIGN KEY (`job_seeker_id`) REFERENCES `job_seeker` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `job_experiences` (
+                                   `id` int NOT NULL AUTO_INCREMENT,
+                                   `curriculum_vitae_id` int NOT NULL,
+                                   `corporation_name` varchar(300) DEFAULT NULL,
+                                   `position_id` int DEFAULT NULL,
+                                   `beginning` varchar(8) DEFAULT NULL,
+                                   `finish` varchar(8) DEFAULT NULL,
+                                   PRIMARY KEY (`id`),
+                                   UNIQUE KEY `curriculum_vitae_id` (`curriculum_vitae_id`),
+                                   KEY `job_experiences_ibfk_02` (`position_id`),
+                                   CONSTRAINT `job_experiences_ibfk_01` FOREIGN KEY (`curriculum_vitae_id`) REFERENCES `curriculum_vitae` (`id`),
+                                   CONSTRAINT `job_experiences_ibfk_02` FOREIGN KEY (`position_id`) REFERENCES `job_position` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `language` (
@@ -116,3 +118,4 @@ CREATE TABLE `tech_name` (
                              UNIQUE KEY `curriculum_vitae_id` (`curriculum_vitae_id`),
                              CONSTRAINT `tech_name_ibfk_01` FOREIGN KEY (`curriculum_vitae_id`) REFERENCES `curriculum_vitae` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
