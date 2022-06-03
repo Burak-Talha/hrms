@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hrms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hrms.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/business/abstracts/JobPositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/business/abstracts/JobPositionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/business/concretes/JobPositionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/business/concretes/JobPositionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/dataaccess/abstracts/EmployeeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/src/main/java/com/example/hrms/dataaccess/abstracts/EmployeeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrms_real.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hrms_real.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +69,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/BURAK/Spring-Boot-workspace/Project_02"
+    "last_opened_file_path": "/Users/sipan/Desktop/GitHub/hrms"
   }
 }]]></component>
   <component name="RunManager">
@@ -110,6 +107,7 @@
       <workItem from="1651929823729" duration="69000" />
       <workItem from="1651930404249" duration="5000" />
       <workItem from="1651930440411" duration="18000" />
+      <workItem from="1654288561897" duration="11000" />
     </task>
     <servers />
   </component>
