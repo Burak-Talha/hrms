@@ -20,7 +20,7 @@ class Login extends StatefulWidget {
 
 Employeer employeer = Employeer();
 Uri uri = "http://localhost:8080/api/employee/login" as Uri;
-const url = "ttp://localhost:8080/api/employee/login";
+const url = "http://localhost:8080/api/employee/login";
 
 void postData() async {
   final response = await http.post(
@@ -29,6 +29,7 @@ void postData() async {
       "email": employeer.email,
       "password": employeer.password,
     },
+    encoding: Encoding.getByName("utf-8"),
   );
   print(response.body);
 }
