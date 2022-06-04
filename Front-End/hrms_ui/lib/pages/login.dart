@@ -1,13 +1,15 @@
 // ignore_for_file: prefer_const_constructors, camel_case_types, avoid_print, unused_local_variable
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hrms_ui/data/constants.dart';
 import 'package:hrms_ui/hrms_entity/employeer.dart';
-import 'package:hrms_ui/hrms_entity/post.dart';
 import 'package:hrms_ui/pages/sign-up.dart';
 import 'package:hrms_ui/theme/colors.dart';
 import 'package:hrms_ui/theme/styles.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,7 +19,19 @@ class Login extends StatefulWidget {
 }
 
 Employeer employeer = Employeer();
-Post post = Post();
+
+Uri uri = "http:/localhost:8080/api/employee/login" as Uri;
+String url = "http:/localhost:8080/api/employee/login";
+Map data = {'email': employeer.email, 'password': employeer.password};
+
+String body = json.encode(data);
+
+void postData() async {
+  final response = await http.post(
+    Uri.parse(url),
+    body: body,
+  );
+}
 
 class _LoginState extends State<Login> {
   @override
@@ -142,7 +156,7 @@ class _LoginState extends State<Login> {
                             Expanded(
                               flex: 1,
                               child: ElevatedButton(
-                                onPressed: post.postData,
+                                onPressed: postData,
                                 child: Text(
                                   ProjectConstants.login,
                                   style: GoogleFonts.poppins(
@@ -205,7 +219,7 @@ class appBar extends StatelessWidget {
           Expanded(
             flex: 1,
             child: TextButton(
-              onPressed: post.postData,
+              onPressed: postData,
               child: Text(
                 ProjectConstants.login,
                 style: GoogleFonts.poppins(
