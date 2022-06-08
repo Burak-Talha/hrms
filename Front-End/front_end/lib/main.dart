@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/pages/login/employee_login.dart';
+import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 
 void main() {
