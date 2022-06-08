@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:front_end/pages/login.dart';
+import 'package:front_end/pages/login/employee_login.dart';
+import 'package:front_end/pages/sign_up/employee_sign_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +16,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Login(),
+        body: EmployeeLogin(),
       ),
     );
   }
