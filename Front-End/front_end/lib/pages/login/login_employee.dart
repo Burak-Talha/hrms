@@ -2,18 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/func/post_data.dart';
+import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EmployeeLogin extends StatefulWidget {
-  const EmployeeLogin({Key? key}) : super(key: key);
+class LoginEmployee extends StatefulWidget {
+  const LoginEmployee({Key? key}) : super(key: key);
 
   @override
-  State<EmployeeLogin> createState() => _EmployeeLoginState();
+  State<LoginEmployee> createState() => _LoginEmployeeState();
 }
 
-class _EmployeeLoginState extends State<EmployeeLogin> {
+class _LoginEmployeeState extends State<LoginEmployee> {
   Constants constants = Constants();
 
   bool passwordObsecured = true;
@@ -134,7 +135,14 @@ class _EmployeeLoginState extends State<EmployeeLogin> {
                   )),
             ),
             CupertinoButton(
-                child: Text(constants.signUpLabelText), onPressed: () {}),
+                child: Text(constants.signUpLabelText),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpEmployee()),
+                  );
+                }),
             const Spacer(
               flex: 3,
             ),
