@@ -1,20 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
+import 'package:front_end/data/employee/employee.dart';
 import 'package:front_end/func/post_data.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class EmployeeSignUp extends StatefulWidget {
+  const EmployeeSignUp({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<EmployeeSignUp> createState() => _EmployeeSignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _EmployeeSignUpState extends State<EmployeeSignUp> {
   Constants constants = Constants();
+  Emlpoyee employee = Emlpoyee();
 
   bool passwordObsecured = true;
 
@@ -52,6 +54,85 @@ class _LoginState extends State<Login> {
                     flex: 2,
                   ),
                   Expanded(
+                    child: Text(constants.name,
+                        style: GoogleFonts.jost(
+                          textStyle: ProjectStyles.labelTextStyle
+                              .copyWith(fontSize: 20),
+                        )),
+                  ),
+                  const Spacer(),
+                  Expanded(
+                    flex: 3,
+                    child: TextFormField(
+                      onChanged: (value) => employee.name = value,
+                      style: GoogleFonts.jost(
+                        textStyle:
+                            ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ProjectColors.whiteColor,
+                        hintStyle: TextStyle(
+                          color: ProjectColors.labelColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Expanded(
+              child: Row(
+                children: [
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  Expanded(
+                    child: Text(constants.surname,
+                        style: GoogleFonts.jost(
+                          textStyle: ProjectStyles.labelTextStyle
+                              .copyWith(fontSize: 20),
+                        )),
+                  ),
+                  const Spacer(),
+                  Expanded(
+                    flex: 3,
+                    child: TextFormField(
+                      onChanged: (value) => employee.surname = value,
+                      obscureText: passwordObsecured,
+                      style: GoogleFonts.jost(
+                        textStyle:
+                            ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: ProjectColors.whiteColor,
+                        hintStyle: TextStyle(
+                          color: ProjectColors.labelColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Expanded(
+              child: Row(
+                children: [
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  Expanded(
                     child: Text(constants.email,
                         style: GoogleFonts.jost(
                           textStyle: ProjectStyles.labelTextStyle
@@ -63,6 +144,7 @@ class _LoginState extends State<Login> {
                     flex: 3,
                     child: TextFormField(
                       onChanged: (value) => employee.email = value,
+                      obscureText: passwordObsecured,
                       style: GoogleFonts.jost(
                         textStyle:
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
@@ -126,15 +208,15 @@ class _LoginState extends State<Login> {
             const Spacer(),
             ElevatedButton(
               style: const ButtonStyle(),
-              onPressed: postData,
-              child: Text(constants.login,
+              onPressed: postDataSignUpEmployee,
+              child: Text(constants.signUp,
                   style: GoogleFonts.jost(
                     textStyle: ProjectStyles.containerTextStyle
                         .copyWith(fontSize: 20, letterSpacing: 0),
                   )),
             ),
             CupertinoButton(
-                child: Text(constants.signUpLabelText), onPressed: () {}),
+                child: Text(constants.loginButton), onPressed: () {}),
             const Spacer(
               flex: 3,
             ),
@@ -169,7 +251,7 @@ class _LoginState extends State<Login> {
             ),
             Expanded(
               child: Text(
-                constants.welcome,
+                constants.signUpInfo,
                 style: GoogleFonts.jost(
                     textStyle: ProjectStyles.containerTextStyle
                         .copyWith(fontSize: 20)),
