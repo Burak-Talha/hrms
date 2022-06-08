@@ -28,6 +28,7 @@ String bodyLoginEmployee = json.encode(dataLoginEmployee);
 void postDataSignUpEmployee() async {
   final response = await http.post(
     Uri.parse(url),
+    headers: {"Content-Type": "application/json"},
     body: bodySignUpEmployee,
   );
   print(response.body);
@@ -36,6 +37,7 @@ void postDataSignUpEmployee() async {
 void postDataLoginEmployee() async {
   final response = await http.post(
     Uri.parse(url),
+    headers: {"Content-Type": "application/json"},
     body: bodyLoginEmployee,
   );
   print(response.body);

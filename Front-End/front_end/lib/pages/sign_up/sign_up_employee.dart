@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
-import 'package:front_end/data/employee/employee.dart';
 import 'package:front_end/func/post_data.dart';
 import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/style/context_extension.dart';
@@ -17,7 +16,6 @@ class SignUpEmployee extends StatefulWidget {
 
 class _SignUpEmployeeState extends State<SignUpEmployee> {
   Constants constants = Constants();
-  Emlpoyee employee = Emlpoyee();
 
   bool passwordObsecured = true;
 
