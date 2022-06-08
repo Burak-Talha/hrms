@@ -6,8 +6,8 @@ import 'package:front_end/data/employee/employee.dart';
 import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
-Uri uri = "http:/localhost:8080/api/employee/login" as Uri;
-String url = "http:/localhost:8080/api/employee/login";
+
+String url = "http://localhost:8080/api/employee/login";
 
 Map dataSignUpEmployee = {
   'name': employee.name,

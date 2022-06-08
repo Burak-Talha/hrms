@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/data/employee/employee.dart';
 import 'package:front_end/func/post_data.dart';
-import 'package:front_end/pages/login/employee_login.dart';
+import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
