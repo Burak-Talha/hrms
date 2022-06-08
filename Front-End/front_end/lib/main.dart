@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/login/employee_login.dart';
-import 'package:front_end/pages/sign_up/employee_sign_up.dart';
+import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: EmployeeLogin(),
+        body: LoginEmployee(),
       ),
     );
   }

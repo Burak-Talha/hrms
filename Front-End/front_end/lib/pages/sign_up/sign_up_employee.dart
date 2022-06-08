@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/data/employee/employee.dart';
 import 'package:front_end/func/post_data.dart';
+import 'package:front_end/pages/login/employee_login.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EmployeeSignUp extends StatefulWidget {
-  const EmployeeSignUp({Key? key}) : super(key: key);
+class SignUpEmployee extends StatefulWidget {
+  const SignUpEmployee({Key? key}) : super(key: key);
 
   @override
-  State<EmployeeSignUp> createState() => _EmployeeSignUpState();
+  State<SignUpEmployee> createState() => _SignUpEmployeeState();
 }
 
-class _EmployeeSignUpState extends State<EmployeeSignUp> {
+class _SignUpEmployeeState extends State<SignUpEmployee> {
   Constants constants = Constants();
   Emlpoyee employee = Emlpoyee();
 
@@ -216,7 +217,14 @@ class _EmployeeSignUpState extends State<EmployeeSignUp> {
                   )),
             ),
             CupertinoButton(
-                child: Text(constants.loginButton), onPressed: () {}),
+                child: Text(constants.loginButton),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginEmployee()),
+                  );
+                }),
             const Spacer(
               flex: 3,
             ),
