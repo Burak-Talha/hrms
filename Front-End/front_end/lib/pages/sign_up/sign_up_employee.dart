@@ -17,7 +17,6 @@ class SignUpEmployee extends StatefulWidget {
 
 class _SignUpEmployeeState extends State<SignUpEmployee> {
   Constants constants = Constants();
-  Emlpoyee employee = Emlpoyee();
 
   bool passwordObsecured = true;
 
