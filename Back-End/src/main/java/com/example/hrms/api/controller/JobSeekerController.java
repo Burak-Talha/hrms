@@ -2,20 +2,18 @@ package com.example.hrms.api.controller;
 
 import com.example.hrms.business.abstracts.JobSeekerService;
 import com.example.hrms.business.abstracts.LanguagesService;
-<<<<<<< Updated upstream
+
 import com.example.hrms.entities.concretes.*;
-=======
+
 import com.example.hrms.entities.concretes.JobSeeker;
 import com.example.hrms.entities.concretes.Languages;
->>>>>>> Stashed changes
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< Updated upstream
 import com.example.hrms.business.abstracts.*;
-=======
+
 import java.util.List;
->>>>>>> Stashed changes
 
 
 @RestController

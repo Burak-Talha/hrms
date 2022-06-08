@@ -43,8 +43,8 @@ public class EmployeeController {
 	
 	// Working 16/11/21
 	@GetMapping("getall")
-	public SuccessDataResult<Employee> getAll(){
-		return new SuccessDataResult<Employee>(employeeService.getAll(), true);
+	public List<Employee> getAll(){
+		return employeeService.getAll();
 	}
 	
 	// Working without wrong boolean value 16/11/21
