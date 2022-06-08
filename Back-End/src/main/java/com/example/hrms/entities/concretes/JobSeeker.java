@@ -11,15 +11,14 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-// Getter ve setter anotasyonları bazen çalışmıyor(bulunamıyor).
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Getter
 @Setter
-@Entity
-@Table(name="job_seeker")
-public class JobSeeker {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity(name="job_seeker")
+ public class JobSeeker {
 
 	@Id
 	@Column(name="id")

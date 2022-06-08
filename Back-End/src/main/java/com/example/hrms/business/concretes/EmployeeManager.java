@@ -3,7 +3,10 @@ package com.example.hrms.business.concretes;
 import java.util.List;
 
 
+<<<<<<< Updated upstream
 import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
+=======
+>>>>>>> Stashed changes
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
