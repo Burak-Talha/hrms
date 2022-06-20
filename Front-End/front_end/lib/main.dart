@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/pages/login/login_employee.dart';
+import 'package:front_end/pages/home/home_employee.dart';
+import 'package:front_end/pages/profile/profile_employee.dart';
 
-import 'package:front_end/pages/sign_up/sign_up_employee.dart';
+import 'package:front_end/style/style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +18,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LoginEmployee(),
+        body: HomeEmployee(),
+        backgroundColor: ProjectColors.whiteColor,
       ),
     );
   }

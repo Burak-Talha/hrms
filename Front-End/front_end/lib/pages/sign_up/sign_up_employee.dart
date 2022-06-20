@@ -103,7 +103,6 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
                     flex: 3,
                     child: TextFormField(
                       onChanged: (value) => employee.surname = value,
-                      obscureText: passwordObsecured,
                       style: GoogleFonts.jost(
                         textStyle:
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
@@ -143,7 +142,6 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
                     flex: 3,
                     child: TextFormField(
                       onChanged: (value) => employee.email = value,
-                      obscureText: passwordObsecured,
                       style: GoogleFonts.jost(
                         textStyle:
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
@@ -183,7 +181,6 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
                     flex: 3,
                     child: TextFormField(
                       onChanged: (value) => employee.password = value,
-                      obscureText: passwordObsecured,
                       style: GoogleFonts.jost(
                         textStyle:
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
