@@ -10,4 +10,7 @@ class Constants {
   String password = "Password: ";
   String signUpLabelText = "Don't have an account?";
   String signUp = "Sign Up";
+  String home = "Home";
+  String profile = "Profile";
+  String faq = "FAQ";
 }
