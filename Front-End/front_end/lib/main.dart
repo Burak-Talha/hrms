@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/profile/profile_employee.dart';
@@ -21,7 +23,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: HomeEmployee(),
+        body: ProfileEmployee(),
         backgroundColor: ProjectColors.whiteColor,
       ),
     );
