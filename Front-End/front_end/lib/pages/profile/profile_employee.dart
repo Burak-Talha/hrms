@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
+import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,58 +16,80 @@ class ProfileEmployee extends StatelessWidget {
   Widget build(BuildContext context) {
     Constants constants = Constants();
 
-    return Column(
+    return Row(
       children: [
-        const Spacer(),
-        Row(
-          children: [
-            const Spacer(),
-            Text(constants.title,
-                style: GoogleFonts.jost(
-                  textStyle:
-                      ProjectStyles.titleTextStyle.copyWith(fontSize: 25),
-                )),
-            const Spacer(flex: 2),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeEmployee(),
-                  ),
-                );
-              },
-              child: Text(
-                constants.home,
-                style: ProjectStyles.titleTextStyle,
-              ),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: null,
-              child: Text(
-                constants.profile,
-                style: ProjectStyles.selectedLabelStyle,
-              ),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                constants.faq,
-                style: ProjectStyles.titleTextStyle,
-              ),
-            ),
-            const Spacer(),
-          ],
-        ),
-        Row(
-          children: [],
-        ),
-        const Spacer(
-          flex: 50,
-        ),
+        sideBar(context, constants),
       ],
+    );
+  }
+
+  Container sideBar(BuildContext context, Constants constants) {
+    return Container(
+      width: context.dynamicWidth(0.2),
+      color: ProjectColors.infoContainerColor,
+      child: Column(
+        children: [
+          Spacer(),
+          TextButton(
+            onPressed: null,
+            child: Text(
+              constants.title,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(
+                  fontSize: 25,
+                  letterSpacing: 2,
+                ),
+              ),
+            ),
+          ),
+          Spacer(),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeEmployee()),
+              );
+            },
+            child: Text(
+              constants.home,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          Spacer(),
+          TextButton(
+            onPressed: null,
+            child: Text(
+              constants.profile,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.selectedLabelStyle.copyWith(),
+              ),
+            ),
+          ),
+          Spacer(),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              constants.faq,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          Spacer(flex: 4),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              constants.logOut,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          Spacer(),
+        ],
+      ),
     );
   }
 }

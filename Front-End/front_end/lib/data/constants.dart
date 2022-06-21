@@ -13,4 +13,5 @@ class Constants {
   String home = "Home";
   String profile = "Profile";
   String faq = "FAQ";
+  String logOut = "Log Out";
 }

@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/pages/profile/profile_employee.dart';
+import 'package:front_end/style/context_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../style/style.dart';
@@ -14,58 +15,80 @@ class HomeEmployee extends StatelessWidget {
   Widget build(BuildContext context) {
     Constants constants = Constants();
 
-    return Column(
+    return Row(
       children: [
-        const Spacer(),
-        Row(
-          children: [
-            const Spacer(),
-            Text(constants.title,
-                style: GoogleFonts.jost(
-                  textStyle:
-                      ProjectStyles.titleTextStyle.copyWith(fontSize: 25),
-                )),
-            const Spacer(flex: 2),
-            TextButton(
-              onPressed: null,
-              child: Text(
-                constants.home,
-                style: ProjectStyles.selectedLabelStyle,
-              ),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProfileEmployee(),
-                  ),
-                );
-              },
-              child: Text(
-                constants.profile,
-                style: ProjectStyles.labelTextStyle,
-              ),
-            ),
-            const Spacer(),
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                constants.faq,
-                style: ProjectStyles.titleTextStyle,
-              ),
-            ),
-            const Spacer(),
-          ],
-        ),
-        Row(
-          children: [],
-        ),
-        const Spacer(
-          flex: 50,
-        ),
+        sideBar(context, constants),
       ],
+    );
+  }
+
+  Container sideBar(BuildContext context, Constants constants) {
+    return Container(
+      width: context.dynamicWidth(0.2),
+      color: ProjectColors.infoContainerColor,
+      child: Column(
+        children: [
+          const Spacer(),
+          TextButton(
+            onPressed: null,
+            child: Text(
+              constants.title,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(
+                  fontSize: 25,
+                  letterSpacing: 2,
+                ),
+              ),
+            ),
+          ),
+          const Spacer(),
+          TextButton(
+            onPressed: null,
+            child: Text(
+              constants.home,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.selectedLabelStyle.copyWith(),
+              ),
+            ),
+          ),
+          const Spacer(),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileEmployee()),
+              );
+            },
+            child: Text(
+              constants.profile,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          const Spacer(),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              constants.faq,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          const Spacer(flex: 4),
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              constants.logOut,
+              style: GoogleFonts.jost(
+                textStyle: ProjectStyles.containerTextStyle.copyWith(),
+              ),
+            ),
+          ),
+          const Spacer(),
+        ],
+      ),
     );
   }
 }
