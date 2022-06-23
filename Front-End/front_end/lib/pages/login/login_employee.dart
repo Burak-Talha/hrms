@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/func/post_data.dart';
+import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
@@ -127,7 +128,14 @@ class _LoginEmployeeState extends State<LoginEmployee> {
             const Spacer(),
             ElevatedButton(
               style: const ButtonStyle(),
-              onPressed: postDataLoginEmployee,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeEmployee(),
+                  ),
+                );
+              },
               child: Text(constants.login,
                   style: GoogleFonts.jost(
                     textStyle: ProjectStyles.containerTextStyle

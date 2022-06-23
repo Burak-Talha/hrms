@@ -13,5 +13,5 @@ extension NumberExtension on BuildContext {
 }
 
 extension PaddingExtension on BuildContext {
-  EdgeInsets get paddingAllow => EdgeInsets.all(dynamicWidth(lowValue));
+  EdgeInsets paddingAllow(double val) => EdgeInsets.all(val);
 }
