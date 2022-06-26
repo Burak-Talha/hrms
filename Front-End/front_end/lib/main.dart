@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: ProfileEmployee(),
+        body: const HomeEmployee(),
         backgroundColor: ProjectColors.whiteColor,
       ),
     );
