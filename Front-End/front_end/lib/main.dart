@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/home/home_employee.dart';
+import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/pages/profile/profile_employee.dart';
 
 import 'package:front_end/style/style.dart';
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: ProfileEmployee(),
+        body: const HomeEmployee(),
         backgroundColor: ProjectColors.whiteColor,
       ),
     );

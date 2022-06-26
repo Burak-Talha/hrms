@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
+import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/pages/profile/profile_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +79,12 @@ class HomeEmployee extends StatelessWidget {
           ),
           const Spacer(flex: 4),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginEmployee()),
+              );
+            },
             child: Text(
               constants.logOut,
               style: GoogleFonts.jost(

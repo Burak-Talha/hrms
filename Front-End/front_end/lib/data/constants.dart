@@ -14,4 +14,9 @@ class Constants {
   String profile = "Profile";
   String faq = "FAQ";
   String logOut = "Log Out";
+  String yourPosts = "Your Post's";
+  String examlpeName = "Ali";
+  String exapmleSurname = "Uçar";
+  String fusion = "Fusion Robotics";
+  String exampleMail = "fusion@gmail.com";
 }
