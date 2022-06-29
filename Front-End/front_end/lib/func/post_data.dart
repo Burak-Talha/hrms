@@ -1,10 +1,6 @@
-// ignore_for_file: avoid_print, unused_import
-
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:front_end/data/employee/employee.dart';
-import 'package:front_end/pages/home/home_employee.dart';
 import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
