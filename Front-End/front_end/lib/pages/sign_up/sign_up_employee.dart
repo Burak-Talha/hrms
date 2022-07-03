@@ -5,6 +5,7 @@ import 'package:front_end/func/post_data.dart';
 import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
+import 'package:front_end/widgets/content/info_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpEmployee extends StatefulWidget {
@@ -25,15 +26,13 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
       body: Row(
         children: [
           infoBoxWidget(context),
-          loginContainer(context),
+          signUpContainer(context),
         ],
       ),
     );
   }
 
-  //----------------------------------------------------------------------------
-
-  Expanded loginContainer(BuildContext context) {
+  Expanded signUpContainer(BuildContext context) {
     return Expanded(
       child: Container(
         width: context.dynamicWidth(0.4),
@@ -222,43 +221,6 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
                 }),
             const Spacer(
               flex: 3,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Padding infoBoxWidget(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30),
-      child: Container(
-        width: context.dynamicWidth(0.4),
-        height: context.dynamicHeight(0.9),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: ProjectColors.infoContainerColor,
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Center(
-                child: Text(
-                  constants.title,
-                  style: GoogleFonts.jost(
-                    textStyle:
-                        ProjectStyles.containerTextStyle.copyWith(fontSize: 50),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Text(
-                constants.signUpInfo,
-                style: GoogleFonts.jost(
-                    textStyle: ProjectStyles.containerTextStyle
-                        .copyWith(fontSize: 20)),
-              ),
             ),
           ],
         ),

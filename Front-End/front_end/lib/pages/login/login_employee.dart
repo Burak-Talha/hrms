@@ -6,6 +6,7 @@ import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
+import 'package:front_end/widgets/content/info_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginEmployee extends StatefulWidget {
@@ -31,8 +32,6 @@ class _LoginEmployeeState extends State<LoginEmployee> {
       ),
     );
   }
-
-  //----------------------------------------------------------------------------
 
   Expanded loginContainer(BuildContext context) {
     return Expanded(
@@ -110,6 +109,18 @@ class _LoginEmployeeState extends State<LoginEmployee> {
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
                       ),
                       decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              passwordObsecured = !passwordObsecured;
+                            });
+                          },
+                          icon: Icon(
+                            passwordObsecured
+                                ? Icons.visibility_off_rounded
+                                : Icons.visibility_rounded,
+                          ),
+                        ),
                         border: InputBorder.none,
                         filled: true,
                         fillColor: ProjectColors.whiteColor,
@@ -148,48 +159,12 @@ class _LoginEmployeeState extends State<LoginEmployee> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignUpEmployee()),
+                      builder: (context) => const SignUpEmployee(),
+                    ),
                   );
                 }),
             const Spacer(
               flex: 3,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Padding infoBoxWidget(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30),
-      child: Container(
-        width: context.dynamicWidth(0.4),
-        height: context.dynamicHeight(0.9),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: ProjectColors.infoContainerColor,
-        ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Center(
-                child: Text(
-                  constants.title,
-                  style: GoogleFonts.jost(
-                    textStyle:
-                        ProjectStyles.containerTextStyle.copyWith(fontSize: 50),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Text(
-                constants.welcome,
-                style: GoogleFonts.jost(
-                    textStyle: ProjectStyles.containerTextStyle
-                        .copyWith(fontSize: 20)),
-              ),
             ),
           ],
         ),
