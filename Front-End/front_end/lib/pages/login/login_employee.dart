@@ -143,6 +143,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
             ElevatedButton(
               style: const ButtonStyle(),
               onPressed: () {
+                postDataLoginEmployee();
                 if (isSuccses == true) {
                   /* Navigator.push(
                     context,
