@@ -19,5 +19,6 @@ class Constants {
   String fusion = "Fusion Robotics";
   String exampleMail = "fusion@gmail.com";
   String loginFailed = "Login Failed! Check your Email or Password";
+  String signUpFailed = "Sign Up Failed!";
   String loginSuccess = "Login Success! Welcome to HRMS";
 }
