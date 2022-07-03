@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/data/constants.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Padding infoBoxWidget(BuildContext context) {
-  Constants constants = Constants();
+Padding infoBoxWidget(BuildContext context, constants) {
   return Padding(
     padding: const EdgeInsets.all(30),
     child: Container(

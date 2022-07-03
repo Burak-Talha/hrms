@@ -19,4 +19,5 @@ class Constants {
   String exapmleSurname = "Uçar";
   String fusion = "Fusion Robotics";
   String exampleMail = "fusion@gmail.com";
+  String loginFailed = "Login Failed! Chech your Email or Password";
 }

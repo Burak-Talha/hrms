@@ -25,7 +25,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     return Scaffold(
       body: Row(
         children: [
-          infoBoxWidget(context),
+          infoBoxWidget(context, constants),
           signUpContainer(context),
         ],
       ),
@@ -203,12 +203,16 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
             const Spacer(),
             ElevatedButton(
               style: const ButtonStyle(),
-              onPressed: postDataSignUpEmployee,
-              child: Text(constants.signUp,
-                  style: GoogleFonts.jost(
-                    textStyle: ProjectStyles.containerTextStyle
-                        .copyWith(fontSize: 20, letterSpacing: 0),
-                  )),
+              onPressed: () {
+                postDataSignUpEmployee();
+              },
+              child: Text(
+                constants.signUp,
+                style: GoogleFonts.jost(
+                  textStyle: ProjectStyles.containerTextStyle
+                      .copyWith(fontSize: 20, letterSpacing: 0),
+                ),
+              ),
             ),
             CupertinoButton(
                 child: Text(constants.loginButton),

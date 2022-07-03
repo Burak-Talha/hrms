@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/func/post_data.dart';
+// ignore: unused_import
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
+import 'package:front_end/widgets/content/error_snack_bar.dart';
 import 'package:front_end/widgets/content/info_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,13 +22,14 @@ class _LoginEmployeeState extends State<LoginEmployee> {
   Constants constants = Constants();
 
   bool passwordObsecured = true;
+  bool isSuccses = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
-          infoBoxWidget(context),
+          infoBoxWidget(context, constants),
           loginContainer(context),
         ],
       ),
@@ -140,12 +143,18 @@ class _LoginEmployeeState extends State<LoginEmployee> {
             ElevatedButton(
               style: const ButtonStyle(),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeEmployee(),
-                  ),
-                );
+                if (isSuccses == true) {
+                  /* Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeEmployee(),
+                    ),
+                  ); */
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    errorSnackBar(context, constants),
+                  );
+                }
               },
               child: Text(constants.login,
                   style: GoogleFonts.jost(
