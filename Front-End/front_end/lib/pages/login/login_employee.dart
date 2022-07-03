@@ -210,7 +210,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        errorSnackBar(context),
+        errorSnackBar(context, constants.loginFailed),
       );
       Navigator.pushReplacement(
         context,

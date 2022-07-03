@@ -25,13 +25,13 @@ Map dataLoginEmployee = {
 
 String bodyLoginEmployee = json.encode(dataLoginEmployee);
 
-void postDataSignUpEmployee() async {
+Future<String> postDataSignUpEmployee() async {
   final response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodySignUpEmployee,
   );
-  print(response.body);
+  return response.body;
 }
 
 Future<String> postDataLoginEmployee() async {

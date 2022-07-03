@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unrelated_type_equality_checks
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
@@ -6,6 +8,7 @@ import 'package:front_end/pages/login/login_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 import 'package:front_end/widgets/content/info_box.dart';
+import 'package:front_end/widgets/content/snack_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUpEmployee extends StatefulWidget {
@@ -75,7 +78,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     return ElevatedButton(
       style: const ButtonStyle(),
       onPressed: () {
-        postDataSignUpEmployee();
+        signUpFunction();
       },
       child: Text(
         constants.signUp,
@@ -294,5 +297,31 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
         hintText: constants.name,
       ),
     );
+  }
+
+  void signUpFunction() {
+    print("name: ${employee.name}");
+    print("surname: ${employee.surname}");
+    print("email: ${employee.email}");
+    print("password: ${employee.password}");
+    if (postDataSignUpEmployee() == true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginEmployee(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        errorSnackBar(context, constants.signUpFailed),
+      );
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation1, animation2) => super.widget,
+          transitionDuration: const Duration(seconds: 0),
+        ),
+      );
+    }
   }
 }

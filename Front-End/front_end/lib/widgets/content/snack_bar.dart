@@ -3,9 +3,7 @@ import 'package:front_end/data/constants.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
 
-SnackBar errorSnackBar(BuildContext context) {
-  Constants constants = Constants();
-
+SnackBar errorSnackBar(BuildContext context, message) {
   return SnackBar(
     backgroundColor: ProjectColors.error,
     content: SizedBox(
@@ -13,7 +11,7 @@ SnackBar errorSnackBar(BuildContext context) {
       child: Column(
         children: [
           Text(
-            constants.loginFailed,
+            message,
             style: ProjectStyles.containerTextStyle
                 .copyWith(color: ProjectColors.whiteColor, fontSize: 20),
           ),
