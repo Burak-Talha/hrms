@@ -22,7 +22,6 @@ class _LoginEmployeeState extends State<LoginEmployee> {
   Constants constants = Constants();
 
   bool passwordObsecured = true;
-  bool isSuccses = false;
 
   @override
   Widget build(BuildContext context) {
@@ -144,13 +143,13 @@ class _LoginEmployeeState extends State<LoginEmployee> {
               style: const ButtonStyle(),
               onPressed: () {
                 postDataLoginEmployee();
-                if (isSuccses == true) {
-                  /* Navigator.push(
+                if (true == true) {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const HomeEmployee(),
                     ),
-                  ); */
+                  );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     errorSnackBar(context, constants),
