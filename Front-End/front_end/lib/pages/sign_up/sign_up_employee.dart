@@ -126,7 +126,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
       obscureText: passwordObsecured,
       onChanged: (value) {
         setState(() {
-          employee.password = value;
+          employee.setPassword(value);
         });
       },
       style: GoogleFonts.jost(
@@ -187,7 +187,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     return TextField(
       onChanged: (value) {
         setState(() {
-          employee.email = value;
+          employee.setEmail(value);
         });
       },
       style: GoogleFonts.jost(
@@ -236,7 +236,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     return TextField(
       onChanged: (value) {
         setState(() {
-          employee.surname = value;
+          employee.setSurname(value);
         });
       },
       style: GoogleFonts.jost(
@@ -285,7 +285,7 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     return TextField(
       onChanged: (value) {
         setState(() {
-          employee.name = value;
+          employee.setName(value);
         });
       },
       style: GoogleFonts.jost(

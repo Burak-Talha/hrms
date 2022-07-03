@@ -33,7 +33,7 @@ class Emlpoyee {
     this.surname = surname;
   }
 
-  String getMail() {
+  String getEmail() {
     return email;
   }
 

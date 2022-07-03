@@ -10,17 +10,17 @@ Emlpoyee employee = Emlpoyee();
 String url = "URL";
 
 Map dataSignUpEmployee = {
-  'name': employee.name,
-  'surname': employee.surname,
-  'email': employee.email,
-  'password': employee.password,
+  'name': employee.getName(),
+  'surname': employee.getSurname(),
+  'email': employee.getEmail(),
+  'password': employee.getPassword(),
 };
 
 String bodySignUpEmployee = json.encode(dataSignUpEmployee);
 
 Map dataLoginEmployee = {
-  'email': employee.email,
-  'password': employee.password,
+  'email': employee.getEmail(),
+  'password': employee.getPassword(),
 };
 
 String bodyLoginEmployee = json.encode(dataLoginEmployee);
