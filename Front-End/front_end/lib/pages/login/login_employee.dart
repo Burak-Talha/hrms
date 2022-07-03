@@ -1,13 +1,14 @@
+// ignore_for_file: avoid_print, unrelated_type_equality_checks
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
 import 'package:front_end/func/post_data.dart';
-// ignore: unused_import
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
 import 'package:front_end/style/context_extension.dart';
 import 'package:front_end/style/style.dart';
-import 'package:front_end/widgets/content/error_snack_bar.dart';
+import 'package:front_end/widgets/content/snack_bar.dart';
 import 'package:front_end/widgets/content/info_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -65,7 +66,11 @@ class _LoginEmployeeState extends State<LoginEmployee> {
                   Expanded(
                     flex: 3,
                     child: TextFormField(
-                      onChanged: (value) => employee.email = value,
+                      onChanged: (value) {
+                        setState(() {
+                          employee.email = value;
+                        });
+                      },
                       style: GoogleFonts.jost(
                         textStyle:
                             ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
@@ -104,7 +109,11 @@ class _LoginEmployeeState extends State<LoginEmployee> {
                   Expanded(
                     flex: 3,
                     child: TextFormField(
-                      onChanged: (value) => employee.password = value,
+                      onChanged: (value) {
+                        setState(() {
+                          employee.password = value;
+                        });
+                      },
                       obscureText: passwordObsecured,
                       style: GoogleFonts.jost(
                         textStyle:
@@ -142,19 +151,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
             ElevatedButton(
               style: const ButtonStyle(),
               onPressed: () {
-                postDataLoginEmployee();
-                if (true == true) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeEmployee(),
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    errorSnackBar(context, constants),
-                  );
-                }
+                loginFunction();
               },
               child: Text(constants.login,
                   style: GoogleFonts.jost(
@@ -179,5 +176,29 @@ class _LoginEmployeeState extends State<LoginEmployee> {
         ),
       ),
     );
+  }
+
+  void loginFunction() {
+    print("email: ${employee.email}");
+    print("password: ${employee.password}");
+    if (postDataLoginEmployee() == true) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomeEmployee(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        errorSnackBar(context),
+      );
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation1, animation2) => super.widget,
+          transitionDuration: const Duration(seconds: 0),
+        ),
+      );
+    }
   }
 }
