@@ -46,133 +46,153 @@ class _LoginEmployeeState extends State<LoginEmployee> {
         ),
         child: Column(
           children: [
-            const Spacer(
-              flex: 3,
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  Expanded(
-                    child: Text(constants.email,
-                        style: GoogleFonts.jost(
-                          textStyle: ProjectStyles.labelTextStyle
-                              .copyWith(fontSize: 20),
-                        )),
-                  ),
-                  const Spacer(),
-                  Expanded(
-                    flex: 3,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          employee.email = value;
-                        });
-                      },
-                      style: GoogleFonts.jost(
-                        textStyle:
-                            ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
-                      ),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ProjectColors.whiteColor,
-                        hintStyle: TextStyle(
-                          color: ProjectColors.labelColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                ],
-              ),
-            ),
+            const Spacer(flex: 3),
+            mailRow(context),
             const Spacer(),
-            Expanded(
-              child: Row(
-                children: [
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  Expanded(
-                    child: Text(constants.password,
-                        style: GoogleFonts.jost(
-                          textStyle: ProjectStyles.labelTextStyle
-                              .copyWith(fontSize: 20),
-                        )),
-                  ),
-                  const Spacer(),
-                  Expanded(
-                    flex: 3,
-                    child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          employee.password = value;
-                        });
-                      },
-                      obscureText: passwordObsecured,
-                      style: GoogleFonts.jost(
-                        textStyle:
-                            ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
-                      ),
-                      decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              passwordObsecured = !passwordObsecured;
-                            });
-                          },
-                          icon: Icon(
-                            passwordObsecured
-                                ? Icons.visibility_off_rounded
-                                : Icons.visibility_rounded,
-                          ),
-                        ),
-                        border: InputBorder.none,
-                        filled: true,
-                        fillColor: ProjectColors.whiteColor,
-                        hintStyle: TextStyle(
-                          color: ProjectColors.labelColor,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                ],
-              ),
-            ),
+            passwordRow(context),
             const Spacer(),
-            ElevatedButton(
-              style: const ButtonStyle(),
-              onPressed: () {
-                loginFunction();
-              },
-              child: Text(constants.login,
-                  style: GoogleFonts.jost(
-                    textStyle: ProjectStyles.containerTextStyle
-                        .copyWith(fontSize: 20, letterSpacing: 0),
-                  )),
-            ),
-            CupertinoButton(
-                child: Text(constants.signUpLabelText),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SignUpEmployee(),
-                    ),
-                  );
-                }),
-            const Spacer(
-              flex: 3,
-            ),
+            loginButton(),
+            signUpButton(context),
+            const Spacer(flex: 3),
           ],
+        ),
+      ),
+    );
+  }
+
+  CupertinoButton signUpButton(BuildContext context) {
+    return CupertinoButton(
+        child: Text(constants.signUpLabelText),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SignUpEmployee(),
+            ),
+          );
+        });
+  }
+
+  ElevatedButton loginButton() {
+    return ElevatedButton(
+      style: const ButtonStyle(),
+      onPressed: () {
+        loginFunction();
+      },
+      child: Text(constants.login,
+          style: GoogleFonts.jost(
+            textStyle: ProjectStyles.containerTextStyle
+                .copyWith(fontSize: 20, letterSpacing: 0),
+          )),
+    );
+  }
+
+  Expanded passwordRow(BuildContext context) {
+    return Expanded(
+      child: Row(
+        children: [
+          const Spacer(
+            flex: 2,
+          ),
+          Container(
+            width: context.dynamicWidth(0.3),
+            height: context.dynamicHeight(0.07),
+            decoration: BoxDecoration(
+              color: ProjectColors.whiteColor,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(40),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Center(
+                child: passwordInput(),
+              ),
+            ),
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  TextField passwordInput() {
+    return TextField(
+      obscureText: passwordObsecured,
+      onChanged: (value) {
+        setState(() {
+          employee.password = value;
+        });
+      },
+      style: GoogleFonts.jost(
+        textStyle: ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
+      ),
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        prefixIcon: const Icon(Icons.key_rounded),
+        hintText: constants.password,
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              passwordObsecured = !passwordObsecured;
+            });
+          },
+          icon: Icon(
+            passwordObsecured
+                ? Icons.visibility_off_rounded
+                : Icons.visibility_rounded,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Expanded mailRow(BuildContext context) {
+    return Expanded(
+      child: Row(
+        children: [
+          const Spacer(
+            flex: 2,
+          ),
+          Container(
+            width: context.dynamicWidth(0.3),
+            height: context.dynamicHeight(0.07),
+            decoration: BoxDecoration(
+              color: ProjectColors.whiteColor,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(40),
+              ),
+            ),
+            child: mailInput(constants),
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding mailInput(constants) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: Center(
+        child: TextField(
+          onChanged: (value) {
+            setState(() {
+              employee.email = value;
+            });
+          },
+          style: GoogleFonts.jost(
+            textStyle: ProjectStyles.labelTextStyle.copyWith(fontSize: 20),
+          ),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            prefixIcon: const Icon(Icons.mail_rounded),
+            hintText: constants.email,
+          ),
         ),
       ),
     );
