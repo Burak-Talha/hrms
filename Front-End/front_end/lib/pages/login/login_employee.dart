@@ -123,7 +123,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
       obscureText: passwordObsecured,
       onChanged: (value) {
         setState(() {
-          employee.password = value;
+          employee.setPassword(value);
         });
       },
       style: GoogleFonts.jost(
@@ -182,7 +182,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
         child: TextField(
           onChanged: (value) {
             setState(() {
-              employee.email = value;
+              employee.setEmail(value);
             });
           },
           style: GoogleFonts.jost(
