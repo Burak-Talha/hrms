@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
 
-String url = "https://lochalhost:8080/emlpoyee/getall";
+String url = "URL";
 
 Map dataSignUpEmployee = {
   'name': employee.name,
