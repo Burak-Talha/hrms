@@ -34,11 +34,11 @@ void postDataSignUpEmployee() async {
   print(response.body);
 }
 
-void postDataLoginEmployee() async {
-  final response = await http.post(
+Future<String> postDataLoginEmployee() async {
+  var response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodyLoginEmployee,
   );
-  print(response.body);
+  return response.body;
 }
