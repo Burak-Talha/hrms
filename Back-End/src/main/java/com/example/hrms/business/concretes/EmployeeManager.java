@@ -27,14 +27,14 @@ public class EmployeeManager implements EmployeeService{
 	}
 
 	@Override
-	public Employee login(String email, String password) {
+	public boolean login(String email, String password) {
 		employee = employeeDao.findByEmailAndPassword(email, password);
 		if(employee!=null){
 			System.out.println("Kullanıcı eşleşti!");
-			return employee;
+			return true;
 		}
 		System.out.println("Kullanıcı eşleşmedi");
-		return null;
+		return false;
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak

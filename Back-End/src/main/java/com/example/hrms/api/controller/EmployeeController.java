@@ -64,7 +64,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("login")
-	public Employee login(@RequestBody EmployeeDto employeeDto){
+	public boolean login(@RequestBody EmployeeDto employeeDto){
 		return employeeManager.login(employeeDto.getEmail(), employeeDto.getPassword());
 	}
 
