@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
 
-String url = "URL";
+String url = "http://localhost:8080/api/employee/login";
 
 Map dataSignUpEmployee = {
   'name': employee.getName(),
@@ -18,6 +18,11 @@ Map dataSignUpEmployee = {
 
 String bodySignUpEmployee = json.encode(dataSignUpEmployee);
 
+const Map<String, String> headers = {
+  "Content-Type": "application/json",
+  "Cookie": "JSESSIONID=953878B4CAA951F72256C201F88A28DA"
+};
+
 Map dataLoginEmployee = {
   'email': employee.getEmail(),
   'password': employee.getPassword(),
@@ -25,20 +30,24 @@ Map dataLoginEmployee = {
 
 String bodyLoginEmployee = json.encode(dataLoginEmployee);
 
-Future<String> postDataSignUpEmployee() async {
+Future<bool> postDataSignUpEmployee() async {
   final response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodySignUpEmployee,
   );
-  return response.body;
+  var val = "true";
+  bool isOk = response.body == val;
+  return Future.value(isOk);
 }
 
-Future<String> postDataLoginEmployee() async {
-  var response = await http.post(
+Future<bool> postDataLoginEmployee() async {
+  final response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodyLoginEmployee,
   );
-  return response.body;
+  var val = "true";
+  bool isOk = response.body == val;
+  return isOk;
 }

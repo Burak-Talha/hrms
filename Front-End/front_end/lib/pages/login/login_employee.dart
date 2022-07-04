@@ -201,7 +201,8 @@ class _LoginEmployeeState extends State<LoginEmployee> {
   void loginFunction() {
     print("email: ${employee.email}");
     print("password: ${employee.password}");
-    if (postDataLoginEmployee() == true) {
+    bool isOk = postDataLoginEmployee();
+    if (postDataLoginEmployee() == "true") {
       Navigator.push(
         context,
         MaterialPageRoute(
