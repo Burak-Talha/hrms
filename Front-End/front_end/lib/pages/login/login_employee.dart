@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
+import 'package:front_end/data/user.dart';
 import 'package:front_end/func/post_data.dart';
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
@@ -201,8 +202,9 @@ class _LoginEmployeeState extends State<LoginEmployee> {
   void loginFunction() {
     print("email: ${employee.email}");
     print("password: ${employee.password}");
-    bool isOk = postDataLoginEmployee();
-    if (postDataLoginEmployee() == "true") {
+    postDataLoginEmployee();
+    print(getBool());
+    if (getBool() == "true") {
       Navigator.push(
         context,
         MaterialPageRoute(

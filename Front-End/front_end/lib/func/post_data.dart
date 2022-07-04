@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:front_end/data/employee/employee.dart';
+import 'package:front_end/data/user.dart';
 import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
@@ -30,24 +31,19 @@ Map dataLoginEmployee = {
 
 String bodyLoginEmployee = json.encode(dataLoginEmployee);
 
-Future<bool> postDataSignUpEmployee() async {
+postDataSignUpEmployee() async {
   final response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodySignUpEmployee,
   );
-  var val = "true";
-  bool isOk = response.body == val;
-  return Future.value(isOk);
 }
 
-Future<bool> postDataLoginEmployee() async {
+postDataLoginEmployee() async {
   final response = await http.post(
     Uri.parse(url),
     headers: {"Content-Type": "application/json"},
     body: bodyLoginEmployee,
   );
-  var val = "true";
-  bool isOk = response.body == val;
-  return isOk;
+  setBool(response.body);
 }
