@@ -12,8 +12,9 @@ import org.springframework.stereotype.Service;
 import com.example.hrms.business.abstracts.EmployeeService;
 import com.example.hrms.dataaccess.abstracts.EmployeeDao;
 import com.example.hrms.entities.concretes.Employee;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
-// Bütün controller sınıflarında ilk başta @Getter anotasyonu yüzünden bir sorun meydana geliyor ve null değer döndürüyor 18//11/21
+@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 @Service
 public class EmployeeManager implements EmployeeService{
 
@@ -29,6 +30,8 @@ public class EmployeeManager implements EmployeeService{
 	@Override
 	public boolean login(String email, String password) {
 		employee = employeeDao.findByEmailAndPassword(email, password);
+		System.out.println("System User email input :"+email);
+		System.out.println("System User password input :"+password);
 		if(employee!=null){
 			System.out.println("Kullanıcı eşleşti!");
 			return true;
