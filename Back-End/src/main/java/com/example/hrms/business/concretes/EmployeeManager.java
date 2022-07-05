@@ -3,7 +3,9 @@ package com.example.hrms.business.concretes;
 import java.util.List;
 
 
-
+import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.ErrorDataResult;
+import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,23 +30,25 @@ public class EmployeeManager implements EmployeeService{
 	}
 
 	@Override
-	public boolean login(String email, String password) {
+	public DataResult<Employee> login(String email, String password) {
 		employee = employeeDao.findByEmailAndPassword(email, password);
 		System.out.println("System User email input :"+email);
 		System.out.println("System User password input :"+password);
 		if(employee!=null){
 			System.out.println("Kullanıcı eşleşti!");
-			return true;
+			return new SuccessDataResult<Employee>(employee, true, "The "+employee.getEmail()+" logged in");
 		}
-		System.out.println("Kullanıcı eşleşmedi");
-		return false;
+		return new ErrorDataResult("Kullanıcı eşleşemedi");
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
-	public void add(Employee employee) {
-		employeeDao.save(employee);
-		System.out.println("Kullanıcı eklendi"+employee.getCorporationName());
+	public DataResult<Employee> add(Employee employee) {
+		if(employee.getEmail().length() >= 8) {
+			employeeDao.save(employee);
+			return new SuccessDataResult<>(employee, true);
+		}
+			return new ErrorDataResult("No Entry");
 	}
 
 	@Override

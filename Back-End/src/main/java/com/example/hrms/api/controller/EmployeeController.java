@@ -19,6 +19,8 @@ import com.example.hrms.business.abstracts.JobAdvertisementService;
 import com.example.hrms.entities.concretes.Employee;
 import com.example.hrms.entities.concretes.JobAdvertisement;
 
+import javax.xml.crypto.Data;
+
 @RestController
 @RequestMapping("api/employee/")
 public class EmployeeController {
@@ -37,8 +39,8 @@ public class EmployeeController {
 
 	// Working 16/11/21
 	@PostMapping("add")
-	public void add(@RequestBody Employee employee) {
-		employeeService.add(employee);
+	public DataResult<Employee> add(@RequestBody Employee employee) {
+		return employeeService.add(employee);
 	}
 	
 	// Working 16/11/21
@@ -64,8 +66,8 @@ public class EmployeeController {
 	}
 
 	@PostMapping("login")
-	public boolean login(@RequestBody EmployeeDto employeeDto){
-		return employeeManager.login(employeeDto.getEmail(), employeeDto.getPassword());
+	public DataResult<Employee> login(@RequestBody EmployeeDto employeeDto){
+		return employeeService.login(employeeDto.getEmail(), employeeDto.getPassword());
 	}
 
 	@PostMapping("register")
