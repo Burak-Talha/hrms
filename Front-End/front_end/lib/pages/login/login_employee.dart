@@ -1,9 +1,8 @@
-// ignore_for_file: avoid_print, unrelated_type_equality_checks
+// ignore_for_file: avoid_print, unrelated_type_equality_checks, use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/data/constants.dart';
-import 'package:front_end/data/user.dart';
 import 'package:front_end/func/post_data.dart';
 import 'package:front_end/pages/home/home_employee.dart';
 import 'package:front_end/pages/sign_up/sign_up_employee.dart';
@@ -199,12 +198,10 @@ class _LoginEmployeeState extends State<LoginEmployee> {
     );
   }
 
-  void loginFunction() {
+  void loginFunction() async {
     print("email: ${employee.email}");
     print("password: ${employee.password}");
-    postDataLoginEmployee();
-    print(getBool());
-    if (getBool() == "true") {
+    if (await postDataLoginEmployee() == "true") {
       Navigator.push(
         context,
         MaterialPageRoute(

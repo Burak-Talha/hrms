@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:front_end/data/employee/employee.dart';
-import 'package:front_end/data/user.dart';
 import 'package:http/http.dart' as http;
 
 Emlpoyee employee = Emlpoyee();
@@ -45,5 +44,6 @@ postDataLoginEmployee() async {
     headers: {"Content-Type": "application/json"},
     body: bodyLoginEmployee,
   );
-  setBool(response.body);
+
+  return response.body;
 }
