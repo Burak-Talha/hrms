@@ -201,6 +201,7 @@ class _LoginEmployeeState extends State<LoginEmployee> {
   void loginFunction() async {
     print("email: ${employee.email}");
     print("password: ${employee.password}");
+    print(await postDataLoginEmployee());
     if (await postDataLoginEmployee() == "true") {
       Navigator.push(
         context,

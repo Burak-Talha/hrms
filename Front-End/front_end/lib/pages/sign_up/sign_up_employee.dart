@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unrelated_type_equality_checks
+// ignore_for_file: avoid_print, unrelated_type_equality_checks, use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +19,17 @@ class SignUpEmployee extends StatefulWidget {
 }
 
 class _SignUpEmployeeState extends State<SignUpEmployee> {
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+    employee.setEmail("");
+    employee.setPassword("");
+    employee.setName("");
+    employee.setSurname("");
+  }
+
   Constants constants = Constants();
 
   bool passwordObsecured = true;
@@ -299,12 +310,14 @@ class _SignUpEmployeeState extends State<SignUpEmployee> {
     );
   }
 
-  void signUpFunction() {
-    print("name: ${employee.name}");
-    print("surname: ${employee.surname}");
-    print("email: ${employee.email}");
-    print("password: ${employee.password}");
-    if (postDataSignUpEmployee() == true) {
+  void signUpFunction() async {
+    print("name: ${employee.getName()}");
+    print("surname: ${employee.getSurname()}");
+    print("email: ${employee.getEmail()}");
+    print("password: ${employee.getPassword()}");
+
+    print(await postDataSignUpEmployee());
+    if (await postDataSignUpEmployee() == "true") {
       Navigator.push(
         context,
         MaterialPageRoute(

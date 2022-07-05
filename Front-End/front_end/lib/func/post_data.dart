@@ -36,6 +36,7 @@ postDataSignUpEmployee() async {
     headers: {"Content-Type": "application/json"},
     body: bodySignUpEmployee,
   );
+  return response.body;
 }
 
 postDataLoginEmployee() async {
