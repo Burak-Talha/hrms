@@ -14,12 +14,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmployeeDao extends JpaRepository<Employee, Integer>{
+public interface EmployerDao extends JpaRepository<Employer, Integer>{
 
-    List<Employee> findByPasswordIsNotNullAndEmailIsNotNull();
+    List<Employer> findByPasswordIsNotNullAndEmailIsNotNull();
 
-    @Query("SELECT e.id, e.email, e.password FROM Employee e")
-    List<EmployeeDto> getIdAndMailAndPassword();
+    @Query("SELECT e.email, e.password FROM Employer e")
+    List<EmployerDto> getMailAndPassword();
 
-    Employee findByEmailAndPassword(String email,String password);
+    Employer findByEmailAndPassword(String email, String password);
 }

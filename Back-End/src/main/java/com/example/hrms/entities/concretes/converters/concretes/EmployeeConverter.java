@@ -1,9 +1,7 @@
 package com.example.hrms.entities.concretes.converters.concretes;
 
-import com.example.hrms.entities.concretes.converters.abstracts.base.Converter;
 import com.example.hrms.entities.concretes.converters.abstracts.sub.IEmployeeConverter;
-import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
-import lombok.NoArgsConstructor;
+import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 
 
 public class EmployeeConverter implements IEmployeeConverter {
@@ -13,11 +11,11 @@ public class EmployeeConverter implements IEmployeeConverter {
     }
 
     @Override
-    public long getId(EmployeeDto employeeDto) {
+    public long getId(EmployerDto employeeDto) {
         return employeeDto.getId();
     }
 
-    public EmployeeDto getMailAndPassword(){
+    public EmployerDto getMailAndPassword(){
     return null;
     }
 }

@@ -2,10 +2,10 @@ package com.example.hrms.api.controller;
 
 import java.util.List;
 
-import com.example.hrms.business.concretes.EmployeeManager;
+import com.example.hrms.business.concretes.EmployerManager;
 import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.core.utilities.results.SuccessDataResult;
-import com.example.hrms.entities.concretes.dtos.concretes.EmployeeDto;
+import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,39 +14,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.business.abstracts.EmployeeService;
+import com.example.hrms.business.abstracts.EmployerService;
 import com.example.hrms.business.abstracts.JobAdvertisementService;
-import com.example.hrms.entities.concretes.Employee;
+import com.example.hrms.entities.concretes.Employer;
 import com.example.hrms.entities.concretes.JobAdvertisement;
-
-import javax.xml.crypto.Data;
 
 @RestController
 @RequestMapping("api/employee/")
-public class EmployeeController {
+public class EmployerController {
 
-	private EmployeeService employeeService;
+	private EmployerService employerService;
 	private JobAdvertisementService jobAdvertisementService;
-	private EmployeeManager employeeManager;
-	private boolean isLoginSuccess;
+	private EmployerManager employerManager;
 
 	@Autowired
-	public EmployeeController(EmployeeService employeeService, JobAdvertisementService jobAdvertisementService, EmployeeManager employeeManager) {
-		this.employeeService = employeeService;
+	public EmployerController(EmployerService employeeService, JobAdvertisementService jobAdvertisementService, EmployerManager employerManager) {
+		this.employerService = employeeService;
 		this.jobAdvertisementService = jobAdvertisementService;
-		this.employeeManager = employeeManager;
+		this.employerManager = employerManager;
 	}
 
 	// Working 16/11/21
 	@PostMapping("add")
-	public DataResult<Employee> add(@RequestBody Employee employee) {
-		return employeeService.add(employee);
+	public DataResult<Employer> add(@RequestBody Employer employee) {
+		return employerService.add(employee);
 	}
 	
 	// Working 16/11/21
 	@GetMapping("getall")
-	public List<Employee> getAll(){
-		return employeeService.getAll();
+	public DataResult<Employer> getAll(){
+		return new SuccessDataResult<Employer>(employerService.getAll(), true);
 	}
 	
 	// Working without wrong boolean value 16/11/21
@@ -66,22 +63,17 @@ public class EmployeeController {
 	}
 
 	@PostMapping("login")
-	public DataResult<Employee> login(@RequestBody EmployeeDto employeeDto){
-		return employeeService.login(employeeDto.getEmail(), employeeDto.getPassword());
+	public DataResult<Employer> login(@RequestBody EmployerDto employeeDto){
+		return employerService.login(employeeDto.getEmail(), employeeDto.getPassword());
 	}
 
 	@PostMapping("register")
-	public void register(@RequestBody Employee employee){
-		employeeService.add(employee);
-	}
-
-	@GetMapping("loginresult")
-	public boolean loginResult(){
-		return isLoginSuccess;
+	public void register(@RequestBody Employer employee){
+		employerService.add(employee);
 	}
 
 	@GetMapping("getshortdata")
-	public List<EmployeeDto> getIdMailAndPassword(){
-		return employeeService.getIdMailAndPassword();
+	public List<EmployerDto> getMailAndPassword(){
+		return employerService.getMailAndPasswords();
 	}
 }

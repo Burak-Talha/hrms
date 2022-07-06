@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Getter
-public class EmployeeDto implements Serializable, DTOs {
+public class EmployerDto implements Serializable, DTOs {
     private final int id;
     private final String email;
     private final String password;

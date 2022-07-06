@@ -1,7 +1,5 @@
 package com.example.hrms.core.utilities.results;
 
-import com.example.hrms.entities.concretes.Employee;
-
 import java.util.List;
 
 public class SuccessDataResult<T> extends DataResult<T> {

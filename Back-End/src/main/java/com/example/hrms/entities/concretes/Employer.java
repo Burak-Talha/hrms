@@ -19,7 +19,7 @@ import lombok.Setter;
 @Data
 @Entity
 @Table(name="employee")
-public class Employee {
+public class Employer {
 
 	@Id
 	@Column(name="id")
