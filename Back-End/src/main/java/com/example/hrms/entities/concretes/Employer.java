@@ -21,7 +21,7 @@ import java.util.Date;
 @Setter
 @Data
 @Entity
-@Table(name="employee")
+@Table(name="employer")
 public class Employer {
 
 	@Id

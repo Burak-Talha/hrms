@@ -2,22 +2,22 @@ package com.example.hrms.core.utilities.results;
 
 import java.util.List;
 
-public class SuccessDataResult<T> extends DataResult<T> {
+public class SuccessDataResult<T> extends DataResult {
 
-	public SuccessDataResult(List<T> data, boolean success) {
-		super(data,true);
+	public SuccessDataResult(List<T> dataList) {
+		super(dataList,true);
 	}
 
-	public SuccessDataResult(T data, boolean success) {
-		super(data,true);
+	public SuccessDataResult(List<T> dataList, String message) {
+		super(dataList,true, message);
 	}
 
-	public SuccessDataResult(T data, boolean success, String message) {
-		super(data,true, message);
+	public SuccessDataResult(T dataList) {
+		super(dataList,true);
 	}
 
-	public SuccessDataResult() {
-		super((List<T>) null, true);
+	public SuccessDataResult(T dataList, String message) {
+		super(dataList,true, message);
 	}
 
 }

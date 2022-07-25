@@ -3,6 +3,7 @@ package com.example.hrms.business.concretes;
 
 import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.core.utilities.results.ErrorDataResult;
+import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 
@@ -22,7 +23,7 @@ public class EmployerManager implements EmployerService {
 
 	Employer employer;
 
-	private EmployerDao employerDao;
+	private final EmployerDao employerDao;
 	
 	@Autowired
 	public EmployerManager(EmployerDao employeeDao) {
@@ -36,19 +37,19 @@ public class EmployerManager implements EmployerService {
 		System.out.println("System User password input :"+password);
 		if(employer !=null){
 			System.out.println("Kullanıcı eşleşti!");
-			return new SuccessDataResult<Employer>(employer, true, "The "+ employer.getEmail()+" logged in");
+			return new SuccessDataResult<>(employer, "Kullanıcı eşleşti");
 		}
 		return new ErrorDataResult("Kullanıcı eşleşemedi");
 	}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
-	public DataResult<Employer> add(Employer employee) {
-		if(employee.getEmail().length() >= 8) {
-			employerDao.save(employee);
-			return new SuccessDataResult<>(employee, true);
+	public Result add(Employer employer) {
+		if(employer.getEmail().length() >= 8) {
+			employerDao.save(employer);
+			return new Result(true, "The register transaction completed successfully");
 		}
-			return new ErrorDataResult("No Entry");
+			return new Result(false, "Your password length should be bigger than 8 character");
 	}
 
 	@Override

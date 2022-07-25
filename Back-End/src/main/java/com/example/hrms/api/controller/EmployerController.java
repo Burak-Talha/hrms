@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.hrms.business.concretes.EmployerManager;
 import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import com.example.hrms.entities.concretes.Employer;
 import com.example.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
-@RequestMapping("api/employee/")
+@RequestMapping("api/employer/")
 public class EmployerController {
 
 	private EmployerService employerService;
@@ -36,14 +37,14 @@ public class EmployerController {
 
 	// Working 16/11/21
 	@PostMapping("add")
-	public DataResult<Employer> add(@RequestBody Employer employee) {
+	public Result add(@RequestBody Employer employee) {
 		return employerService.add(employee);
 	}
 	
 	// Working 16/11/21
 	@GetMapping("getall")
-	public DataResult<Employer> getAll(){
-		return new SuccessDataResult<Employer>(employerService.getAll(), true);
+	public List<Employer> getAll(){
+		return employerService.getAll();
 	}
 	
 	// Working without wrong boolean value 16/11/21
