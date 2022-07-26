@@ -43,7 +43,7 @@ public class Employer {
 	private String email;
 
 	@NotNull
-	@Size(min = 8, max = 100)
+	@Size(max = 100)
 	@Column(name="password")
 	private String password;
 
