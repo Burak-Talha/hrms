@@ -3,9 +3,9 @@ package com.example.hrms.api.controller;
 import java.util.List;
 
 import com.example.hrms.business.concretes.EmployerManager;
-import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.DataResult.DataResult;
+import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.Result;
-import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +43,7 @@ public class EmployerController {
 	
 	// Working 16/11/21
 	@GetMapping("getall")
-	public List<Employer> getAll(){
+	public DataResults<Employer> getAll(){
 		return employerService.getAll();
 	}
 	
