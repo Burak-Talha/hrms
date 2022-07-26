@@ -16,9 +16,7 @@ import java.util.List;
 @Repository
 public interface EmployerDao extends JpaRepository<Employer, Integer>{
 
-    List<Employer> findByPasswordIsNotNullAndEmailIsNotNull();
-
-    @Query("SELECT e.email, e.password FROM Employer e")
+    @Query("select e.email, e.password from Employer e")
     List<EmployerDto> getMailAndPassword();
 
     Employer findByEmailAndPassword(String email, String password);
