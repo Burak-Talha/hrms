@@ -1,18 +1,19 @@
 package com.example.hrms.api.controller;
 
-import java.util.List;
-
-
+import com.example.hrms.business.abstracts.JobSeekerService;
 import com.example.hrms.business.abstracts.LanguagesService;
+
 import com.example.hrms.entities.concretes.*;
+
+import com.example.hrms.entities.concretes.JobSeeker;
+import com.example.hrms.entities.concretes.Languages;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.hrms.business.abstracts.*;
+
+import java.util.List;
 
 
 @RestController

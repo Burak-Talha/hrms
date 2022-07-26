@@ -1,21 +1,23 @@
 package com.example.hrms.core.utilities.results;
 
-import com.example.hrms.entities.concretes.Employee;
-
 import java.util.List;
 
-public class SuccessDataResult<T> extends DataResult<T> {
+public class SuccessDataResult<T> extends DataResult {
 
-	public SuccessDataResult(List<T> data, boolean success) {
-		super(data,true);
+	public SuccessDataResult(List<T> dataList) {
+		super(dataList,true);
 	}
-	
-	public SuccessDataResult(String message) {
-		super(null, true ,message);
+
+	public SuccessDataResult(List<T> dataList, String message) {
+		super(dataList,true, message);
 	}
-	
-	public SuccessDataResult() {
-		super((List<T>) null, true);
+
+	public SuccessDataResult(T dataList) {
+		super(dataList,true);
+	}
+
+	public SuccessDataResult(T dataList, String message) {
+		super(dataList,true, message);
 	}
 
 }

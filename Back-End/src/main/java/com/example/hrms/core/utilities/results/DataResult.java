@@ -12,6 +12,11 @@ public class DataResult<T> extends Result {
 		this.dataList = dataList;
 	}
 
+	public DataResult(List<T> dataList, boolean success, String message) {
+		super(success, message);
+		this.dataList = dataList;
+	}
+
 	public DataResult(T data, boolean success, String message) {
 		super(success, message);
 		this.data = data;
@@ -21,13 +26,9 @@ public class DataResult<T> extends Result {
 		super(success);
 		this.data = data;
 	}
-	
-	public T getData() {
-		return this.data;
-	}
 
-	
-	
-	
+	public DataResult(boolean success, String message) {
+		super(success, message);
+	}
 
 }

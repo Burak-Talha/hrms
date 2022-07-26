@@ -3,7 +3,7 @@ package com.example.hrms.business.abstracts;
 import java.util.List;
 
 
-import com.example.hrms.entities.concretes.JobPosition;
+import com.example.hrms.entities.concretes.*;
 
 public interface JobPositionService {
 
