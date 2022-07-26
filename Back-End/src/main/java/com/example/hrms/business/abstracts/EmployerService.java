@@ -2,7 +2,8 @@ package com.example.hrms.business.abstracts;
 
 import java.util.List;
 
-import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.DataResult.DataResult;
+import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.entities.concretes.Employer;
 
@@ -13,7 +14,7 @@ public interface EmployerService {
 
 public DataResult<Employer> login(String mail, String password);
 public Result add(Employer employee);
-public List<Employer> getAll();
+public DataResults<Employer> getAll();
 List<EmployerDto> getMailAndPasswords();
 
 

@@ -1,10 +1,13 @@
 package com.example.hrms.business.concretes;
 
 
-import com.example.hrms.core.utilities.results.DataResult;
-import com.example.hrms.core.utilities.results.ErrorDataResult;
-import com.example.hrms.core.utilities.results.Result;
-import com.example.hrms.core.utilities.results.SuccessDataResult;
+import com.example.hrms.core.utilities.results.*;
+import com.example.hrms.core.utilities.results.DataResult.DataResult;
+import com.example.hrms.core.utilities.results.DataResult.ErrorDataResult;
+import com.example.hrms.core.utilities.results.DataResult.SuccessDataResult;
+import com.example.hrms.core.utilities.results.DataResults.DataResults;
+import com.example.hrms.core.utilities.results.DataResults.ErrorDataResults;
+import com.example.hrms.core.utilities.results.DataResults.SuccessDataResults;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +40,7 @@ public class EmployerManager implements EmployerService {
 		System.out.println("System User password input :"+password);
 		if(employer !=null){
 			System.out.println("Kullanıcı eşleşti!");
-			return new SuccessDataResult<>(employer, "Kullanıcı eşleşti");
+			return new SuccessDataResult<Employer>(employer, "Kullanıcı eşleşti");
 		}
 		return new ErrorDataResult("Kullanıcı eşleşemedi");
 	}
@@ -45,16 +48,20 @@ public class EmployerManager implements EmployerService {
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
 	public Result add(Employer employer) {
-		if(employer.getEmail().length() >= 8) {
+		if(employer.getPassword().length() >= 8 && employer.getEmail().length() >= 8) {
 			employerDao.save(employer);
-			return new Result(true, "The register transaction completed successfully");
+			return new SuccessResult( "The register transaction completed successfully");
 		}
-			return new Result(false, "Your password length should be bigger than 8 character");
+			return new ErrorResult("Your password length should be bigger than 8 character");
 	}
 
 	@Override
-	public List<Employer> getAll() {
-		return employerDao.findAll();
+	public DataResults<Employer> getAll() {
+		List<Employer> employers = employerDao.findAll();
+		if(employers.isEmpty()){
+			return new ErrorDataResults();
+		}
+		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
 	}
 
 	@Override

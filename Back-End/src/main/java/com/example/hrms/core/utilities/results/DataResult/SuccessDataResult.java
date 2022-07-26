@@ -1,4 +1,6 @@
-package com.example.hrms.core.utilities.results;
+package com.example.hrms.core.utilities.results.DataResult;
+
+import com.example.hrms.core.utilities.results.DataResult.DataResult;
 
 import java.util.List;
 

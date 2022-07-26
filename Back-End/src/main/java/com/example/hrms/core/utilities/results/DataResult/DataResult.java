@@ -1,21 +1,13 @@
-package com.example.hrms.core.utilities.results;
+package com.example.hrms.core.utilities.results.DataResult;
+
+import com.example.hrms.core.utilities.results.Result;
 
 import java.util.List;
 
 public class DataResult<T> extends Result {
 
 	private T data;
-	private List<T> dataList;
 
-	public DataResult(List<T> dataList, boolean success) {
-		super(success);
-		this.dataList = dataList;
-	}
-
-	public DataResult(List<T> dataList, boolean success, String message) {
-		super(success, message);
-		this.dataList = dataList;
-	}
 
 	public DataResult(T data, boolean success, String message) {
 		super(success, message);
@@ -31,4 +23,7 @@ public class DataResult<T> extends Result {
 		super(success, message);
 	}
 
+	public T getData(){
+		return this.data;
+	}
 }
