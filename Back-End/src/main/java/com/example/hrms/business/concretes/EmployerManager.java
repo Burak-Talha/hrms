@@ -1,6 +1,7 @@
 package com.example.hrms.business.concretes;
 
 
+import com.example.hrms.core.login.LoginManager;
 import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.core.utilities.results.DataResult.DataResult;
 import com.example.hrms.core.utilities.results.DataResult.ErrorDataResult;
@@ -11,6 +12,7 @@ import com.example.hrms.core.utilities.results.DataResults.SuccessDataResults;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.example.hrms.business.abstracts.EmployerService;
@@ -19,6 +21,8 @@ import com.example.hrms.entities.concretes.Employer;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
+import java.util.Map;
+
 
 @CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 @Service
@@ -27,23 +31,33 @@ public class EmployerManager implements EmployerService {
 	Employer employer;
 
 	private final EmployerDao employerDao;
+	private LoginManager loginManager;
 	
 	@Autowired
-	public EmployerManager(EmployerDao employeeDao) {
+	public EmployerManager(EmployerDao employeeDao, LoginManager loginManager) {
 		this.employerDao = employeeDao;
+		this.loginManager = loginManager;
 	}
 
+
 	@Override
-	public DataResult<Employer> login(String email, String password) {
-		employer = employerDao.findByEmailAndPassword(email, password);
-		System.out.println("System User email input :"+email);
-		System.out.println("System User password input :"+password);
-		if(employer !=null){
-			System.out.println("Kullanıcı eşleşti!");
+	public DataResult<Employer> login(EmployerDto employerDto) {
+		if(loginManager.login(employerDto, employerDao) == true){
+			employer = employerDao.findByEmail(employerDto.getEmail());
 			return new SuccessDataResult<Employer>(employer, "Kullanıcı eşleşti");
 		}
 		return new ErrorDataResult("Kullanıcı eşleşemedi");
 	}
+
+	@Override
+	public DataResult<Employer> googleLogin(Map<String, Object> googleUser) {
+			if(loginManager.googleLogin(googleUser, employerDao) == true){
+				employer = employerDao.findByEmail(loginManager.getServiceMail());
+				return new SuccessDataResult<Employer>(employer, "Google Login transaction generated successfully");
+			}
+		return new ErrorDataResult("Fail google auth");
+	}
+
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
@@ -62,11 +76,6 @@ public class EmployerManager implements EmployerService {
 			return new ErrorDataResults();
 		}
 		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
-	}
-
-	@Override
-	public List<EmployerDto> getMailAndPasswords() {
-		return employerDao.getMailAndPassword();
 	}
 
 }

@@ -22,7 +22,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().httpBasic();*/
 
         httpSecurity.cors().and().csrf().disable();
-        httpSecurity.authorizeHttpRequests().anyRequest().permitAll().and().httpBasic().and().formLogin();
+        httpSecurity.authorizeHttpRequests().mvcMatchers("login").permitAll().and().authorizeHttpRequests().mvcMatchers("/api/employer/google-login").authenticated().and().oauth2Login();
     }
 
     @Bean

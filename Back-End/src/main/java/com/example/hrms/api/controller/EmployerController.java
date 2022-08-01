@@ -3,11 +3,13 @@ package com.example.hrms.api.controller;
 import java.util.List;
 
 import com.example.hrms.business.concretes.EmployerManager;
+import com.example.hrms.core.login.LoginManager;
 import com.example.hrms.core.utilities.results.DataResult.DataResult;
 import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,15 +26,13 @@ import com.example.hrms.entities.concretes.JobAdvertisement;
 @RequestMapping("api/employer/")
 public class EmployerController {
 
-	private EmployerService employerService;
+	private final EmployerService employerService;
 	private JobAdvertisementService jobAdvertisementService;
-	private EmployerManager employerManager;
 
 	@Autowired
-	public EmployerController(EmployerService employeeService, JobAdvertisementService jobAdvertisementService, EmployerManager employerManager) {
-		this.employerService = employeeService;
+	public EmployerController(EmployerService employerService, JobAdvertisementService jobAdvertisementService) {
+		this.employerService = employerService;
 		this.jobAdvertisementService = jobAdvertisementService;
-		this.employerManager = employerManager;
 	}
 
 	// Working 16/11/21
@@ -64,8 +64,13 @@ public class EmployerController {
 	}
 
 	@PostMapping("login")
-	public DataResult<Employer> login(@RequestBody EmployerDto employeeDto){
-		return employerService.login(employeeDto.getEmail(), employeeDto.getPassword());
+	public DataResult<Employer> login(@RequestBody EmployerDto employerDto){
+		return employerService.login(employerDto);
+	}
+
+	@GetMapping("google-login")
+	public DataResult<Employer> googleLogin(OAuth2AuthenticationToken oAuth2AuthenticationToken){
+		return employerService.googleLogin(oAuth2AuthenticationToken.getPrincipal().getAttributes());
 	}
 
 	@PostMapping("register")
@@ -73,8 +78,4 @@ public class EmployerController {
 		employerService.add(employee);
 	}
 
-	@GetMapping("getshortdata")
-	public List<EmployerDto> getMailAndPassword(){
-		return employerService.getMailAndPasswords();
-	}
 }
