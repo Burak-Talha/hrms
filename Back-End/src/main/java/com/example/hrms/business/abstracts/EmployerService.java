@@ -16,7 +16,11 @@ public interface EmployerService {
 
  DataResult<Employer> login(EmployerDto employerDto);
  DataResult<Employer> googleLogin(Map<String, Object> googleUser);
+
+ void logout();
  Result add(Employer employee);
  DataResults<Employer> getAll();
+
+ public String getMail();
 
 }

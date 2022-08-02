@@ -57,6 +57,16 @@ public class EmployerController {
 	public void updateAdvertisement(@RequestBody JobAdvertisement jobAdvertisement) {
 		jobAdvertisementService.update(jobAdvertisement);
 	}
+
+	@GetMapping("logout")
+	public void logout(){
+		employerService.logout();
+	}
+
+	@GetMapping("mail")
+	public String getMail(){
+		return employerService.getMail();
+	}
 	
 	@GetMapping("getadvertisement/{id}")
 	public JobAdvertisement getAdvertisement(@PathVariable("id") int id) {

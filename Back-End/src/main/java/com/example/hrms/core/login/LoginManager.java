@@ -39,6 +39,10 @@ public class LoginManager{
         return false;
     }
 
+    public void logout(){
+        loggedManagementService.setEmail(null);
+    }
+
     public String getServiceMail(){
         return loggedManagementService.getEmail();
     }

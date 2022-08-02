@@ -31,7 +31,7 @@ public class EmployerManager implements EmployerService {
 	Employer employer;
 
 	private final EmployerDao employerDao;
-	private LoginManager loginManager;
+	public LoginManager loginManager;
 	
 	@Autowired
 	public EmployerManager(EmployerDao employeeDao, LoginManager loginManager) {
@@ -58,6 +58,11 @@ public class EmployerManager implements EmployerService {
 		return new ErrorDataResult("Fail google auth");
 	}
 
+	@Override
+	public void logout() {
+		loginManager.logout();
+	}
+
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
@@ -76,6 +81,11 @@ public class EmployerManager implements EmployerService {
 			return new ErrorDataResults();
 		}
 		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
+	}
+
+	@Override
+	public String getMail() {
+		return loginManager.getServiceMail();
 	}
 
 }
