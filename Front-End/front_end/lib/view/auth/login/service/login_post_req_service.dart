@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/view/auth/login/model/response_body_model.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/view/auth/login/model/response_body_model.dart';
 
-const String url = "http://localhost:8080/login";
+const String url = "http://localhost:8080/api/employer/login";
 
 const String _errorMessageReqFailed = 'Request Failed';
 

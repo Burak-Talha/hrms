@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/state/base_state.dart';
-import 'package:scouting_app/core/base/widget/app-bar/app_bar.dart';
-import 'package:scouting_app/core/base/widget/drawer/auth/login/drawer_login.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/auth/login/google/service/login_with_google_launch_url.dart';
-import 'package:scouting_app/view/auth/login/model/login_model.dart';
+import 'package:front_end/core/base/state/base_state.dart';
+import 'package:front_end/core/base/widget/app-bar/app_bar.dart';
+import 'package:front_end/core/base/widget/drawer/auth/login/drawer_login.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/auth/login/google/service/login_with_google_get_service.dart';
+import 'package:front_end/view/auth/login/google/service/login_with_google_launch_url.dart';
+import 'package:front_end/view/auth/login/model/login_model.dart';
 
-import 'package:scouting_app/view/auth/login/view-model/login_view_model.dart';
-import 'package:scouting_app/view/auth/sign-up/view/sign_up_view.dart';
+import 'package:front_end/view/auth/login/view-model/login_view_model.dart';
+import 'package:front_end/view/auth/sign-up/view/sign_up_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -78,12 +79,12 @@ class _LoginViewState extends BaseState<LoginView> {
             await loginFunction(context);
           },
           child: Container(
-            width: dynamicWidth(0.65),
+            width: dynamicWidth(0.55),
             height: dynamicHeight(0.05),
             decoration: BoxDecoration(
               color: appBarColor,
               borderRadius: const BorderRadius.all(
-                Radius.circular(15),
+                Radius.circular(10),
               ),
             ),
             child: Center(
@@ -118,9 +119,10 @@ class _LoginViewState extends BaseState<LoginView> {
         InkWell(
           onTap: () async {
             await loginGoogleLaunchUrl(context);
+            print(await getReqGoogleLogin(context));
           },
           child: Container(
-            width: dynamicWidth(0.65),
+            width: dynamicWidth(0.85),
             height: dynamicHeight(0.07),
             decoration: BoxDecoration(
               color: greyColor,
@@ -155,7 +157,7 @@ class _LoginViewState extends BaseState<LoginView> {
         InkWell(
           onTap: () async {},
           child: Container(
-            width: dynamicWidth(0.65),
+            width: dynamicWidth(0.85),
             height: dynamicHeight(0.07),
             decoration: BoxDecoration(
               color: greyColor,
@@ -190,7 +192,7 @@ class _LoginViewState extends BaseState<LoginView> {
         InkWell(
           onTap: () async {},
           child: Container(
-            width: dynamicWidth(0.65),
+            width: dynamicWidth(0.85),
             height: dynamicHeight(0.07),
             decoration: BoxDecoration(
               color: greyColor,

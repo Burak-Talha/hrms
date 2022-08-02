@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scouting_app/view/other/splash.dart';
+import 'package:front_end/view/other/splash.dart';
 
 void main() => runApp(const MyApp());
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/constants/constants.dart';
+import 'package:front_end/core/constants/constants.dart';
 
 SnackBar messageSnackBar(message) {
   return SnackBar(
