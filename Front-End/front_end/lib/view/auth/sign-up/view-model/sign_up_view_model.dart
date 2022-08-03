@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_success.dart';
-import 'package:scouting_app/view/auth/login/view/login_view.dart';
-import 'package:scouting_app/view/auth/sign-up/model/sign_up_model.dart';
-import 'package:scouting_app/view/auth/sign-up/service/sign_up_post_req_service.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_success.dart';
+import 'package:front_end/view/auth/login/view/login_view.dart';
+import 'package:front_end/view/auth/sign-up/model/sign_up_model.dart';
+import 'package:front_end/view/auth/sign-up/service/sign_up_post_req_service.dart';
 
 SignUpModel _signUpModel = SignUpModel();
 

@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/hrms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hrms.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back-End/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugins.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/front_end/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/front_end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-End/front_end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/pubspec.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,15 +71,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Back-End" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-  </component>
-  <component name="RunManager" selected="Spring Boot.Unnamed">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.HrmsApplication">
     <configuration name="HrmsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -105,7 +102,6 @@
     </configuration>
     <list>
       <item itemvalue="Application.HrmsApplication" />
-      <item itemvalue="Spring Boot.Unnamed" />
     </list>
     <recent_temporary>
       <list>

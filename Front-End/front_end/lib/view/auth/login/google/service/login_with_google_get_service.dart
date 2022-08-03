@@ -2,24 +2,22 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/view/auth/login/google/model/google_login_model.dart';
 
-const String url = "http://localhost:8080/restricted";
+const String url = "http://localhost:8080/api/employer/google-login-result";
 
 const String _errorMessageReqFailed = 'Request Failed';
 
 getReqGoogleLogin(BuildContext context) async {
   try {
-    // ignore: avoid_print
-
-    // ignore: unused_local_variable
     Dio dio = Dio();
     var response = await dio.get(url);
     if (response.statusCode == HttpStatus.ok) {
       final responseBody = response.data;
       if (responseBody is Map<String, dynamic>) {
-        //var responseBodyData = LoginResponseBodyModel.fromJson(responseBody);
-        //return responseBodyData.success;
+        var responseBodyData = GoogleLoginModel.fromJson(responseBody);
+        return responseBodyData.success;
       }
     }
   } catch (e) {

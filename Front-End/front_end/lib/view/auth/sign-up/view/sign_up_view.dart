@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/state/base_state.dart';
-import 'package:scouting_app/core/base/widget/app-bar/app_bar.dart';
-import 'package:scouting_app/core/base/widget/drawer/auth/sign_up/drawer_sign_up.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/auth/login/view/login_view.dart';
-import 'package:scouting_app/view/auth/sign-up/view-model/sign_up_view_model.dart';
+import 'package:front_end/core/base/state/base_state.dart';
+import 'package:front_end/core/base/widget/app-bar/app_bar.dart';
+import 'package:front_end/core/base/widget/drawer/auth/sign_up/drawer_sign_up.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/auth/login/view/login_view.dart';
+import 'package:front_end/view/auth/sign-up/view-model/sign_up_view_model.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({Key? key}) : super(key: key);
@@ -45,11 +45,26 @@ class _SignUpViewState extends BaseState<SignUpView> {
   Column _buttons(BuildContext context) {
     return Column(
       children: [
-        ElevatedButton(
-          onPressed: () async {
+        InkWell(
+          onTap: () async {
             await signUpFunction(context);
           },
-          child: Text(_titleInfo),
+          child: Container(
+            width: dynamicWidth(0.55),
+            height: dynamicHeight(0.05),
+            decoration: BoxDecoration(
+              color: appBarColor,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(10),
+              ),
+            ),
+            child: Center(
+              child: Text(
+                _titleInfo,
+                style: labelStyleLight.copyWith(fontSize: 20),
+              ),
+            ),
+          ),
         ),
         CupertinoButton(
             child: Text(_alreadyHaveAnAccount),

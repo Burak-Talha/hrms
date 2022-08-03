@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_message.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/app/home/view/home_view.dart';
-import 'package:scouting_app/view/auth/login/view/login_view.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_message.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/app/home/view/home_view.dart';
+import 'package:front_end/view/auth/login/view/login_view.dart';
 
 class ProfileDrawer extends StatelessWidget {
   final String _draerTitleAppName = 'Scouting App';

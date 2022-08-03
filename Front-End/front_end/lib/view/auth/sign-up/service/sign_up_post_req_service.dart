@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/view/auth/sign-up/model/sign_up_response_body_model.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/view/auth/sign-up/model/sign_up_response_body_model.dart';
 
 const String url = "http://localhost:8080/api/employer/add";
 postReqSignUp(String email, String password, String corporationName,

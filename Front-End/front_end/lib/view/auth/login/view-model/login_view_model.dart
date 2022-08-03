@@ -1,11 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_error.dart';
-import 'package:scouting_app/core/base/widget/snack-bar/snack_bar_success.dart';
-import 'package:scouting_app/view/app/home/view/home_view.dart';
-import 'package:scouting_app/view/auth/login/model/login_model.dart';
-import 'package:scouting_app/view/auth/login/service/login_post_req_service.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
+import 'package:front_end/core/base/widget/snack-bar/snack_bar_success.dart';
+import 'package:front_end/view/app/home/view/home_view.dart';
+import 'package:front_end/view/auth/login/model/login_model.dart';
+import 'package:front_end/view/auth/login/service/login_post_req_service.dart';
 
 final LoginModel _user = LoginModel();
 

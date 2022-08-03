@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/state/base_state.dart';
-import 'package:scouting_app/core/base/widget/app-bar/app_bar.dart';
+import 'package:front_end/core/base/state/base_state.dart';
+import 'package:front_end/core/base/widget/app-bar/app_bar.dart';
 
 class HelpView extends StatefulWidget {
   const HelpView({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:scouting_app/view/other/user-get/model/user_get_model.dart';
+import 'package:front_end/view/other/user-get/model/user_get_model.dart';
 
 abstract class IUserGetService {
   IUserGetService(this.dio);

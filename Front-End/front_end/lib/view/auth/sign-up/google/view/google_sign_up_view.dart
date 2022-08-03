@@ -1,10 +1,10 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/state/base_state.dart';
-import 'package:scouting_app/core/base/widget/app-bar/app_bar.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/auth/sign-up/view-model/sign_up_view_model.dart';
+import 'package:front_end/core/base/state/base_state.dart';
+import 'package:front_end/core/base/widget/app-bar/app_bar.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/auth/sign-up/view-model/sign_up_view_model.dart';
 
 class GoogleSignUpView extends StatefulWidget {
   const GoogleSignUpView({Key? key}) : super(key: key);

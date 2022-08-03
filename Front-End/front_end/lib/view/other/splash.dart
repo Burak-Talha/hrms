@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/state/base_state.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/auth/login/view/login_view.dart';
+import 'package:front_end/core/base/state/base_state.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/auth/login/view/login_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

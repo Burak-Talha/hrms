@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scouting_app/core/base/widget/app-bar/app_bar.dart';
-import 'package:scouting_app/core/constants/constants.dart';
-import 'package:scouting_app/view/other/user-get/view-model/user_get_view_model.dart';
+import 'package:front_end/core/base/widget/app-bar/app_bar.dart';
+import 'package:front_end/core/constants/constants.dart';
+import 'package:front_end/view/other/user-get/view-model/user_get_view_model.dart';
 
 class UserGetView extends StatefulWidget {
   const UserGetView({Key? key}) : super(key: key);
