@@ -1,21 +1,12 @@
 package com.example.hrms.api.controller;
 
-import java.util.List;
-
-import com.example.hrms.business.concretes.EmployerManager;
-import com.example.hrms.core.login.LoginManager;
 import com.example.hrms.core.utilities.results.DataResult.DataResult;
 import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.Result;
-import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
+import com.example.hrms.entities.concretes.dtos.concretes.EmployerLoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.hrms.business.abstracts.EmployerService;
 import com.example.hrms.business.abstracts.JobAdvertisementService;
@@ -40,7 +31,22 @@ public class EmployerController {
 	public Result add(@RequestBody Employer employee) {
 		return employerService.add(employee);
 	}
-	
+
+	@PutMapping("update/{email}")
+	public Result update(@RequestBody Employer employer, @PathVariable("email") String email){
+		return employerService.update(employer, email);
+	}
+
+	@PatchMapping("update/criticalinfo/{email}")
+	public Result updateCricitalInfo(@RequestBody EmployerLoginDto employerLoginDto, @PathVariable("email") String email){
+		return employerService.updateCriticalInfo(employerLoginDto, email);
+	}
+
+	@GetMapping("getinfo")
+	public EmployerLoginDto getEmployerLoginDto(){
+		return new EmployerLoginDto("asdsad", "gldnfgnl");
+	}
+
 	// Working 16/11/21
 	@GetMapping("getall")
 	public DataResults<Employer> getAll(){
@@ -53,7 +59,7 @@ public class EmployerController {
 		jobAdvertisementService.add(jobAdvertisement);
 	}
 	
-	@PostMapping("updateadvertisement")
+	@PutMapping("updateadvertisement")
 	public void updateAdvertisement(@RequestBody JobAdvertisement jobAdvertisement) {
 		jobAdvertisementService.update(jobAdvertisement);
 	}
@@ -77,7 +83,7 @@ public class EmployerController {
 	}
 
 	@PostMapping("login")
-	public DataResult<Employer> login(@RequestBody EmployerDto employerDto){
+	public DataResult<Employer> login(@RequestBody EmployerLoginDto employerDto){
 		return employerService.login(employerDto);
 	}
 
