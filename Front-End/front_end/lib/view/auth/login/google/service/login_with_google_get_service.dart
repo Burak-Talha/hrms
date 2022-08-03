@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:front_end/core/base/widget/snack-bar/snack_bar_error.dart';
 import 'package:front_end/view/auth/login/google/model/google_login_model.dart';
 
-const String url = "http://localhost:8080/api/employer/google-login";
+const String url = "http://localhost:8080/api/employer/google-login-result";
 
 const String _errorMessageReqFailed = 'Request Failed';
 

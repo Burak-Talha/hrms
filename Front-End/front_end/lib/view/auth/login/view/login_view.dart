@@ -11,6 +11,7 @@ import 'package:front_end/view/auth/login/model/login_model.dart';
 
 import 'package:front_end/view/auth/login/view-model/login_view_model.dart';
 import 'package:front_end/view/auth/sign-up/view/sign_up_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -118,8 +119,7 @@ class _LoginViewState extends BaseState<LoginView> {
         ),
         InkWell(
           onTap: () async {
-            await loginGoogleLaunchUrl(context);
-            print(await getReqGoogleLogin(context));
+            await getReqGoogleLogin(context);
           },
           child: Container(
             width: dynamicWidth(0.85),
