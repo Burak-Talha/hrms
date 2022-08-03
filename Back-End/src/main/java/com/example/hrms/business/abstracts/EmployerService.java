@@ -15,8 +15,13 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 public interface EmployerService {
 
  DataResult<Employer> login(EmployerDto employerDto);
- DataResult<Employer> googleLogin(Map<String, Object> googleUser);
+ boolean googleLogin(Map<String, Object> googleUser);
+ DataResult<Employer> getGoogleLoginResult();
+ void googleLogout();
+ void logout();
  Result add(Employer employee);
  DataResults<Employer> getAll();
+
+ public String getMail();
 
 }

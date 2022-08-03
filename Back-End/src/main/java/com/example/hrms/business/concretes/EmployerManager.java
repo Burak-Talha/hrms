@@ -1,6 +1,7 @@
 package com.example.hrms.business.concretes;
 
 
+import com.example.hrms.core.GoogleEmployerLoginPremonitory;
 import com.example.hrms.core.login.LoginManager;
 import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.core.utilities.results.DataResult.DataResult;
@@ -32,11 +33,13 @@ public class EmployerManager implements EmployerService {
 
 	private final EmployerDao employerDao;
 	private LoginManager loginManager;
+	private GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory;
 	
 	@Autowired
-	public EmployerManager(EmployerDao employeeDao, LoginManager loginManager) {
+	public EmployerManager(EmployerDao employeeDao, LoginManager loginManager, GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory) {
 		this.employerDao = employeeDao;
 		this.loginManager = loginManager;
+		this.googleEmployerLoginPremonitory = googleEmployerLoginPremonitory;
 	}
 
 
@@ -50,14 +53,27 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
-	public DataResult<Employer> googleLogin(Map<String, Object> googleUser) {
+	public boolean googleLogin(Map<String, Object> googleUser) {
 			if(loginManager.googleLogin(googleUser, employerDao) == true){
 				employer = employerDao.findByEmail(loginManager.getServiceMail());
-				return new SuccessDataResult<Employer>(employer, "Google Login transaction generated successfully");
+				googleEmployerLoginPremonitory.setEmployerDataResult(new SuccessDataResult<Employer>(employer, "Google Login transaction generated successfully"));
+				return true;
 			}
-		return new ErrorDataResult("Fail google auth");
+			googleEmployerLoginPremonitory.setEmployerDataResult(new ErrorDataResult("Fail google auth"));
+			return false;
 	}
 
+	@Override
+	public DataResult<Employer> getGoogleLoginResult() {
+		return googleEmployerLoginPremonitory.getEmployerDataResult();
+	}
+
+	@Override
+	public void logout() {
+		loginManager.logout();
+	}
+
+	public void googleLogout(){loginManager.googleLogout();}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
@@ -76,6 +92,11 @@ public class EmployerManager implements EmployerService {
 			return new ErrorDataResults();
 		}
 		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
+	}
+
+	@Override
+	public String getMail() {
+		return loginManager.getServiceMail();
 	}
 
 }

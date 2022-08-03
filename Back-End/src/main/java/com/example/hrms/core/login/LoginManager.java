@@ -1,6 +1,7 @@
 package com.example.hrms.core.login;
 
 
+import com.example.hrms.core.GoogleEmployerLoginPremonitory;
 import com.example.hrms.core.dataAccess.UserDao;
 import com.example.hrms.core.entity.User;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.util.Map;
 @RequestScope
 public class LoginManager{
     private LoggedManagementService loggedManagementService;
+    private GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory;
     private String password;
     private String email;
 
@@ -39,6 +41,13 @@ public class LoginManager{
         return false;
     }
 
+    public void logout(){
+        loggedManagementService.setEmail(null);
+    }
+
+    public void googleLogout(){
+        googleEmployerLoginPremonitory.setEmployerDataResult(null);
+    }
     public String getServiceMail(){
         return loggedManagementService.getEmail();
     }

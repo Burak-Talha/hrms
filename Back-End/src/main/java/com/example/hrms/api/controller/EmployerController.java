@@ -57,6 +57,19 @@ public class EmployerController {
 	public void updateAdvertisement(@RequestBody JobAdvertisement jobAdvertisement) {
 		jobAdvertisementService.update(jobAdvertisement);
 	}
+
+	@GetMapping("logout")
+	public void logout(){
+		employerService.logout();
+	}
+
+	@GetMapping("google-logout")
+	public void googleLogout(){employerService.googleLogout();}
+
+	@GetMapping("mail")
+	public String getMail(){
+		return employerService.getMail();
+	}
 	
 	@GetMapping("getadvertisement/{id}")
 	public JobAdvertisement getAdvertisement(@PathVariable("id") int id) {
@@ -69,8 +82,13 @@ public class EmployerController {
 	}
 
 	@GetMapping("google-login")
-	public DataResult<Employer> googleLogin(OAuth2AuthenticationToken oAuth2AuthenticationToken){
+	public boolean googleLogin(OAuth2AuthenticationToken oAuth2AuthenticationToken){
 		return employerService.googleLogin(oAuth2AuthenticationToken.getPrincipal().getAttributes());
+	}
+
+	@GetMapping("google-login-result")
+	public DataResult<Employer> getGoogleLoginResult(){
+		return employerService.getGoogleLoginResult();
 	}
 
 	@PostMapping("register")
