@@ -20,6 +20,7 @@ public class EmployerController {
 	private final EmployerService employerService;
 	private JobAdvertisementService jobAdvertisementService;
 
+
 	@Autowired
 	public EmployerController(EmployerService employerService, JobAdvertisementService jobAdvertisementService) {
 		this.employerService = employerService;
@@ -69,9 +70,6 @@ public class EmployerController {
 		employerService.logout();
 	}
 
-	@GetMapping("google-logout")
-	public void googleLogout(){employerService.googleLogout();}
-
 	@GetMapping("mail")
 	public String getMail(){
 		return employerService.getMail();
@@ -83,7 +81,7 @@ public class EmployerController {
 	}
 
 	@PostMapping("login")
-	public DataResult<Employer> login(@RequestBody EmployerLoginDto employerDto){
+	public boolean login(@RequestBody EmployerLoginDto employerDto){
 		return employerService.login(employerDto);
 	}
 
@@ -92,6 +90,10 @@ public class EmployerController {
 		return employerService.googleLogin(oAuth2AuthenticationToken.getPrincipal().getAttributes());
 	}
 
+	@GetMapping("login-result")
+	public DataResult<Employer> getLoginResult(){
+		return employerService.getLoginResult();
+	}
 	@GetMapping("google-login-result")
 	public DataResult<Employer> getGoogleLoginResult(){
 		return employerService.getGoogleLoginResult();

@@ -1,6 +1,7 @@
 package com.example.hrms.business.concretes;
 
 
+import com.example.hrms.core.EmployerLoginPremonitory;
 import com.example.hrms.core.GoogleEmployerLoginPremonitory;
 import com.example.hrms.core.login.LoginManager;
 import com.example.hrms.core.utilities.results.*;
@@ -13,6 +14,8 @@ import com.example.hrms.core.utilities.results.DataResults.SuccessDataResults;
 import com.example.hrms.entities.concretes.dtos.concretes.EmployerLoginDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -30,35 +33,43 @@ import java.util.Map;
 public class EmployerManager implements EmployerService {
 
 	Employer employer;
+	Authentication authentication;
 
 	private final EmployerDao employerDao;
 	private LoginManager loginManager;
+	private AuthenticationManager authenticationManager;
 	private GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory;
-
+	private EmployerLoginPremonitory employerLoginPremonitory;
+	private boolean isRememberMeOn;
 	@Autowired
-	public EmployerManager(EmployerDao employerDao, LoginManager loginManager, GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory) {
+	public EmployerManager(EmployerDao employerDao, Authentication authentication, LoginManager loginManager, GoogleEmployerLoginPremonitory googleEmployerLoginPremonitory, EmployerLoginPremonitory employerLoginPremonitory, AuthenticationManager authenticationManager) {
 		this.employerDao = employerDao;
 		this.loginManager = loginManager;
 		this.googleEmployerLoginPremonitory = googleEmployerLoginPremonitory;
+		this.employerLoginPremonitory = employerLoginPremonitory;
+		this.authenticationManager = authenticationManager;
+		this.authentication = authentication;
 	}
 
+
+
+
+
 	@Override
-	public DataResult<Employer> login(EmployerLoginDto employerDto) {
+	public boolean login(EmployerLoginDto employerDto) {
+		System.out.println(this.isRememberMeOn);
 		if(loginManager.login(employerDto, employerDao) == true){
-			employer = employerDao.findByEmail(employerDto.getEmail());
-			return new SuccessDataResult<Employer>(employer, "Kullanıcı eşleşti");
+			return true;
 		}
-		return new ErrorDataResult("Kullanıcı eşleşemedi");
+		employerLoginPremonitory.setEmployerDataResult(new ErrorDataResult("Fail auth"));
+		return false;
 	}
 
 	@Override
 	public boolean googleLogin(Map<String, Object> googleUser) {
 			if(loginManager.googleLogin(googleUser, employerDao) == true){
-				employer = employerDao.findByEmail(loginManager.getServiceMail());
-				googleEmployerLoginPremonitory.setEmployerDataResult(new SuccessDataResult<Employer>(employer, "Google Login transaction generated successfully"));
 				return true;
 			}
-			googleEmployerLoginPremonitory.setEmployerDataResult(new ErrorDataResult("Fail google auth"));
 			return false;
 	}
 
@@ -68,11 +79,16 @@ public class EmployerManager implements EmployerService {
 	}
 
 	@Override
+	public DataResult<Employer> getLoginResult() {
+		return employerLoginPremonitory.getEmployerDataResult();
+	}
+
+
+	@Override
 	public void logout() {
 		loginManager.logout();
 	}
 
-	public void googleLogout(){loginManager.googleLogout();}
 
 	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override

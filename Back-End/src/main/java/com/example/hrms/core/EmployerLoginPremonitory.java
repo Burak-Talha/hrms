@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 
 @Data
 @Service
-public class GoogleEmployerLoginPremonitory {
+public class EmployerLoginPremonitory {
     DataResult<Employer> employerDataResult;
 }

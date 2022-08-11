@@ -10,10 +10,10 @@ import com.example.hrms.entities.concretes.dtos.concretes.EmployerLoginDto;
 
 public interface EmployerService {
 
- DataResult<Employer> login(EmployerLoginDto employerDto);
+ boolean login(EmployerLoginDto employerDto);
  boolean googleLogin(Map<String, Object> googleUser);
  DataResult<Employer> getGoogleLoginResult();
- void googleLogout();
+ DataResult<Employer> getLoginResult();
  void logout();
  Result add(Employer employee);
  Result update(Employer employer, String email);
