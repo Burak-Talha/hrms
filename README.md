@@ -7,3 +7,8 @@ HRMS is education-based project. We are including with the new technologies to t
 - Spring Web
 - Spring Session
 - Oauth2 Client
+
+## Front-End (Dart)
+- Flutter (Web, Mobile, Desktop)
+- dio
+- google_fonts
