@@ -42,11 +42,6 @@ public class Employer {
 	@Column(name="email")
 	private String email;
 
-	@NotNull
-	@Size(max = 100)
-	@Column(name="password")
-	private String password;
-
 	@LastModifiedDate
 	@Column(name="lastModifiedDate")
 	Date lastModifiedDate;
@@ -85,14 +80,6 @@ public class Employer {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 }

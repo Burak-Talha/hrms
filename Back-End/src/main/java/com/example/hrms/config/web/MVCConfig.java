@@ -1,4 +1,4 @@
-package com.example.hrms.config.security;
+package com.example.hrms.config.web;
 
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
