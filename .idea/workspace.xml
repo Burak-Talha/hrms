@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back-End/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Back-End/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Front-End/front_end/windows/flutter/generated_plugins.cmake" afterDir="false" />
-    </list>
+    <list default="true" id="d047e66a-0969-4970-a713-5d1dba5baf81" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,12 +61,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Back-End" />
+  </component>
   <component name="RunManager" selected="Application.HrmsApplication">
     <configuration name="HrmsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
@@ -102,6 +92,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.HrmsApplication" />
+      <item itemvalue="Spring Boot.Unnamed" />
     </list>
     <recent_temporary>
       <list>
@@ -125,6 +116,7 @@
       <workItem from="1651930440411" duration="18000" />
       <workItem from="1654288561897" duration="11000" />
       <workItem from="1654720696868" duration="108000" />
+      <workItem from="1662671667632" duration="40000" />
     </task>
     <servers />
   </component>

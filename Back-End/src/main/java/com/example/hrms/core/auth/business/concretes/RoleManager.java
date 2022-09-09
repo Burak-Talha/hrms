@@ -48,11 +48,11 @@ public class RoleManager implements RoleService {
         if (userDetailsDao.getUserDetailsByEmail(email) == null) {
             return new ErrorResult("User not found");
         }
-
+/*
         if(userDetailsDao.getUserDetailsByEmail(email).getRoles().contains(ApplicationUserRole.USER.name())){
             return new ErrorResult("User already has user role");
         }
-
+*/
         UserDetails userDetails = userDetailsDao.getUserDetailsByEmail(email);
         userDetails.setRoles(userDetails.getRoles() + "," + ApplicationUserRole.USER.name());
         userDetailsDao.save(userDetails);

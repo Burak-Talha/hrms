@@ -1,4 +1,4 @@
-package com.example.hrms.entities.concretes.dtos.concretes;
+package com.example.hrms.entities.dtos.concretes;
 
 import com.example.hrms.entities.concretes.Employer;
 

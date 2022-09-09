@@ -17,8 +17,6 @@ import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Data
 @Entity
 @Table(name="employer")
