@@ -1,6 +1,9 @@
-package com.example.hrms.core.auth.config;
+package com.example.hrms.core.security.config;
 
-import com.example.hrms.core.auth.entity.ApplicationUserRole;
+import com.example.hrms.core.security.entity.ApplicationUserRole;
+import com.example.hrms.core.security.filters.AuthenticationFilter;
+import com.example.hrms.core.security.jwt.TokenManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
@@ -18,7 +21,12 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private TokenManager tokenManager;
 
+    @Autowired
+    public ApplicationSecurityConfig(TokenManager tokenManager) {
+        this.tokenManager = tokenManager;
+    }
 
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
@@ -28,12 +36,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
+        AuthenticationFilter customAuthenticationFilter = new AuthenticationFilter(authenticationManagerBean());
+        customAuthenticationFilter.setFilterProcessesUrl("/auth/login");
         httpSecurity.cors().and().csrf().disable();
         httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/auth/getall").hasAuthority(ApplicationUserRole.ADMIN.name());
         httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.POST, "/auth/login").permitAll();
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasRole(ApplicationUserRole.ADMIN.name());
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasAuthority(ApplicationUserRole.ADMIN.name());
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasAuthority("ROLE_"+ApplicationUserRole.ADMIN.name());
+        httpSecurity.addFilter(customAuthenticationFilter);
     }
 
     @Order(1)

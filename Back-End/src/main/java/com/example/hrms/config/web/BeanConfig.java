@@ -1,7 +1,7 @@
 package com.example.hrms.config.web;
 
-import com.example.hrms.core.auth.entity.UserDetails;
-import com.example.hrms.core.auth.jwt.JWTToken;
+import com.example.hrms.core.security.entity.UserDetails;
+import com.example.hrms.core.security.jwt.JWTToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,10 +12,9 @@ public class BeanConfig {
     public UserDetails getUserDetails(){
         return new UserDetails();
     }
-
-
     @Bean
     public JWTToken getJwtToken(){
         return new JWTToken();
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.hrms.core.auth.jwt;
+package com.example.hrms.core.security.jwt;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,9 +1,9 @@
 package com.example.hrms.business.concretes;
 
-import com.example.hrms.core.auth.business.abstracts.LoginAndRoleService;
-import com.example.hrms.core.auth.business.abstracts.RoleService;
-import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
-import com.example.hrms.core.auth.entity.UserDetails;
+import com.example.hrms.core.security.business.abstracts.LoginAndRoleService;
+import com.example.hrms.core.security.business.abstracts.RoleService;
+import com.example.hrms.core.security.dataAccess.UserDetailsDao;
+import com.example.hrms.core.security.entity.UserDetails;
 import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.DataResults.ErrorDataResults;
@@ -27,15 +27,13 @@ public class EmployerManager implements EmployerService {
 	EmployerDao employerDao;
 	UserDetailsDao userDetailsDao;
 	RoleService roleService;
-	LoginAndRoleService loginAndRoleService;
 	PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, LoginAndRoleService loginAndRoleService, PasswordEncoder passwordEncoder) {
+	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, PasswordEncoder passwordEncoder) {
 		this.employerDao = employerDao;
 		this.userDetailsDao = userDetailsDao;
 		this.roleService = roleService;
-		this.loginAndRoleService = loginAndRoleService;
 		this.passwordEncoder = passwordEncoder;
 	}
 
@@ -83,7 +81,7 @@ public class EmployerManager implements EmployerService {
 		if(employers.isEmpty()){
 			return new ErrorDataResults();
 		}
-		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
+		return new SuccessDataResults<>(employers, "All employers listed");
 	}
 
 }

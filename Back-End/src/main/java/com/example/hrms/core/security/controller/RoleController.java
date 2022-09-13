@@ -1,6 +1,6 @@
-package com.example.hrms.core.auth.controller;
+package com.example.hrms.core.security.controller;
 
-import com.example.hrms.core.auth.business.abstracts.RoleService;
+import com.example.hrms.core.security.business.abstracts.RoleService;
 import com.example.hrms.core.utilities.results.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.example.hrms.core.auth.business.abstracts;
+package com.example.hrms.core.security.business.abstracts;
 
 import com.example.hrms.core.utilities.results.Result;
 

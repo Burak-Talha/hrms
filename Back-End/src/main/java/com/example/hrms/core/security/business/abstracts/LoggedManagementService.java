@@ -1,7 +1,7 @@
-package com.example.hrms.core.auth.business.abstracts;
+package com.example.hrms.core.security.business.abstracts;
 
 
-import com.example.hrms.core.auth.entity.UserDetails;
+import com.example.hrms.core.security.entity.UserDetails;
 
 public interface LoggedManagementService {
 
