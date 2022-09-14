@@ -1,6 +1,6 @@
-package com.example.hrms.core.security.dataAccess;
+package com.example.hrms.core.auth.dataAccess;
 
-import com.example.hrms.core.security.entity.UserDetails;
+import com.example.hrms.core.auth.entity.UserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.example.hrms.core.security.entity;
+package com.example.hrms.core.auth.entity;
 
 import com.google.common.collect.Sets;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,9 +1,9 @@
 package com.example.hrms.business.concretes;
 
-import com.example.hrms.core.security.business.abstracts.LoginAndRoleService;
-import com.example.hrms.core.security.business.abstracts.RoleService;
-import com.example.hrms.core.security.dataAccess.UserDetailsDao;
-import com.example.hrms.core.security.entity.UserDetails;
+import com.example.hrms.core.auth.business.abstracts.LoginAndRoleService;
+import com.example.hrms.core.auth.business.abstracts.RoleService;
+import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
+import com.example.hrms.core.auth.entity.UserDetails;
 import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.DataResults.ErrorDataResults;
@@ -27,20 +27,21 @@ public class EmployerManager implements EmployerService {
 	EmployerDao employerDao;
 	UserDetailsDao userDetailsDao;
 	RoleService roleService;
+	LoginAndRoleService loginAndRoleService;
 	PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, PasswordEncoder passwordEncoder) {
+	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, LoginAndRoleService loginAndRoleService, PasswordEncoder passwordEncoder) {
 		this.employerDao = employerDao;
 		this.userDetailsDao = userDetailsDao;
 		this.roleService = roleService;
+		this.loginAndRoleService = loginAndRoleService;
 		this.passwordEncoder = passwordEncoder;
 	}
 
 	@Resource
 	UserDetails userDetails;
 
-	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
 	public Result add(EmployerRegistryDTO registryDTO) {
 		if(registryDTO.getPassword().length() >= 8 && registryDTO.getEmployer().getEmail().length() >= 8) {
@@ -48,10 +49,14 @@ public class EmployerManager implements EmployerService {
 			userDetails.setEmail(registryDTO.getEmployer().getEmail());
 			userDetails.setEnabled(true);
 			userDetails.setPassword(passwordEncoder.encode(registryDTO.getPassword()));
+
+			System.out.println(userDetails.getEmail());
+			System.out.println(userDetails.getPassword());
 			employerDao.save(registryDTO.getEmployer());
 			userDetailsDao.save(userDetails);
 			roleService.addUSERRoleToUserDetailsByEmail(userDetails.getEmail());
-			return new SuccessResult( "The register transaction completed successfully");
+
+			return new SuccessResult("The register transaction completed successfully");
 		}
 			return new ErrorResult("Your password length should be bigger than 8 character");
 	}
@@ -81,7 +86,7 @@ public class EmployerManager implements EmployerService {
 		if(employers.isEmpty()){
 			return new ErrorDataResults();
 		}
-		return new SuccessDataResults<>(employers, "All employers listed");
+		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
 	}
 
 }

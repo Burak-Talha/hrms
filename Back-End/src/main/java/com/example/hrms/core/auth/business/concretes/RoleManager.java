@@ -1,9 +1,9 @@
-package com.example.hrms.core.security.business.concretes;
+package com.example.hrms.core.auth.business.concretes;
 
-import com.example.hrms.core.security.business.abstracts.RoleService;
-import com.example.hrms.core.security.dataAccess.UserDetailsDao;
-import com.example.hrms.core.security.entity.ApplicationUserRole;
-import com.example.hrms.core.security.entity.UserDetails;
+import com.example.hrms.core.auth.business.abstracts.RoleService;
+import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
+import com.example.hrms.core.auth.entity.ApplicationUserRole;
+import com.example.hrms.core.auth.entity.UserDetails;
 import com.example.hrms.core.utilities.results.ErrorResult;
 import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.core.utilities.results.SuccessResult;

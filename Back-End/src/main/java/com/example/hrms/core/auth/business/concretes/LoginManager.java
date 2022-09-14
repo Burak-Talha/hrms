@@ -50,31 +50,21 @@ public class LoginManager implements LoginAndRoleService, UserDetailsService {
     }
 
     @Override
-    public Result login(UserLoginDTO userLoginDTO, HttpServletRequest req) {
+    public Authentication login(UserLoginDTO userLoginDTO, HttpServletRequest req) throws Exception {
         UserDetails userDetails = userDetailsDao.getUserDetailsByEmail(userLoginDTO.getEmail());
 
-        if(userDetails == null) {
-            return new ErrorResult("User not found");
+        if(userDetails == null){
+            throw new Exception("User no found");
         }
-        if(userLoginDTO.getEmail() == null || userLoginDTO.getPassword() == null) {
-            return new ErrorResult("Username and password are required");
-        }
+
         userDetails.setGrantedAuthorities(userDetails.getGrantedAuthorities());
         userDetails.setPassword(passwordEncoder.encode(userLoginDTO.getPassword()));
-
 
         UsernamePasswordAuthenticationToken authReq
                 = new UsernamePasswordAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword());
         Authentication auth = authenticationManager.authenticate(authReq);
-
-        SecurityContext sc = SecurityContextHolder.getContext();
-        sc.setAuthentication(auth);
-        HttpSession session = req.getSession(true);
-        session.setAttribute(SPRING_SECURITY_CONTEXT_KEY, sc);
-
-        jwtToken = tokenService.generateAuthenticationToken(userLoginDTO.getEmail(), userLoginDTO.getPassword());
-
-        return new SuccessDataResult(jwtToken, "The JWT Token generated successfully! | Session time :"+ tokenService.getValidity()+ "minute");
+        
+        return authReq;
     }
 
     @Override

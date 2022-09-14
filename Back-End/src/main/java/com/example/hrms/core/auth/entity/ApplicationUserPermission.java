@@ -1,4 +1,4 @@
-package com.example.hrms.core.security.entity;
+package com.example.hrms.core.auth.entity;
 
 public enum ApplicationUserPermission {
         STUDENT_READ("student:read"),

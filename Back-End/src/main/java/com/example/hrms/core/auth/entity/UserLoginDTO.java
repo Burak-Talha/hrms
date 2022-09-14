@@ -1,4 +1,4 @@
-package com.example.hrms.core.security.entity;
+package com.example.hrms.core.auth.entity;
 
 
 public record UserLoginDTO(String email, String password){

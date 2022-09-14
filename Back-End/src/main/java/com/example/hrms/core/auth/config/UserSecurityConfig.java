@@ -1,4 +1,4 @@
-package com.example.hrms.core.security.config;
+package com.example.hrms.core.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
