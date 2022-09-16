@@ -9,12 +9,6 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfig {
 
     @Bean
-    public UserDetails getUserDetails(){
-        return new UserDetails();
-    }
-
-
-    @Bean
     public JWTToken getJwtToken(){
         return new JWTToken();
     }

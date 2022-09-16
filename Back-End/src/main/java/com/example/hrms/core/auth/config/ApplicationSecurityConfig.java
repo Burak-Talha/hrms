@@ -1,15 +1,25 @@
 package com.example.hrms.core.auth.config;
 
+import com.example.hrms.core.auth.business.abstracts.LoginAndRoleService;
+import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
 import com.example.hrms.core.auth.entity.ApplicationUserRole;
+import com.example.hrms.core.auth.filters.JwtAuthenticationFilter;
+import com.example.hrms.core.auth.filters.JwtAuthorizationFilter;
+import com.example.hrms.core.auth.jwt.TokenManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -20,7 +30,18 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private LoginAndRoleService loginAndRoleService;
+    private UserDetailsDao userDetailsDao;
+    private PasswordEncoder passwordEncoder;
+    private TokenManager tokenManager;
 
+    @Autowired
+    public ApplicationSecurityConfig(LoginAndRoleService loginAndRoleService, UserDetailsDao userDetailsDao, PasswordEncoder passwordEncoder, TokenManager tokenManager) {
+        this.loginAndRoleService = loginAndRoleService;
+        this.userDetailsDao = userDetailsDao;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenManager = tokenManager;
+    }
 
     @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
     @Override
@@ -29,22 +50,36 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.cors().and().csrf().disable();
-        // httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/auth/getall").hasAuthority(ApplicationUserRole.ADMIN.name());
-        httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.POST, "/auth/login").permitAll();
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(authenticationManagerBean(), tokenManager);
+        JwtAuthorizationFilter jwtAuthorizationFilter = new JwtAuthorizationFilter(authenticationManagerBean(), tokenManager, userDetailsDao);
+        jwtAuthenticationFilter.setFilterProcessesUrl("/auth/login");
 
-         //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.POST, "/auth/logout").permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout")).logoutSuccessUrl("/auth/login");
-        // httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.POST, "/auth/logout").
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasRole(ApplicationUserRole.ADMIN.name());
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasAuthority(ApplicationUserRole.ADMIN.name());
-        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/getall").hasAuthority("ROLE_"+ApplicationUserRole.ADMIN.name());
+        httpSecurity.cors().and().csrf().disable();
+        httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.GET, "/api/employer/getall").hasAuthority(ApplicationUserRole.USER.name());
+        //httpSecurity.authorizeRequests().mvcMatchers(HttpMethod.POST, "/auth/login").permitAll();
+        httpSecurity.addFilter(jwtAuthenticationFilter);
+        httpSecurity.addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout")).logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true);
     }
-/*
+
     @Override
-    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder)throws Exception{
-        authenticationManagerBuilder.inMemoryAuthentication().withUser("admin").password("{noop}admin").roles(ApplicationUserRole.ADMIN.name());
-    }*/
+    protected void configure(AuthenticationManagerBuilder builder){
+        builder.authenticationProvider(authenticationProvider());
+    }
+
+    @Bean
+    DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
+        daoAuthenticationProvider.setUserDetailsService((UserDetailsService) this.loginAndRoleService);
+
+        return daoAuthenticationProvider;
+    }
+
 
     @Order(1)
     @Bean

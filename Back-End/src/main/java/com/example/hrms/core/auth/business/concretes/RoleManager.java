@@ -22,20 +22,20 @@ public class RoleManager implements RoleService {
 
     @Override
     public String getAuthoritiesByEmail(String email) {
-        return userDetailsDao.getUserDetailsByEmail(email).getRoles();
+        return userDetailsDao.findUserDetailsByEmail(email).getRoles();
     }
 
     @Override
     public Result addADMINRoleToUserDetailsByEmail(String email) {
-        if (userDetailsDao.getUserDetailsByEmail(email) == null) {
+        if (userDetailsDao.findUserDetailsByEmail(email) == null) {
             return new ErrorResult("User not found");
         }
 
-        if(userDetailsDao.getUserDetailsByEmail(email).getRoles().contains(ApplicationUserRole.ADMIN.name())){
+        if(userDetailsDao.findUserDetailsByEmail(email).getRoles().contains(ApplicationUserRole.ADMIN.name())){
             return new ErrorResult("User already has admin role");
         }
 
-        UserDetails userDetails = userDetailsDao.getUserDetailsByEmail(email);
+        UserDetails userDetails = userDetailsDao.findUserDetailsByEmail(email);
         userDetails.setRoles(userDetails.getRoles() + "," + ApplicationUserRole.ADMIN.name());
         userDetailsDao.save(userDetails);
 
@@ -45,7 +45,7 @@ public class RoleManager implements RoleService {
     @Override
     public Result addUSERRoleToUserDetailsByEmail(String email) {
 
-        if (userDetailsDao.getUserDetailsByEmail(email) == null) {
+        if (userDetailsDao.findUserDetailsByEmail(email) == null) {
             return new ErrorResult("User not found");
         }
 /*
@@ -53,7 +53,7 @@ public class RoleManager implements RoleService {
             return new ErrorResult("User already has user role");
         }
 */
-        UserDetails userDetails = userDetailsDao.getUserDetailsByEmail(email);
+        UserDetails userDetails = userDetailsDao.findUserDetailsByEmail(email);
         userDetails.setRoles(userDetails.getRoles() + "," + ApplicationUserRole.USER.name());
         userDetailsDao.save(userDetails);
 
@@ -62,7 +62,7 @@ public class RoleManager implements RoleService {
 
     @Override
     public Result deleteAuthorityFromUserDetailsByEmail(String email, String applicationUserRole) {
-        UserDetails userDetails = userDetailsDao.getUserDetailsByEmail(email);
+        UserDetails userDetails = userDetailsDao.findUserDetailsByEmail(email);
 
         if(userDetails == null){
             return new ErrorResult("User not found");

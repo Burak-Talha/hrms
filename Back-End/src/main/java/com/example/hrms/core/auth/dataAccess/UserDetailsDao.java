@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface UserDetailsDao extends JpaRepository<UserDetails, Integer> {
     List<UserDetails> getAuthoritiesByEmail(String email);
-    UserDetails getUserDetailsByEmail(String email);
+    UserDetails findUserDetailsByEmail(String email);
     UserDetails findUserDetailsByEmailAndPassword(String email, String password);
 }

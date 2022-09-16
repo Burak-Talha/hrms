@@ -27,15 +27,13 @@ public class EmployerManager implements EmployerService {
 	EmployerDao employerDao;
 	UserDetailsDao userDetailsDao;
 	RoleService roleService;
-	LoginAndRoleService loginAndRoleService;
 	PasswordEncoder passwordEncoder;
 
 	@Autowired
-	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, LoginAndRoleService loginAndRoleService, PasswordEncoder passwordEncoder) {
+	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, PasswordEncoder passwordEncoder) {
 		this.employerDao = employerDao;
 		this.userDetailsDao = userDetailsDao;
 		this.roleService = roleService;
-		this.loginAndRoleService = loginAndRoleService;
 		this.passwordEncoder = passwordEncoder;
 	}
 

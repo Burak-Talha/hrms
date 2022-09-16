@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface LoginAndRoleService {
 
-    Authentication login(UserLoginDTO userLoginDTO, HttpServletRequest req) throws Exception;
-    UserDetails loadUserByUsername(String username);
+/*    Authentication login(UserLoginDTO userLoginDTO, HttpServletRequest req) throws Exception;
+    UserDetails loadUserByUsername(String username);*/
     Result logout();
 
 }
