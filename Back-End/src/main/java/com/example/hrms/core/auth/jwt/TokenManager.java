@@ -3,14 +3,11 @@ package com.example.hrms.core.auth.jwt;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.hrms.core.utilities.results.Result;
 import com.example.hrms.core.utilities.results.SuccessResult;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import java.security.Key;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +60,8 @@ public class TokenManager implements TokenService {
 
     public String generateAuthenticationToken(String email, int validMinute){
         String token = generateToken(validMinute, email);
+        jwtToken.setToken(token);
+        jwtDao.save(jwtToken);
         return token;
     }
 
@@ -81,13 +80,20 @@ public class TokenManager implements TokenService {
     }
 
     public boolean tokenValidate(String token) {
-        if (getUsernameToken(token) != null && isExpired(token) && jwtDao.getJWTTokenByToken(token) != null) {
+        if (getSubject(token) != null && jwtDao.getJWTTokenByToken(token) != null) {
             return true;
         }
         return false;
     }
 
-    public String getUsernameToken(String token) {
+   /* public boolean tokenValidate(String token) {
+        if (getSubject(token) != null && isExpired(token) && jwtDao.getJWTTokenByToken(token) != null) {
+            return true;
+        }
+        return false;
+    }*/
+
+/*    public String getUsernameToken(String token) {
         Claims claims = getClaims(token);
         return claims.getSubject();
     }
@@ -130,12 +136,12 @@ public class TokenManager implements TokenService {
             return true;
         }
         return false;
-    }
+    }*/
 
-    public Claims getClaims(String token) {
+    public Claim getClaims(String token) {
         JWTVerifier verifier = JWT.require(Algorithm.HMAC256(JwtProperties.SECRET.getBytes())).build();
         DecodedJWT decodedJWT = verifier.verify(token);
-        return (Claims) decodedJWT.getClaim(token);
+        return  decodedJWT.getClaim(token);
     }
 
     public String getSubject(String token){

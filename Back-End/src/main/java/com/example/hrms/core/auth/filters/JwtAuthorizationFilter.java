@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -45,7 +46,12 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         Authentication authentication = getUsernamePasswordAuthentication(request, response);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        Authentication targetAuthentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // dont insert same instances
+        if(authentication != targetAuthentication) {
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
 
         // Continue filter execution
         filterChain.doFilter(request, response);
@@ -69,13 +75,13 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
                 String email = tokenManager.getSubject(authenticationToken);
 
-                if (tokenManager.shouldRefreshForAuthentication(authenticationToken, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE)) {
+                /*if (tokenManager.shouldRefreshForAuthentication(authenticationToken, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE)) {
                     httpServletResponse.setHeader(JwtProperties.AUTHENTICATION_HEADER_STRING, tokenManager.generateAuthenticationToken(email, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE));
                 }
 
                 if (tokenManager.shouldRefreshForAuthorization(authorizationToken, JwtProperties.AUTHORIZATON_EXPIRATION_MINUTE)) {
                     httpServletResponse.setHeader(JwtProperties.AUTHORIZATION_HEADER_STRING, tokenManager.generateAuthorizationToken(email, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE));
-                }
+                }*/
 
                 if (email != null) {
                     try {
