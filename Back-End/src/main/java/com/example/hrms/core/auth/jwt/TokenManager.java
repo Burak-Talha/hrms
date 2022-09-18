@@ -39,10 +39,8 @@ public class TokenManager implements TokenService {
 
     public String generateAuthenticationToken(String email, int validMinute){
         String token = generateToken(validMinute, email);
-        // turn into null
+
         if(jwtDao.getJWTTokenByEmail(email) == null) {
-            // Cannot invoke "com.example.hrms.core.auth.jwt.JWTToken.setEmail(String)" because "this.jwtToken" is null
-            // solve jwt token null problem
             jwtToken.setEmail(email);
             jwtToken.setAbsoluteExpireDate(new Date(date.getYear(), date.getMonth(), date.getDay() + 15));
             jwtDao.save(jwtToken);
@@ -75,8 +73,13 @@ public class TokenManager implements TokenService {
         JWTToken jwtToken = jwtDao.getJWTTokenByEmail(decodedJWT.getSubject());
 
         // Expiration Time - Current time
-        double leftMinutes = jwtToken.getAbsoluteExpireDate().getTime() * JwtProperties.MILLISECONDS_TO_MINUTES - date.getTime() * JwtProperties.MILLISECONDS_TO_MINUTES;
-        if(leftMinutes <= 10 && leftMinutes <= -5){
+        double leftMinutesForAbsoluteTime = jwtToken.getAbsoluteExpireDate().getTime() * JwtProperties.MILLISECONDS_TO_MINUTES - date.getTime() * JwtProperties.MILLISECONDS_TO_MINUTES;
+        double leftMinutesForToken = decodedJWT.getExpiresAt().getTime() * JwtProperties.MILLISECONDS_TO_MINUTES - date.getTime() * JwtProperties.MILLISECONDS_TO_MINUTES;
+
+        boolean isAbsoluteExpireActive = leftMinutesForAbsoluteTime <= 10 && leftMinutesForAbsoluteTime <= -5;
+        boolean isTokenExpireActive = leftMinutesForToken <= 10 && leftMinutesForToken <= -5;
+
+        if(isTokenExpireActive && isAbsoluteExpireActive){
             return true;
         }
         return false;
