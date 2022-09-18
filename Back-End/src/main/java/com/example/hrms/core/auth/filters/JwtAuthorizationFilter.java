@@ -51,7 +51,10 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         // dont insert same instances
         if(authentication != targetAuthentication) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
+
         }
+        }
+
 
         // Continue filter execution
         filterChain.doFilter(request, response);
@@ -61,29 +64,22 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String authenticationToken = request.getHeader(JwtProperties.AUTHENTICATION_HEADER_STRING)
                 .replace(JwtProperties.TOKEN_PREFIX, "");
 
-        String authorizationToken = request.getHeader(JwtProperties.AUTHENTICATION_HEADER_STRING)
-                .replace(JwtProperties.TOKEN_PREFIX, "");
-
-        if (authenticationToken != null && authorizationToken != null) {
+        if (authenticationToken != null) {
             // parse the token and validate it
-
-
             // Search in the DB if we find the user by token subject (username)
             // If so, then grab user details and create spring auth token using username, pass, authorities/roles
 
-            if (tokenManager.tokenValidate(authenticationToken) && tokenManager.tokenValidate(authorizationToken)) {
+            if (tokenManager.tokenValidate(authenticationToken)) {
 
                 String email = tokenManager.getSubject(authenticationToken);
 
-                /*if (tokenManager.shouldRefreshForAuthentication(authenticationToken, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE)) {
+                // Need any new token?
+                if (tokenManager.shouldRefreshForAuthentication(authenticationToken)) {
                     httpServletResponse.setHeader(JwtProperties.AUTHENTICATION_HEADER_STRING, tokenManager.generateAuthenticationToken(email, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE));
                 }
 
-                if (tokenManager.shouldRefreshForAuthorization(authorizationToken, JwtProperties.AUTHORIZATON_EXPIRATION_MINUTE)) {
-                    httpServletResponse.setHeader(JwtProperties.AUTHORIZATION_HEADER_STRING, tokenManager.generateAuthorizationToken(email, JwtProperties.AUTHENTICATION_EXPIRATION_MINUTE));
-                }*/
-
-                if (email != null) {
+                // Check we have already this authentication
+                if (email == SecurityContextHolder.getContext().getAuthentication().getName()) {
                     try {
                         userDetails = userDetailsDao.findUserDetailsByEmail(email);
                     } catch (UsernameNotFoundException notFoundException) {

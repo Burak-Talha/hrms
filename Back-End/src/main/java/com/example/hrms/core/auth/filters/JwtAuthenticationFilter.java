@@ -50,9 +50,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         UserDetails userDetails = (UserDetails) authResult.getPrincipal();
         String authenticationToken = tokenManager.generateAuthenticationToken(userDetails.getEmail(), 720);
-        String authorizationToken = tokenManager.generateAuthorizationToken(userDetails.getEmail(), 720);
 
         response.addHeader(JwtProperties.AUTHENTICATION_HEADER_STRING, JwtProperties.TOKEN_PREFIX+authenticationToken);
-        response.addHeader(JwtProperties.AUTHORIZATION_HEADER_STRING, JwtProperties.TOKEN_PREFIX+authorizationToken);
+
     }
 }

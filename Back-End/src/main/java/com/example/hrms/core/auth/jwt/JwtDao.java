@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JwtDao extends JpaRepository<JWTToken, Integer> {
 
-    void deleteJWTTokenByToken(String token);
+    JWTToken getJWTTokenByEmail(String email);
 
-    JWTToken getJWTTokenByToken(String token);
 }

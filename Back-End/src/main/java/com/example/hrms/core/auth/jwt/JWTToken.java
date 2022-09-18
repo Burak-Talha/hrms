@@ -1,12 +1,17 @@
 package com.example.hrms.core.auth.jwt;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Date;
+
 
 @Data
 @Entity
 @Table(name="jwt_tokens")
+@NoArgsConstructor
 public class JWTToken {
 
     @Id
@@ -14,6 +19,9 @@ public class JWTToken {
     @Column(name="id")
     private int id;
 
-    @Column(name="token")
-    private String token;
+    @Column(name="email")
+    private String email;
+
+    @Column(name="absolute_expire_date")
+    Date absoluteExpireDate;
 }
