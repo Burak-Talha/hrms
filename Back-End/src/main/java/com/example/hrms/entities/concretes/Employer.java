@@ -17,8 +17,6 @@ import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Data
 @Entity
 @Table(name="employer")
@@ -41,11 +39,6 @@ public class Employer {
 	@Email
 	@Column(name="email")
 	private String email;
-
-	@NotNull
-	@Size(max = 100)
-	@Column(name="password")
-	private String password;
 
 	@LastModifiedDate
 	@Column(name="lastModifiedDate")
@@ -85,14 +78,6 @@ public class Employer {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 	
 }

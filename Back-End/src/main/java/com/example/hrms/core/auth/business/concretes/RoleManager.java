@@ -56,6 +56,7 @@ public class RoleManager implements RoleService {
         UserDetails userDetails = userDetailsDao.findUserDetailsByEmail(email);
         userDetails.setRoles(ApplicationUserRole.USER.name());
         System.out.println(userDetails.getRoles());
+
         userDetailsDao.save(userDetails);
 
         return new SuccessResult();

@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/pages/login/login_employee.dart';
+import 'package:front_end/view/other/splash.dart';
 
-import 'package:front_end/style/style.dart';
+void main() => runApp(const MyApp());
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: const LoginEmployee(),
-        backgroundColor: ProjectColors.whiteColor,
-      ),
+      home: SplashScreen(),
     );
   }
 }

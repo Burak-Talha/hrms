@@ -45,13 +45,16 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        /*Authentication authentication = getUsernamePasswordAuthentication(request, response);
+        Authentication authentication = getUsernamePasswordAuthentication(request, response);
         Authentication targetAuthentication = SecurityContextHolder.getContext().getAuthentication();
 
         // dont insert same instances
         if(authentication != targetAuthentication) {
             SecurityContextHolder.getContext().setAuthentication(authentication);
-        }*/
+
+        }
+        }
+
 
         // Continue filter execution
         filterChain.doFilter(request, response);
@@ -77,13 +80,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
                 // Check we have already this authentication
                 if (email == SecurityContextHolder.getContext().getAuthentication().getName()) {
-
                     try {
                         userDetails = userDetailsDao.findUserDetailsByEmail(email);
                     } catch (UsernameNotFoundException notFoundException) {
                         System.out.println("Kullanıcı bulunamadı.");
                     }
-
                     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(email, null, userDetails.getAuthorities());
                     return auth;
                 }

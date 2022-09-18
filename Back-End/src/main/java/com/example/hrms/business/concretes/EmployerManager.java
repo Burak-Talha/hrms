@@ -1,58 +1,81 @@
 package com.example.hrms.business.concretes;
 
-
+import com.example.hrms.core.auth.business.abstracts.LoginAndRoleService;
+import com.example.hrms.core.auth.business.abstracts.RoleService;
+import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
+import com.example.hrms.core.auth.entity.UserDetails;
 import com.example.hrms.core.utilities.results.*;
-import com.example.hrms.core.utilities.results.DataResult.DataResult;
-import com.example.hrms.core.utilities.results.DataResult.ErrorDataResult;
-import com.example.hrms.core.utilities.results.DataResult.SuccessDataResult;
 import com.example.hrms.core.utilities.results.DataResults.DataResults;
 import com.example.hrms.core.utilities.results.DataResults.ErrorDataResults;
 import com.example.hrms.core.utilities.results.DataResults.SuccessDataResults;
-import com.example.hrms.entities.concretes.dtos.concretes.EmployerDto;
-
+import com.example.hrms.entities.dtos.concretes.EmployerRegistryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.hrms.business.abstracts.EmployerService;
 import com.example.hrms.dataaccess.abstracts.EmployerDao;
 import com.example.hrms.entities.concretes.Employer;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 @Service
 public class EmployerManager implements EmployerService {
 
-	Employer employer;
+	EmployerDao employerDao;
+	UserDetailsDao userDetailsDao;
+	RoleService roleService;
+	PasswordEncoder passwordEncoder;
 
-	private final EmployerDao employerDao;
-	
 	@Autowired
-	public EmployerManager(EmployerDao employeeDao) {
-		this.employerDao = employeeDao;
+	public EmployerManager(EmployerDao employerDao, UserDetailsDao userDetailsDao, RoleService roleService, PasswordEncoder passwordEncoder) {
+		this.employerDao = employerDao;
+		this.userDetailsDao = userDetailsDao;
+		this.roleService = roleService;
+		this.passwordEncoder = passwordEncoder;
 	}
 
-	@Override
-	public DataResult<Employer> login(String email, String password) {
-		employer = employerDao.findByEmailAndPassword(email, password);
-		System.out.println("System User email input :"+email);
-		System.out.println("System User password input :"+password);
-		if(employer !=null){
-			System.out.println("Kullanıcı eşleşti!");
-			return new SuccessDataResult<Employer>(employer, "Kullanıcı eşleşti");
-		}
-		return new ErrorDataResult("Kullanıcı eşleşemedi");
-	}
+	@Resource
+	UserDetails userDetails;
 
-	// Buraya mailin web sitesiyle aynı domaine sahip kişilerin kayıt yaptırabileceği kuralı konacak
 	@Override
-	public Result add(Employer employer) {
-		if(employer.getPassword().length() >= 8 && employer.getEmail().length() >= 8) {
-			employerDao.save(employer);
-			return new SuccessResult( "The register transaction completed successfully");
+	public Result add(EmployerRegistryDTO registryDTO) {
+		if(registryDTO.getPassword().length() >= 8 && registryDTO.getEmployer().getEmail().length() >= 8) {
+
+			userDetails.setEmail(registryDTO.getEmployer().getEmail());
+			userDetails.setEnabled(true);
+			userDetails.setPassword(passwordEncoder.encode(registryDTO.getPassword()));
+
+			System.out.println(userDetails.getEmail());
+			System.out.println(userDetails.getPassword());
+			employerDao.save(registryDTO.getEmployer());
+			userDetailsDao.save(userDetails);
+			roleService.addUSERRoleToUserDetailsByEmail(userDetails.getEmail());
+
+			return new SuccessResult("The register transaction completed successfully");
 		}
 			return new ErrorResult("Your password length should be bigger than 8 character");
+	}
+
+	@Override
+	public Result update(Employer employer, String email) {
+		Employer employer1 = employerDao.findByEmail(email);
+
+		if(employer1.getEmail().length() <= 7) {
+			return new ErrorResult("Your email length should be bigger than 7 character");
+		}
+		if(employer1.getWebSiteName().contains(".com")
+				&& employer1.getWebSiteName().contains(".net")
+				&& employer1.getWebSiteName().contains(".org")) {
+			return new ErrorResult("Your website name should not contain com,net,org");
+		}
+
+		employer1 = employer;
+		employerDao.save(employer1);
+		return new SuccessResult("The update transaction completed successfully");
+
 	}
 
 	@Override
@@ -62,11 +85,6 @@ public class EmployerManager implements EmployerService {
 			return new ErrorDataResults();
 		}
 		return new SuccessDataResults<Employer>(employerDao.findAll(), "All employers listed");
-	}
-
-	@Override
-	public List<EmployerDto> getMailAndPasswords() {
-		return employerDao.getMailAndPassword();
 	}
 
 }

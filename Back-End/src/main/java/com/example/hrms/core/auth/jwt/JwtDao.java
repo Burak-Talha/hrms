@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface JwtDao extends JpaRepository<JWTToken, Integer> {
 
     JWTToken getJWTTokenByEmail(String email);
+
 }

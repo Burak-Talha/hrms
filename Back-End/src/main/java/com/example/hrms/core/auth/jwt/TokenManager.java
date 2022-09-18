@@ -37,13 +37,13 @@ public class TokenManager implements TokenService {
     JWTToken jwtToken;
 
     private String generateToken(int validityMinute, String email) {
+
         return JWT.create()
                 .withSubject(String.valueOf(email))
                 .withIssuedAt(new Date(System.currentTimeMillis()))
                 .withExpiresAt(new Date(System.currentTimeMillis() + validityMinute * JwtProperties.MILLISECONDS_TO_MINUTES))
                 .sign(Algorithm.HMAC256(JwtProperties.SECRET));
     }
-
     public String generateAuthenticationToken(String email, int validMinute){
         String token = generateToken(validMinute, email);
         jwtToken = jwtDao.getJWTTokenByEmail(email);

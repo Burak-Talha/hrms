@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Data
 @Entity
 @Table(name="jwt_tokens")
@@ -23,5 +24,4 @@ public class JWTToken {
 
     @Column(name="absolute_expire_date")
     Date absoluteExpireDate;
-
 }
