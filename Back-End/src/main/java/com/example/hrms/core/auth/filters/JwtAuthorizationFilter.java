@@ -1,6 +1,7 @@
 package com.example.hrms.core.auth.filters;
 
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.example.hrms.core.auth.dataAccess.UserDetailsDao;
 import com.example.hrms.core.auth.jwt.JwtProperties;
 import com.example.hrms.core.auth.jwt.TokenManager;
@@ -56,7 +57,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             // parse the token and validate it
             // Search in the DB if we find the user by token subject (username)
             // If so, then grab user details and create spring auth token using username, pass, authorities/roles
-
+            try{
             if (tokenManager.tokenValidate(authenticationToken)) {
 
                 String email = tokenManager.getSubject(authenticationToken);
@@ -75,7 +76,10 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(email, null, userDetails.getAuthorities());
                     return auth;
                 }
+            } catch(TokenExpiredException tokenExpiredException){
+                System.out.println("Token süresi dolmuş.");
             }
+        }
         return null;
     }
 }
