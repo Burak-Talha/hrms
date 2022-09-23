@@ -66,9 +66,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     httpServletResponse.setHeader(JwtProperties.HEADER_STRING, tokenManager.generateAuthenticationToken(email, JwtProperties.AUTHENTICATION_MINUTE));
                 }
 
-                // Check we have already this authentication
-                if (email == SecurityContextHolder.getContext().getAuthentication().getName()) {
-
                     try {
                         userDetails = userDetailsDao.findUserDetailsByEmail(email);
                     } catch (UsernameNotFoundException notFoundException) {
@@ -79,7 +76,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     return auth;
                 }
             }
-        }
         return null;
     }
 }
